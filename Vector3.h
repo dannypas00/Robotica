@@ -6,7 +6,7 @@
 #define ROBOTICA_VECTOR3_H
 
 
-abstract class Vector3 {
+public abstract class Vector3 {
 public:
     double x;
     double y;

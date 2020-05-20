@@ -1,7 +1,3 @@
-//
-// Created by danny on 20/05/2020.
-//
-
 #include "Vector3.h"
 
 public void Vector3(double x, double y, double z) {
