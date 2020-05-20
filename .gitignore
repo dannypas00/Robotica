@@ -1,32 +1,42 @@
 
-# Created by https://www.gitignore.io/api/linux,python,opencv,pycharm,windows,visualstudio,visualstudiocode
-# Edit at https://www.gitignore.io/?templates=linux,python,opencv,pycharm,windows,visualstudio,visualstudiocode
+# Created by https://www.gitignore.io/api/c++,linux,clion,python,pycharm,windows,visualstudio,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=c++,linux,clion,python,pycharm,windows,visualstudio,visualstudiocode
 
-### Linux ###
-*~
+### C++ ###
+# Prerequisites
+*.d
 
-# temporary files which can be created if a process still has a handle open of a deleted file
-.fuse_hidden*
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
 
-# KDE directory preferences
-.directory
+# Precompiled Headers
+*.gch
+*.pch
 
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
 
-# .nfs files are created when an open file is removed but is still being accessed
-.nfs*
+# Fortran module files
+*.mod
+*.smod
 
-### OpenCV ###
-#OpenCV for Mac and Linux
-#build and release folders
-*/CMakeFiles
-*/CMakeCache.txt
-*/Makefile
-*/cmake_install.cmake
-.DS_Store
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
 
-### PyCharm ###
+# Executables
+*.exe
+*.out
+*.app
+
+### CLion ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
@@ -96,7 +106,7 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-### PyCharm Patch ###
+### CLion Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
 # *.iml
@@ -114,6 +124,77 @@ fabric.properties
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
 
+### Linux ###
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+### PyCharm ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff
+
+# Generated files
+
+# Sensitive or high-churn files
+
+# Gradle
+
+# Gradle and Maven with auto-import
+# When using Gradle or Maven with auto-import, you should exclude module files,
+# since they will be recreated, and may cause churn.  Uncomment if using
+# auto-import.
+# .idea/modules.xml
+# .idea/*.iml
+# .idea/modules
+# *.iml
+# *.ipr
+
+# CMake
+
+# Mongo Explorer plugin
+
+# File-based project format
+
+# IntelliJ
+
+# mpeltonen/sbt-idea plugin
+
+# JIRA plugin
+
+# Cursive Clojure plugin
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+
+# Editor-based Rest Client
+
+# Android studio 3.1+ serialized cache file
+
+### PyCharm Patch ###
+# Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
+
+# *.iml
+# modules.xml
+# .idea/misc.xml
+# *.ipr
+
+# Sonarlint plugin
+
+# SonarQube Plugin
+
+# Markdown Navigator plugin
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -121,7 +202,6 @@ __pycache__/
 *$py.class
 
 # C extensions
-*.so
 
 # Distribution / packaging
 .Python
@@ -327,9 +407,7 @@ StyleCopReport.xml
 *_p.c
 *_h.h
 *.ilk
-*.obj
 *.iobj
-*.pch
 *.pdb
 *.ipdb
 *.pgc
@@ -604,4 +682,4 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
-# End of https://www.gitignore.io/api/linux,python,opencv,pycharm,windows,visualstudio,visualstudiocode
+# End of https://www.gitignore.io/api/c++,linux,clion,python,pycharm,windows,visualstudio,visualstudiocode
