@@ -8,7 +8,7 @@ static class NSA {
 public:
     static void main();
     void DisplayWeight(float weight);
-    int ExecuteAssignment(MIStrategy assignment);
+    int ExecuteAssignment(TransportRockStrategy assignment);
 private:
     int display;
 };

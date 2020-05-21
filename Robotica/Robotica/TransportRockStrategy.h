@@ -3,9 +3,11 @@
 #include "MeasureWeightController.h"
 
 class TransportRockStrategy {
-private:
-	MeasureWeightController measureWeightController;
 public:
+	MeasureWeightController measureWeightController;
+	
+	TransportRockStrategy();
+	
 	int ExecuteStrategy();
 
 	void PickupObject();
