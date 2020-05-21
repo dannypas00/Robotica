@@ -16,6 +16,24 @@
     <Filter Include="MachineIntelligence">
       <UniqueIdentifier>{b25b8351-8bbd-432b-8a7f-3ebd0964cffe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MachineIntelligence\TransportRock">
+      <UniqueIdentifier>{1c202fa3-39cc-4903-a70b-a0c2765746d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MachineIntelligence\MoonSurvival">
+      <UniqueIdentifier>{5dd9faa8-dfe8-48b7-899f-219227aab035}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MachineIntelligence\MoonMaze">
+      <UniqueIdentifier>{982a5880-287f-48b9-afa5-95cfaf252c45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MachineIntelligence\PlantFlag">
+      <UniqueIdentifier>{ddab690c-17a0-4b8b-801f-6c80dc246075}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MachineIntelligence\DynamicDance">
+      <UniqueIdentifier>{6a91d832-249c-48dc-8c32-26c86c9b4227}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MachineIntelligence\QRCodeScan">
+      <UniqueIdentifier>{f2300fad-36aa-4ae6-ad33-ebfb68c324c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Robotica.cpp">
@@ -30,17 +48,20 @@
     <ClCompile Include="RobotController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WeightSensor.cpp">
-      <Filter>MachineIntelligence</Filter>
-    </ClCompile>
-    <ClCompile Include="TransportRockStrategy.cpp">
-      <Filter>MachineIntelligence</Filter>
-    </ClCompile>
     <ClCompile Include="MIStrategy.cpp">
       <Filter>MachineIntelligence</Filter>
     </ClCompile>
+    <ClCompile Include="TransportRockStrategy.cpp">
+      <Filter>MachineIntelligence\TransportRock</Filter>
+    </ClCompile>
+    <ClCompile Include="WeightSensor.cpp">
+      <Filter>MachineIntelligence\TransportRock</Filter>
+    </ClCompile>
     <ClCompile Include="MeasureWeightController.cpp">
-      <Filter>MachineIntelligence</Filter>
+      <Filter>MachineIntelligence\TransportRock</Filter>
+    </ClCompile>
+    <ClCompile Include="VisionController.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -53,17 +74,20 @@
     <ClInclude Include="RobotController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MeasureWeightController.h">
-      <Filter>MachineIntelligence</Filter>
-    </ClInclude>
     <ClInclude Include="MIStrategy.h">
       <Filter>MachineIntelligence</Filter>
     </ClInclude>
     <ClInclude Include="TransportRockStrategy.h">
-      <Filter>MachineIntelligence</Filter>
+      <Filter>MachineIntelligence\TransportRock</Filter>
     </ClInclude>
     <ClInclude Include="WeightSensor.h">
-      <Filter>MachineIntelligence</Filter>
+      <Filter>MachineIntelligence\TransportRock</Filter>
+    </ClInclude>
+    <ClInclude Include="MeasureWeightController.h">
+      <Filter>MachineIntelligence\TransportRock</Filter>
+    </ClInclude>
+    <ClInclude Include="VisionController.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

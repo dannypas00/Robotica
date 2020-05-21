@@ -5,5 +5,5 @@ int main()
 {
     std::cout << "Hello, world!";
     NSA nsa;
-    nsa.main();
+    nsa.ExecuteAssignment(&TransportRockStrategy());
 }

@@ -3,13 +3,15 @@
 #include "Vector3.cpp"
 
 class RobotController {
-private:
-	RobotController* instance;
-
 public:
-	RobotController GetInstance();
-	void Drive(char direction);
+	static RobotController GetInstance();
+	void Move(double distance, double speed);
 	void UseBreaks(double strength);
-	void GatherObject(bool liquid, double sensitivity, Vector3 object_position);
+	void GatherObject(bool liquid, double sensitivity, int object_position);
+	void PutStone(int location);
 	void Dance();
+	RobotController();
+private:
+	
+	static RobotController* instance;
 };

@@ -1,7 +1,7 @@
 #include "NSA.h"
 
-void NSA::main()
+int NSA::ExecuteAssignment(TransportRockStrategy* assignment)
 {
-    TransportRockStrategy strategy;
-    strategy.ExecuteStrategy();
+    assignment->ExecuteStrategy();
+	return 0;
 }
