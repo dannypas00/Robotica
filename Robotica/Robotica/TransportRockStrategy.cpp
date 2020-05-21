@@ -1,25 +1,19 @@
-//
-// Created by danny on 20/05/2020.
-//
-
 #include "TransportRockStrategy.h"
 #include <iostream>
 
-class TransportRockStrategy {
-	int ExecuteStrategy()
-	{
-		return 0;
-	}
+int TransportRockStrategy::ExecuteStrategy()
+{
+	return 0;
+}
 
-	void PickupObject()
-	{
-	}
+void TransportRockStrategy::PickupObject()
+{
+}
 
-	void PlaceObject()
-	{
-	}
+void TransportRockStrategy::PlaceObject()
+{
+}
 
-	void NavigateToPosition()
-	{
-	}
-};
+void TransportRockStrategy::NavigateToPosition()
+{
+}

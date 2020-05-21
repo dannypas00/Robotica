@@ -4,5 +4,5 @@
 class MeasureWeightController {
 private:
 	int weightSensor;
-	NSA display;
+	NSA* display;
 };

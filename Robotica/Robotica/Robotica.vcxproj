@@ -154,6 +154,7 @@
     <ClCompile Include="Robotica.cpp" />
     <ClCompile Include="TransportRockStrategy.cpp" />
     <ClCompile Include="Vector3.cpp" />
+    <ClCompile Include="WeightSensor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MeasureWeightController.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="RobotController.h" />
     <ClInclude Include="TransportRockStrategy.h" />
     <ClInclude Include="Vector3.h" />
+    <ClInclude Include="WeightSensor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
