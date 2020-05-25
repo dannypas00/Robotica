@@ -3,5 +3,5 @@
 //Abstract class, because pure virtual function(s)
 class MIStrategy {
 public:
-    virtual int ExecuteStrategy() = 0;
+	virtual int ExecuteStrategy() = 0;
 };

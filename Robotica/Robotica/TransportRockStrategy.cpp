@@ -3,48 +3,31 @@
 #include <iostream>
 
 
-TransportRockStrategy::TransportRockStrategy()
+TransportRockStrategy::TransportRockStrategy(MeasureWeightController _measureWeightController)
 {
-	//measureWeightController;
+	measureWeightController = _measureWeightController;
 }
 
 int TransportRockStrategy::ExecuteStrategy()
 {
-	//Eerst 0.15 meter naar voren
-	//Wacht tot vision steen ziet
-	//Geef een seintje aan aansturing om te beginnen met steen oppakken
 	VisionController vision;
-	vision.Subscribe("Stone");
 	RobotController controller = RobotController();
-	controller.Move(0.15, 1);
-	while (false)	//Check while stone is not detected yet
-	{
-		std::cout << "I don't see";
-	}
-	int visionStone = vision.See(); //Temporarily a vector to substitute the vision object struct
-	controller.GatherObject(false, 1, visionStone);
-	//eerst 0.50 meter naar voren
-	//wacht tot vision bakje ziet
-	//geef seintje aan aansturing om de steen in die bak te leggen
+
+	//Subscribe to the vision objects for the stone and the container to put the stone into
+	vision.Subscribe("Stone");
 	vision.Subscribe("Container");
+
+	//Move 0.15m forwards to reach the rock
+	controller.Move(0.15, 1);
+	//Wait for the rock to be detected by vision
+	const Vector3 vision_stone = vision.See(); //Temporarily a vector to substitute the vision object struct
+	//Pick up the rock
+	controller.GatherObject(false, 1, vision_stone);
+	//Move 0.5m forwards to reach the container
 	controller.Move(0.50, 1);
-	while (false)
-	{
-		std::cout << "Where is my container?";
-	}
-	int visionContainer = vision.See();
-	controller.PutStone(visionContainer);
+	//Wait for the container to be detected by vision
+	const Vector3 vision_container = vision.See();//Temporarily a vector to substitute the vision object struct
+	//Put the rock into the container
+	controller.PutStone(vision_container);
 	return 0;
-}
-
-void TransportRockStrategy::PickupObject()
-{
-}
-
-void TransportRockStrategy::PlaceObject()
-{
-}
-
-void TransportRockStrategy::NavigateToPosition()
-{
 }

@@ -4,17 +4,11 @@
 #include "MIStrategy.h"
 #include "RobotController.h"
 
-class TransportRockStrategy : public MIStrategy{
+class TransportRockStrategy : public MIStrategy {
 public:
 	MeasureWeightController measureWeightController;
 	
-	TransportRockStrategy();
+	TransportRockStrategy(MeasureWeightController _measureWeightController);
 	
-	int ExecuteStrategy();
-
-	void PickupObject();
-
-	void PlaceObject();
-
-	void NavigateToPosition();
+	int ExecuteStrategy() override;
 };

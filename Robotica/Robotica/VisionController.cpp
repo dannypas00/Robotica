@@ -6,7 +6,7 @@ void VisionController::Subscribe(std::string object)
 	return;
 }
 
-int VisionController::See()
+Vector3 VisionController::See()
 {
-	return 6; //Vector3(5, 6, 7);
+	Vector3(5, 6, 7);
 }

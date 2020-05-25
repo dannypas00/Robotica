@@ -7,6 +7,6 @@ class VisionController
 {
 public:
 	void Subscribe(std::string object);
-	int See(); //Temporary function to substitute observer signal
+	Vector3 See(); //Temporary function to substitute observer signal
 };
 
