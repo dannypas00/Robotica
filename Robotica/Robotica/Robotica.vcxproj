@@ -147,21 +147,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DynamicDanceStrategy.cpp" />
     <ClCompile Include="MeasureWeightController.cpp" />
     <ClCompile Include="MIStrategy.cpp" />
+    <ClCompile Include="MoonMazeStrategy.cpp" />
+    <ClCompile Include="MoonSurvivalStrategy.cpp" />
     <ClCompile Include="NSA.cpp" />
+    <ClCompile Include="PlantFlagStrategy.cpp" />
     <ClCompile Include="RobotController.cpp" />
     <ClCompile Include="Robotica.cpp" />
+    <ClCompile Include="ScanQRCodeStrategy.cpp" />
     <ClCompile Include="TransportRockStrategy.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="VisionController.cpp" />
     <ClCompile Include="WeightSensor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DynamicDanceStrategy.h" />
     <ClInclude Include="MeasureWeightController.h" />
     <ClInclude Include="MIStrategy.h" />
+    <ClInclude Include="MoonMazeStrategy.h" />
+    <ClInclude Include="MoonSurvivalStrategy.h" />
     <ClInclude Include="NSA.h" />
+    <ClInclude Include="PlantFlagStrategy.h" />
     <ClInclude Include="RobotController.h" />
+    <ClInclude Include="ScanQRCodeStrategy.h" />
     <ClInclude Include="TransportRockStrategy.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="VisionController.h" />

@@ -9,6 +9,8 @@ public:
 	void UseBreaks(double strength);
 	void GatherObject(bool liquid, double sensitivity, Vector3 object_position);
 	void PutStone(Vector3 location);
+	void PutFlag(Vector3 location);
+	std::string GetQRResult();
 	void Dance();
 	RobotController();
 private:

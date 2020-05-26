@@ -20,6 +20,16 @@ void RobotController::PutStone(Vector3 location)	//TODO: Change int object_posit
 	return;
 }
 
+void RobotController::PutFlag(Vector3 location)	//TODO: Change int object_position to be a Vector3 when working
+{
+	return;
+}
+
+std::string RobotController::GetQRResult()	//TODO: change this to return actual gotten value from qr scan
+{
+	return "SCHOPPEN";
+}
+
 RobotController::RobotController()
 {
 	//instance = this;
