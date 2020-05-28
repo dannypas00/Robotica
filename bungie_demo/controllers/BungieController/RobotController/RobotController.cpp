@@ -12,15 +12,16 @@ RobotController& RobotController::getInstance(){
 RobotController::RobotController(){
   // create the Robot instance.
   robot = new webots::Robot();
-  left_controller = new WheelController(robot->getMotor("left_motor"));
-  right_controller = new WheelController(robot->getMotor("right_motor"));
+  wheel_controller = new WheelController(robot);
 }
 
-static void RobotController::drive(char direction, double velocity){
 
+void RobotController::Drive(char direction, double velocity){
+  wheel_controller->PowerMotors(direction, velocity);
 }
 
 RobotController::~RobotController(){
   delete robot;
+  delete wheel_controller;
 }
 }

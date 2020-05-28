@@ -64,7 +64,7 @@
 ### VERBOSE = 1
 ###
 ###-----------------------------------------------------------------------------
-CXX_SOURCES = $(wildcard *.cpp)#RobotController.cpp ArmController.cpp WheelController.cpp
+CXX_SOURCES := $(wildcard ./*.cpp) $(wildcard ./**/*.cpp)
 ### Do not modify: this includes Webots global Makefile.include
 space :=
 space +=

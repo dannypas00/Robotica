@@ -18,10 +18,11 @@ WorldInfo {
 }
 Viewpoint {
   fieldOfView 0.895398
-  orientation -0.3988994404734486 -0.8898473381433725 -0.2214744933149732 1.1129416794546567
-  position 0.674324936482787 0.7606900676234465 -1.2318894048404787
+  orientation -0.3655331527630794 0.9225495062174776 0.12364433997952136 0.906456361330478
+  position 5.145451267434781 1.3642234817625716 6.252816370169447
   near 0.1
-  follow "Bungie::Shape_IndexedFaceSet_028_TRANSFORM:Shape_IndexedFaceSet_028_ifs_TRANSFORM:group_ME_Shape_IndexedFaceSet_064"
+  follow "Bungie"
+  followType "Mounted Shot"
 }
 TexturedBackground {
   texture "mars"
@@ -82,8 +83,8 @@ DEF GROUND Solid {
 DEF MoonSurvival Transform {
   children [
     Solid {
-      translation 4.236500443171078 3.446456312545492 -3.274816295491014
-      rotation 0.37333760328407195 0.35652553812304333 0.8564511513450019 -1.5853725299212236
+      translation 4.236774065323187 3.4463736537909675 -3.274950658930098
+      rotation 0.3733088007043023 0.35656818971239895 0.8564459500762076 -1.5854099303296332
       children [
         DEF Beker-indi Transform {
           translation 4.7684 -0.0451 -0.0423
@@ -236,8 +237,8 @@ DEF MoonSurvival Transform {
   ]
 }
 DEF Bungie Robot {
-  translation 2.1719209614948687 -0.34870458574769675 -2.5018320314162557
-  rotation -0.08267805104782609 0.9934267976504269 -0.0791677812304392 1.5332238458762006
+  translation 2.637991418149129 0.10429370436891007 4.329930386072903
+  rotation -0.006327150211945424 0.9997786599183786 -0.02006485340107203 2.5406197250763616
   children [
     DEF left_track Track {
       translation 0 0 -0.137499
@@ -355,6 +356,9 @@ DEF Bungie Robot {
       physics Physics {
       }
       device [
+        Brake {
+          name "left_brake"
+        }
         LinearMotor {
           name "left_motor"
           acceleration 2
@@ -498,6 +502,9 @@ DEF Bungie Robot {
       physics Physics {
       }
       device [
+        Brake {
+          name "right_brake"
+        }
         LinearMotor {
           name "right_motor"
         }
@@ -1796,6 +1803,6 @@ DEF Bungie Robot {
     mass 100
   }
   controller "BungieController"
-  linearVelocity 3.000680015968742e-07 -8.075461627950514e-06 -5.047142059047424e-05
-  angularVelocity 3.0349196438423783e-10 4.2714561542487875e-05 -6.836085124019314e-06
+  linearVelocity -4.5306330151857405e-08 -4.3071219568605057e-07 -1.076780028624187e-05
+  angularVelocity 1.271657156408315e-12 2.6239012149693453e-06 -1.0499095959745004e-07
 }

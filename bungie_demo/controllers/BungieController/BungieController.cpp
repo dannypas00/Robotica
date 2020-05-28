@@ -7,7 +7,8 @@
 // You may need to add webots include files such as
 // <webots/DistanceSensor.hpp>, <webots/Motor.hpp>, etc.
 // and/or to add some other includes
-#include "RobotController.hpp"
+#include <RobotController/RobotController.hpp>
+#include <webots/Keyboard.hpp>
 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
@@ -21,24 +22,39 @@ using namespace bungie;
 // The arguments of the main function can be specified by the
 // "controllerArgs" field of the Robot node
 int main(int argc, char **argv) {
-  
-  
   // get the time step of the current world.
   int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
-
   // You should insert a getDevice-like function in order to get the
   // instance of a device of the robot. Something like:
   //  Motor *motor = robot->getMotor("motorname");
   //  DistanceSensor *ds = robot->getDistanceSensor("dsname");
   //  ds->enable(timeStep);
-
+  Keyboard keyboard = Keyboard();
+  keyboard.enable(32);
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
   while (RobotController::getInstance().getRobot().step(timeStep) != -1) {
     // Read the sensors:
     // Enter here functions to read sensor data, like:
     //  double val = ds->getValue();
-
+    int pressed_key = keyboard.getKey();
+    switch(pressed_key){
+    case Keyboard::UP:
+      RobotController::getInstance().Drive('f', 1.5);
+      break;
+    case Keyboard::DOWN:
+      RobotController::getInstance().Drive('b', 1.5);
+      break;
+    case Keyboard::LEFT:
+      RobotController::getInstance().Drive('l', 1.5);
+      break;
+    case Keyboard::RIGHT:
+      RobotController::getInstance().Drive('r', 1.5);
+      break;
+    default:
+      RobotController::getInstance().Drive('f', 0.0);
+    }
+    
     // Process sensor data here.
 
     // Enter here functions to send actuator commands, like:
@@ -46,6 +62,6 @@ int main(int argc, char **argv) {
   };
 
   // Enter here exit cleanup code.
-
+  
   return 0;
 }

@@ -18,7 +18,7 @@ class RobotController {
   public:
   static RobotController& getInstance();
   
-  static void drive(char direction, double velocity);
+  void Drive(char direction, double velocity);
     
   webots::Robot& getRobot() { return *robot; }
   
@@ -27,8 +27,7 @@ class RobotController {
   private:
   webots::Robot *robot;
   
-  WheelController* left_controller;
-  WheelController* right_controller;
+  WheelController* wheel_controller;
   RobotController();
 };
 
