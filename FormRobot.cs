@@ -17,14 +17,34 @@ namespace Client_side
             InitializeComponent();
         }
 
-        private void GroupBox2_Enter(object sender, EventArgs e)
+ 
+        private void FormRobot_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.W)
+            {
+                btnForward.PerformClick();
+            }
 
+            if (e.KeyCode == Keys.S)
+            {
+                btnBackwards.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.A)
+            {
+                btnLeft.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.D)
+            {
+                btnRight.PerformClick();
+            }
         }
 
-        private void IconButton4_Click(object sender, EventArgs e)
+        private void BtnForward_Click(object sender, EventArgs e)
         {
-
+            progressBar1.Increment(1);
+            
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Client_side
         [STAThread]
         public static void Main() {
 
-            Client.getInstance().Connect();
+            Client.GetInstance().Connect();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -41,7 +41,6 @@ namespace Client_side
             public static Color color6 = Color.FromArgb(24, 161, 251);
         }
         
- 
         //Methods
         private void ActivateButton(object senderBtn, Color color)
         {
@@ -64,7 +63,6 @@ namespace Client_side
             }
 
         }
-
         private void DisableButton()
         {
             if(currentBtn !=null)
@@ -100,6 +98,8 @@ namespace Client_side
         private extern static void Releasecapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+
         private void BtnRobot_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);               //pakt kleur uit kleuren tabel
@@ -118,20 +118,16 @@ namespace Client_side
             Application.Exit();
         }
 
-        private void IconPictureBox_WindowMaximize_Click(object sender, EventArgs e)
+        private void IconPictureBox_Help_Click(object sender, EventArgs e)
         {
-           // FormWindowState.Maximized();
+            MessageBox.Show("Shortcuts:\nForward: 'W'\nBackward: 'S'\nLeft: 'A'\nRight: 'D'");
         }
 
-        private void IconPictureBox_WindowMinimize_Click(object sender, EventArgs e)
-        {
-           // FormWindowState.Minimized();
-        }
-
+        //Drag
         private void PanelTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
             Releasecapture();
-            SendMessage(this.Handle, 0x112, 0xf012,0);
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

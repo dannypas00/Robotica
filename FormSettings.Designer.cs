@@ -34,8 +34,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnLogin = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -72,7 +73,6 @@
             this.label2.Size = new System.Drawing.Size(73, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Password:";
-            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // iconPictureBox1
             // 
@@ -96,37 +96,47 @@
             this.iconPictureBox2.TabIndex = 8;
             this.iconPictureBox2.TabStop = false;
             // 
-            // iconButton1
+            // btnLogin
             // 
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Link;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconSize = 30;
-            this.iconButton1.Location = new System.Drawing.Point(38, 147);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(127, 47);
-            this.iconButton1.TabIndex = 9;
-            this.iconButton1.Text = "Log in";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = true;
+            this.btnLogin.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnLogin.IconChar = FontAwesome.Sharp.IconChar.Link;
+            this.btnLogin.IconColor = System.Drawing.Color.Black;
+            this.btnLogin.IconSize = 30;
+            this.btnLogin.Location = new System.Drawing.Point(38, 147);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
+            this.btnLogin.Rotation = 0D;
+            this.btnLogin.Size = new System.Drawing.Size(127, 47);
+            this.btnLogin.TabIndex = 9;
+            this.btnLogin.Text = "Log in";
+            this.btnLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.iconButton1);
+            this.groupBox1.Controls.Add(this.btnLogin);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(243, 214);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(12, 244);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(243, 57);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(726, 448);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.iconPictureBox2);
             this.Controls.Add(this.iconPictureBox1);
             this.Controls.Add(this.label2);
@@ -151,7 +161,8 @@
         private System.Windows.Forms.Label label2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnLogin;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

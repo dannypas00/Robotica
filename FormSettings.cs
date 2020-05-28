@@ -15,11 +15,12 @@ namespace Client_side
         public FormSettings()
         {
             InitializeComponent();
+            
         }
 
-        private void Label2_Click(object sender, EventArgs e)
+        private void BtnLogin_Click(object sender, EventArgs e)
         {
-
+            //FormMainMenu.PictureBox_Connected.Visible = false; Dit moet naar FormMainMenu
         }
     }
 }
