@@ -20,8 +20,11 @@ In deze map staan de classes van de aansturing, vision en machine intelligence.
 Robotica\bungie_demo\controllers\BungieController\BungieController.cpp is de main class, test hiermee je code. In deze class staat de main functie.
 Deze manier van een main class is een vereiste van WeBots, deze class linked namelijk de code aan de scene.
 
-Om je classes toe te voegen moet jij je broncode verplaatsen naar dit mapje. Let hierbij wel op dat de code nog compiled.
+Om je classes toe te voegen moet jij je *broncode* verplaatsen naar dit mapje. Let hierbij wel op dat de code nog compiled.
 Hier kunnen verschillende dingen mis gaan, zoals het gebruik van Visual Studio specifieke functionaliteit of WeBots specifieke code.
+
+Vergeet niet je classes toe te voegen aan de makefile. Deze syntax spreekt voor zich, er zijn als voorbeeld al classes aan toegevoegd
+==
 
 Om te testen of je code werkt maak een simpele call in main en zorg voor visual feedback voor jezelf.
 
