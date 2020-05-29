@@ -6,8 +6,8 @@ BIND_PORT = 5050
 HEADER_SIZE = 10
 FORMAT = "ascii" 
 DISCONNECTER = "!terminate"
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((BIND_IP, BIND_PORT))
 
 
