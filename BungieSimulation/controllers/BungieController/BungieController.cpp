@@ -9,6 +9,9 @@
 // and/or to add some other includes
 #include <RobotController/RobotController.hpp>
 #include <webots/Keyboard.hpp>
+#include "MachineIntelligence/MeasureWeightController.h"
+#include "MachineIntelligence/Strategies/TransportRockStrategy.h"
+#include "MachineIntelligence/NSA.h"
 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
@@ -31,6 +34,14 @@ int main(int argc, char **argv) {
   //  ds->enable(timeStep);
   Keyboard keyboard = Keyboard();
   keyboard.enable(32);
+  
+  std::cout << "Hello, world!";
+    NSA nsa = NSA();
+    MeasureWeightController weightController = MeasureWeightController();
+    TransportRockStrategy strategy = TransportRockStrategy(weightController);
+    //MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
+    nsa.ExecuteAssignment(strategy);
+  
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
   while (RobotController::getInstance().getRobot().step(timeStep) != -1) {

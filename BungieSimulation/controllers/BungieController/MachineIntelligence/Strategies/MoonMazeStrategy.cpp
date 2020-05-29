@@ -1,5 +1,6 @@
 #include "MoonMazeStrategy.h"
 
+namespace bungie {
 MoonMazeStrategy::MoonMazeStrategy() {
 }
 
@@ -9,4 +10,5 @@ int MoonMazeStrategy::ExecuteStrategy()
 	
 	//Done
 	return 0;
+}
 }

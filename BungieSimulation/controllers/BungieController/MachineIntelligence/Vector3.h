@@ -5,7 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+#include <cmath>
 
+namespace bungie {
 class Vector3
 {
 public:
@@ -30,5 +32,6 @@ public:
 
 private:
 };
+}
 
 #endif

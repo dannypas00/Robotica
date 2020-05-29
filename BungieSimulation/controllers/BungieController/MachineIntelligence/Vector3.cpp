@@ -1,5 +1,6 @@
 #include "Vector3.h"
 
+namespace bungie {
 Vector3::Vector3(float _x, float _y, float _z) {
 	x = _x;
 	y = _y;
@@ -65,4 +66,5 @@ Vector3 Vector3::operator*(const float rhs) const
 Vector3 Vector3::operator/(const float rhs) const
 {
 	return Vector3(x / rhs, y / rhs, z / rhs);
+}
 }

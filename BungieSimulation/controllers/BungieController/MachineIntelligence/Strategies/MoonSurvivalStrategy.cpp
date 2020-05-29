@@ -1,12 +1,10 @@
 #include "MoonSurvivalStrategy.h"
 #include <iostream>
 
-MoonSurvivalStrategy::MoonSurvivalStrategy() {
-}
-
+namespace bungie {
 int MoonSurvivalStrategy::ExecuteStrategy()
 {
-	
 	//Done
 	return 0;
+}
 }

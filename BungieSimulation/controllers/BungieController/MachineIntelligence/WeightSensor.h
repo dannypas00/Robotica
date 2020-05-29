@@ -1,4 +1,7 @@
-#pragma once
+#ifndef WEIGHT_SENSOR
+#define WEIGHT_SENSOR
+
+namespace bungie {
 class WeightSensor
 {
 private:
@@ -6,4 +9,6 @@ private:
 public:
 	float GetWeight();
 };
+}
 
+#endif

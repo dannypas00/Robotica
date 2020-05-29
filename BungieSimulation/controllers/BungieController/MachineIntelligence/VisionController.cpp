@@ -1,6 +1,6 @@
-
 #include "VisionController.h"
 
+namespace bungie {
 void VisionController::Subscribe(std::string object)
 {
 	return;
@@ -9,4 +9,5 @@ void VisionController::Subscribe(std::string object)
 Vector3 VisionController::See()
 {
 	return Vector3(5, 6, 7);
+}
 }
