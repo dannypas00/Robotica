@@ -29,6 +29,7 @@ class RobotController {
   
   WheelController* wheel_controller;
   RobotController();
+  RobotController(const RobotController&) = default;
 };
 
 }
