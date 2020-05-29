@@ -34,14 +34,14 @@ int ScanQRCodeStrategy::ExecuteStrategy()
 
 // Check if the gotten result is one that we expect to get, if false we retry the scan
 // TODO: need vision and controller to make full implementation
-bool exists(const std::string& Result)
+bool ScanQRCodeStrategy::Exists(std::string& Result)
 {
 	std::string words[4];
 	words[0] = "HARTEN";
 	words[1] = "KLAVEREN";
 	words[2] = "SCHOPPEN";
 	words[3] = "RUITEN";
-	
+
 	for (size_t n = 0; words && (n < words->size()); ++n)
 	{
 		if (words[n] == Result)

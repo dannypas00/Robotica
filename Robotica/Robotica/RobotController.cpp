@@ -30,6 +30,11 @@ std::string RobotController::GetQRResult()	//TODO: change this to return actual 
 	return "SCHOPPEN";
 }
 
+void RobotController::Dance()
+{
+	return;
+}
+
 RobotController::RobotController()
 {
 	//instance = this;

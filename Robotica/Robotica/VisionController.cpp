@@ -8,5 +8,5 @@ void VisionController::Subscribe(std::string object)
 
 Vector3 VisionController::See()
 {
-	Vector3(5, 6, 7);
+	return Vector3(5, 6, 7);
 }

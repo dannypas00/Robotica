@@ -6,7 +6,7 @@ class ScanQRCodeStrategy : public MIStrategy {
 public:
 	ScanQRCodeStrategy();
 
-	bool Exists(std::string Result);
+	bool Exists(std::string& Result);
 	int ExecuteStrategy() override;
 };
 
