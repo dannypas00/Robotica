@@ -20,7 +20,8 @@ namespace Client_side
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            //FormMainMenu.PictureBox_Connected.Visible = false; Dit moet naar FormMainMenu
-        }
+			Client.GetInstance().Connect("127.0.0.1", 5000);
+			PictureBox_Connected.Visible = false;
+		}
     }
 }

@@ -7,16 +7,14 @@ using System.Windows.Forms;
 
 namespace Client_side
 {
-    static class Program
-    {
-        [STAThread]
-        public static void Main() {
+	static class Program
+	{
+		[STAThread]
+		public static void Main() {
 
-            Client.GetInstance().Connect();
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMainMenu());
-        }
-    }
+			Application.EnableVisualStyles();
+			Application.SetCompatibleTextRenderingDefault(false);
+			Application.Run(new FormMainMenu());
+		}
+	}
 }

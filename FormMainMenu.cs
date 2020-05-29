@@ -8,29 +8,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using FontAwesome.Sharp;            //import icon lib
+using FontAwesome.Sharp;
 
 namespace Client_side
 {
-    public partial class FormMainMenu: Form
+	public partial class FormMainMenu : Form
     {
         //Fields
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
 
-        // Constructor 
+        // Constructor
         public FormMainMenu()
         {
             InitializeComponent();
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             panelMenu.Controls.Add(leftBorderBtn);
-            this.DoubleBuffered = true;                 //voorkomt flikkeren
+			// Prevents flicker
+			this.DoubleBuffered = true;
             
         }
         
-       //structs
+       // Structures
        private struct RGBColors
         {
             public static Color color1 = Color.FromArgb(172, 126, 241);
@@ -41,13 +42,12 @@ namespace Client_side
             public static Color color6 = Color.FromArgb(24, 161, 251);
         }
         
-        //Methods
+        // Methods
         private void ActivateButton(object senderBtn, Color color)
         {
             if(senderBtn != null)
             {
                 DisableButton();
-                //btn
                 currentBtn = (IconButton)senderBtn;
                 currentBtn.BackColor = Color.FromArgb(37, 36, 81);
                 currentBtn.ForeColor = color;
@@ -55,7 +55,6 @@ namespace Client_side
                 currentBtn.IconColor = color;
                 currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
                 currentBtn.ImageAlign = ContentAlignment.MiddleRight;
-                //left border btn
                 leftBorderBtn.BackColor = color;
                 leftBorderBtn.Location = new Point(0, currentBtn.Location.Y);
                 leftBorderBtn.Visible = true;
@@ -110,7 +109,7 @@ namespace Client_side
         private void BtnSettings_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color2);               //pakt kleur uit kleuren tabel
-            OpenChildForm(new FormSettings());                      ///Roept nieuwe form aan
+            OpenChildForm(new FormSettings());                      //Roept nieuwe form aan
         }
 
         private void IconPictureBox_Exit_Click(object sender, EventArgs e)

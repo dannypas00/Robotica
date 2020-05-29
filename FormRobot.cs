@@ -20,7 +20,7 @@ namespace Client_side
  
         private void FormRobot_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.W)
+			if (e.KeyCode == Keys.W)
             {
                 btnForward.PerformClick();
             }
@@ -44,7 +44,33 @@ namespace Client_side
         private void BtnForward_Click(object sender, EventArgs e)
         {
             progressBar1.Increment(1);
-            
-        }
-    }
+
+			Client.GetInstance().Send("RF", "10");
+		}
+
+		private void BtnBackwards_Click(object sender, EventArgs e)
+		{
+			Client.GetInstance().Send("RB", "10");
+		}
+
+		private void BtnLeft_Click(object sender, EventArgs e)
+		{
+			Client.GetInstance().Send("yawLeft", "5");
+		}
+
+		private void BtnRight_Click(object sender, EventArgs e)
+		{
+			Client.GetInstance().Send("yawRight", "5");
+		}
+
+		private void BtnSingle_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void BtnLine_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
