@@ -32,7 +32,6 @@
 *.lib
 
 #Scene
-*.wbt
 
 # Executables
 *.exe
