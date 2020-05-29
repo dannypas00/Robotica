@@ -19,6 +19,7 @@ class RobotController {
   static RobotController& getInstance();
   
   void Drive(char direction, double velocity);
+  //TODO: Add drive towards function
     
   webots::Robot& getRobot() { return *robot; }
   
