@@ -183,6 +183,7 @@
 			this.btnSpeak.Text = "Speak";
 			this.btnSpeak.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.btnSpeak.UseVisualStyleBackColor = true;
+			this.btnSpeak.Click += new System.EventHandler(this.btnSpeak_Click);
 			// 
 			// groupCommands
 			// 

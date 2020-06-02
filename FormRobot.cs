@@ -72,5 +72,10 @@ namespace Client_side
 		{
 
 		}
+
+		private void btnSpeak_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

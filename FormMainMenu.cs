@@ -60,8 +60,8 @@ namespace Client_side
                 leftBorderBtn.Visible = true;
                 leftBorderBtn.BringToFront();
             }
-
         }
+
         private void DisableButton()
         {
             if(currentBtn !=null)
