@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Client_side
 {
@@ -28,12 +29,21 @@ namespace Client_side
 		/// <summary>
 		/// 
 		/// </summary>
-		public void Connect(string _ip, int _port)
+		public bool Connect(string _ip, int _port)
 		{
-			// start connection on ip_port
-			_tcpClient = new TcpClient(_ip, _port);
-			Console.WriteLine("Starting client...");
-			_networkStream = _tcpClient.GetStream();
+			// Start connection on ip_port
+			try
+			{
+				_tcpClient = new TcpClient(_ip, _port);
+				Console.WriteLine("Starting client...");
+				_networkStream = _tcpClient.GetStream();
+			}
+			catch
+			{
+				MessageBox.Show("No connection to the robot could be made, please try again later.", "No robot connection");
+				return false;
+			}
+			return true;
 		}
 
 		/// <summary>
@@ -47,12 +57,12 @@ namespace Client_side
 			string command_data_lenght = command_data.Length.ToString();
 			string command_header = command_data_lenght.PadRight(10);
 
-			// convert input from console to byte array
+			// Convert input from console to byte array
 			byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(command_header + command_data); 
 
 			try
 			{
-				// try to send data to server (if failed exit program)
+				// Try to send data to server (if failed exit program)
 				_networkStream.Write(bytesToSend, 0, bytesToSend.Length); 
 			}
 			catch (Exception)

@@ -39,7 +39,6 @@
 			this.btnLine = new FontAwesome.Sharp.IconButton();
 			this.btnSpeak = new FontAwesome.Sharp.IconButton();
 			this.groupCommands = new System.Windows.Forms.GroupBox();
-			this.progressBar1 = new System.Windows.Forms.ProgressBar();
 			this.groupControlls.SuspendLayout();
 			this.groupCommands.SuspendLayout();
 			this.SuspendLayout();
@@ -124,6 +123,7 @@
 			// 
 			// btnSingle
 			// 
+			this.btnSingle.BackColor = System.Drawing.Color.Transparent;
 			this.btnSingle.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
 			this.btnSingle.IconChar = FontAwesome.Sharp.IconChar.Play;
 			this.btnSingle.IconColor = System.Drawing.Color.CadetBlue;
@@ -135,11 +135,12 @@
 			this.btnSingle.TabIndex = 5;
 			this.btnSingle.Text = "Single";
 			this.btnSingle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnSingle.UseVisualStyleBackColor = true;
+			this.btnSingle.UseVisualStyleBackColor = false;
 			this.btnSingle.Click += new System.EventHandler(this.BtnSingle_Click);
 			// 
 			// btnMaze
 			// 
+			this.btnMaze.BackColor = System.Drawing.Color.Transparent;
 			this.btnMaze.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
 			this.btnMaze.IconChar = FontAwesome.Sharp.IconChar.Question;
 			this.btnMaze.IconColor = System.Drawing.Color.CadetBlue;
@@ -151,10 +152,12 @@
 			this.btnMaze.TabIndex = 7;
 			this.btnMaze.Text = "Maze";
 			this.btnMaze.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnMaze.UseVisualStyleBackColor = true;
+			this.btnMaze.UseVisualStyleBackColor = false;
+			this.btnMaze.Click += new System.EventHandler(this.BtnMaze_Click);
 			// 
 			// btnLine
 			// 
+			this.btnLine.BackColor = System.Drawing.Color.Transparent;
 			this.btnLine.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
 			this.btnLine.IconChar = FontAwesome.Sharp.IconChar.Play;
 			this.btnLine.IconColor = System.Drawing.Color.CadetBlue;
@@ -166,11 +169,12 @@
 			this.btnLine.TabIndex = 8;
 			this.btnLine.Text = "Line";
 			this.btnLine.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnLine.UseVisualStyleBackColor = true;
+			this.btnLine.UseVisualStyleBackColor = false;
 			this.btnLine.Click += new System.EventHandler(this.BtnLine_Click);
 			// 
 			// btnSpeak
 			// 
+			this.btnSpeak.BackColor = System.Drawing.Color.Transparent;
 			this.btnSpeak.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
 			this.btnSpeak.IconChar = FontAwesome.Sharp.IconChar.Microphone;
 			this.btnSpeak.IconColor = System.Drawing.Color.CadetBlue;
@@ -182,8 +186,8 @@
 			this.btnSpeak.TabIndex = 9;
 			this.btnSpeak.Text = "Speak";
 			this.btnSpeak.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.btnSpeak.UseVisualStyleBackColor = true;
-			this.btnSpeak.Click += new System.EventHandler(this.btnSpeak_Click);
+			this.btnSpeak.UseVisualStyleBackColor = false;
+			this.btnSpeak.Click += new System.EventHandler(this.BtnSpeak_Click);
 			// 
 			// groupCommands
 			// 
@@ -198,20 +202,12 @@
 			this.groupCommands.TabStop = false;
 			this.groupCommands.Text = "Commands";
 			// 
-			// progressBar1
-			// 
-			this.progressBar1.Location = new System.Drawing.Point(310, 310);
-			this.progressBar1.Name = "progressBar1";
-			this.progressBar1.Size = new System.Drawing.Size(100, 23);
-			this.progressBar1.TabIndex = 11;
-			// 
 			// FormRobot
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.DarkSlateGray;
 			this.ClientSize = new System.Drawing.Size(726, 448);
-			this.Controls.Add(this.progressBar1);
 			this.Controls.Add(this.groupVideofeed);
 			this.Controls.Add(this.groupControlls);
 			this.Controls.Add(this.groupCommands);
@@ -238,6 +234,5 @@
         private FontAwesome.Sharp.IconButton btnLine;
         private FontAwesome.Sharp.IconButton btnSpeak;
         private System.Windows.Forms.GroupBox groupCommands;
-        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
