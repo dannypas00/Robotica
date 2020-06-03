@@ -16,6 +16,7 @@
 #include "MachineIntelligence/Strategies/MoonSurvivalStrategy.h"
 #include "MachineIntelligence/Strategies/ScanQRCodeStrategy.h"
 #include "MachineIntelligence/Strategies/DynamicDanceStrategy.h"
+#include "MachineIntelligence/Strategies/RaceStrategy.h"
 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
@@ -44,9 +45,10 @@ int main(int argc, char **argv) {
   //MeasureWeightController weightController = MeasureWeightController();
   //TransportRockStrategy strategy = TransportRockStrategy(weightController);
   //MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
-  GateStrategy strategy = GateStrategy();
+  //GateStrategy strategy = GateStrategy();
   //ScanQRCodeStrategy strategy = ScanQRCodeStrategy();
   //DynamicDanceStrategy strategy = DynamicDanceStrategy();
+  RaceStrategy strategy = RaceStrategy();
   
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
