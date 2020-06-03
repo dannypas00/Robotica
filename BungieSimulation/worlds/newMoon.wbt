@@ -8,7 +8,7 @@ WorldInfo {
   ]
   title "Sojourner Rover"
   gravity 0 -3.73 0
-  basicTimeStep 1
+  basicTimeStep 0.2
   physicsDisableTime 0
   defaultDamping Damping {
     linear 0.5
@@ -18,8 +18,8 @@ WorldInfo {
 }
 Viewpoint {
   fieldOfView 0.895398
-  orientation -0.5896524933070239 0.6117466239948466 0.5273291241413829 2.073721472956588
-  position 0.3501445532529648 5.850138585431434 -0.7981153131706754
+  orientation 0.9952082156446042 0.09310572995298334 0.02986520656893283 5.659589519324219
+  position 1.1096928124912697 4.730597515813855 5.089153810766715
   near 0.1
   follow "Bungie"
   followType "Mounted Shot"
@@ -163,13 +163,13 @@ DEF MoonSurvival Transform {
       }
     }
     Solid {
-      translation 1.66095 -0.1 -1.14623
+      translation 1.66095 -0.13 -1.05623
       children [
         Solid {
           translation 0 0.09 0
         }
         DEF Hindernis Transform {
-          translation 0 0 0.7
+          translation 0 0 0.67
           children [
             DEF Hindernis_1 Shape {
               appearance PBRAppearance {
@@ -237,8 +237,8 @@ DEF MoonSurvival Transform {
   ]
 }
 DEF Bungie Robot {
-  translation 0 -0.0409223 0
-  rotation 0 1 0 3.1
+  translation -0.229802 -0.0309223 -0.00956418
+  rotation 0 1 0 -0.041595307179585816
   children [
     DEF left_track Track {
       translation 0 0 -0.137499

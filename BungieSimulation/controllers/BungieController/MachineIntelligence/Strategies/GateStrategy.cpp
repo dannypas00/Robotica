@@ -4,7 +4,7 @@ namespace bungie {
 int GateStrategy::ExecuteStrategy()
 {
 	RobotController& controller = RobotController::getInstance();
-	if (wait > 0) {
+	if (wait <= 0) {
 		if (distanceMoved < toMove) {
 			//Move 0.45m forwards to reach the rock
 			controller.Drive('f', 1.5);
@@ -27,7 +27,7 @@ int GateStrategy::ExecuteStrategy()
 		}
 	} else {
 		controller.Drive('f', 0);
-		wait++;
+		wait--;
 	}
 	return 0;
 }

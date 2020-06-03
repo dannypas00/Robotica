@@ -13,6 +13,7 @@
 #include "MachineIntelligence/Strategies/TransportRockStrategy.h"
 #include "MachineIntelligence/NSA.h"
 #include "MachineIntelligence/Strategies/GateStrategy.h"
+#include "MachineIntelligence/Strategies/MoonSurvivalStrategy.h"
 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
@@ -40,12 +41,12 @@ int main(int argc, char **argv) {
   NSA nsa = NSA();
   //MeasureWeightController weightController = MeasureWeightController();
   //TransportRockStrategy strategy = TransportRockStrategy(weightController);
-  //MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
-  GateStrategy strategy = GateStrategy();
+  MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
+  //GateStrategy strategy = GateStrategy();
   
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
-  while (RobotController::getInstance().getRobot().step(timeStep) != -1) {
+  while (RobotController::getInstance().getRobot().step(16) != -1) {
     // Read the sensors:
     // Enter here functions to read sensor data, like:
     //  double val = ds->getValue();
