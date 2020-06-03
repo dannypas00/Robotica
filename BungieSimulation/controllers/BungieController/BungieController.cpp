@@ -12,6 +12,7 @@
 #include "MachineIntelligence/MeasureWeightController.h"
 #include "MachineIntelligence/Strategies/TransportRockStrategy.h"
 #include "MachineIntelligence/NSA.h"
+#include "MachineIntelligence/Strategies/GateStrategy.h"
 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
@@ -37,10 +38,10 @@ int main(int argc, char **argv) {
   
   std::cout << "Hello, world!";
   NSA nsa = NSA();
-  MeasureWeightController weightController = MeasureWeightController();
-  TransportRockStrategy strategy = TransportRockStrategy(weightController);
+  //MeasureWeightController weightController = MeasureWeightController();
+  //TransportRockStrategy strategy = TransportRockStrategy(weightController);
   //MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
-  nsa.ExecuteAssignment(strategy);
+  GateStrategy strategy = GateStrategy();
   
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
@@ -65,6 +66,8 @@ int main(int argc, char **argv) {
     default:
       RobotController::getInstance().Drive('f', 0.0);
     }
+    
+    nsa.ExecuteAssignment(strategy);
     
     //if (pressed_key == Keyboard::A) {
     //  nsa.ExecuteAssignment(strategy);
