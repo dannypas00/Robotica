@@ -10,10 +10,18 @@ DISCONNECTER = "!terminate"
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((BIND_IP, BIND_PORT))
 
+def handleCommand(command):
+    commandSplit = command.split(";")
+    key,value = commandSplit[0], commandSplit[1]
+    print(f"key = {key} value = {value}")
 
+
+
+
+
+    
 def handleClient(client, address):
     print(f"connection with {address} initialized")
-    client.send(bytes("Connected",FORMAT))
     connected = True
     while connected:
         command_length = client.recv(HEADER_SIZE).decode(FORMAT)
@@ -21,6 +29,8 @@ def handleClient(client, address):
         command = client.recv(command_length).decode(FORMAT)
         if command == DISCONNECTER:
             connected = False
+        else:
+            handleCommand(command)
         print(f"{command}")
     client.close()
 
