@@ -8,7 +8,7 @@ WorldInfo {
   ]
   title "Sojourner Rover"
   gravity 0 -3.73 0
-  basicTimeStep 0.2
+  basicTimeStep 0.5
   physicsDisableTime 0
   defaultDamping Damping {
     linear 0.5
@@ -21,7 +21,6 @@ Viewpoint {
   orientation 0.9952082156446042 0.09310572995298334 0.02986520656893283 5.659589519324219
   position 1.1096928124912697 4.730597515813855 5.089153810766715
   near 0.1
-  follow "Bungie"
   followType "Mounted Shot"
 }
 TexturedBackground {

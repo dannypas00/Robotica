@@ -11,6 +11,10 @@ public:
 
 	bool Exists(std::string& Result);
 	int ExecuteStrategy() override;
+private:
+	int stage = 0;
+	int toRotate = 1868;
+	int rotated = 0;
 };
 }
 

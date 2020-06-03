@@ -14,7 +14,7 @@ int DynamicDanceStrategy::ExecuteStrategy()
 
 	// Start dance
 	//controller.Dance();
-
+	controller.Drive('r', 0.5);
 	//Done
 	return 0;
 }
