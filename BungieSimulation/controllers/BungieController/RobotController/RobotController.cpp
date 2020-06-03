@@ -20,6 +20,10 @@ void RobotController::Drive(char direction, double velocity){
   wheel_controller->PowerMotors(direction, velocity);
 }
 
+void RobotController::MoveUnits(double distance, char direction, double velocity) {
+  return;
+}
+
 RobotController::~RobotController(){
   delete robot;
   delete wheel_controller;

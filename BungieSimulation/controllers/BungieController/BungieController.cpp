@@ -36,11 +36,11 @@ int main(int argc, char **argv) {
   keyboard.enable(32);
   
   std::cout << "Hello, world!";
-    NSA nsa = NSA();
-    MeasureWeightController weightController = MeasureWeightController();
-    TransportRockStrategy strategy = TransportRockStrategy(weightController);
-    //MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
-    nsa.ExecuteAssignment(strategy);
+  NSA nsa = NSA();
+  MeasureWeightController weightController = MeasureWeightController();
+  TransportRockStrategy strategy = TransportRockStrategy(weightController);
+  //MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
+  nsa.ExecuteAssignment(strategy);
   
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
@@ -51,20 +51,24 @@ int main(int argc, char **argv) {
     int pressed_key = keyboard.getKey();
     switch(pressed_key){
     case Keyboard::UP:
-      RobotController::getInstance().Drive('f', 1.5);
+      RobotController::getInstance().Drive('f', 10);
       break;
     case Keyboard::DOWN:
-      RobotController::getInstance().Drive('b', 1.5);
+      RobotController::getInstance().Drive('b', 10);
       break;
     case Keyboard::LEFT:
-      RobotController::getInstance().Drive('l', 1.5);
+      RobotController::getInstance().Drive('l', 10);
       break;
     case Keyboard::RIGHT:
-      RobotController::getInstance().Drive('r', 1.5);
+      RobotController::getInstance().Drive('r', 10);
       break;
     default:
       RobotController::getInstance().Drive('f', 0.0);
     }
+    
+    //if (pressed_key == Keyboard::A) {
+    //  nsa.ExecuteAssignment(strategy);
+    //}
     
     // Process sensor data here.
 
