@@ -51,16 +51,16 @@ int main(int argc, char **argv) {
     int pressed_key = keyboard.getKey();
     switch(pressed_key){
     case Keyboard::UP:
-      RobotController::getInstance().Drive('f', 1.5);
+      RobotController::getInstance().Drive('f', 1.0);
       break;
     case Keyboard::DOWN:
-      RobotController::getInstance().Drive('b', 1.5);
+      RobotController::getInstance().Drive('b', 1.0);
       break;
     case Keyboard::LEFT:
-      RobotController::getInstance().Drive('l', 1.5);
+      RobotController::getInstance().Drive('l', 1.0);
       break;
     case Keyboard::RIGHT:
-      RobotController::getInstance().Drive('r', 1.5);
+      RobotController::getInstance().Drive('r', 1.0);
       break;
     default:
       RobotController::getInstance().Drive('f', 0.0);
