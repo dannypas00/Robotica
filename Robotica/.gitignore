@@ -31,8 +31,6 @@
 *.a
 *.lib
 
-#Scene
-
 # Executables
 *.exe
 *.out
