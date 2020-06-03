@@ -43,8 +43,13 @@ namespace Client_side
 		/// <param name="_value"></param>
 		public void Send(string _command, string _value)
 		{
+			string command_data = _command + ";" + _value;
+			string command_data_lenght = command_data.Length.ToString();
+			string command_header = command_data_lenght.PadRight(10, '#');
+
+			
 			// convert input from console to byte array
-			byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(_command + ";" + _value); 
+			byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(command_header + command_data); 
 
 			try
 			{
