@@ -8,15 +8,27 @@
 namespace bungie {
 
 class WheelController {
+
   public:
+
     WheelController(webots::Robot *robot);
     ~WheelController();
-    
+
     void PowerMotors(char direction, double velocity);
+
   private:
-    webots::Motor *left_motor;
-    webots::Motor *right_motor;
+
+    enum Motor {
+      LEFT_MOTOR, LEFT_PAW_MOTOR,
+      RIGHT_MOTOR, RIGHT_PAW_MOTOR,
+      LEFT_PAW_ROTATION_MOTOR, RIGHT_PAW_ROTATION_MOTOR,
+      TOTAL_MOTORS
+    };
+
+    webots::Motor* motors[TOTAL_MOTORS];
+
 };
+
 }
 
 #endif
