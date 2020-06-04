@@ -26,12 +26,12 @@ int main(int argc, char **argv) {
   // create the Robot instance.
   Robot* robot = new Robot();
   Camera* cam = robot->getCamera("camera");
-
-  ObjectRecognitionController* con = new ObjectRecognitionController();
-
-  con->update();
-
   cam->enable(10);
+  
+  ObjectRecognitionController* con = new ObjectRecognitionController(cam);
+  
+  con->update();
+  
 
   int timeStep = (int)robot->getBasicTimeStep();
 

@@ -4,28 +4,46 @@
 #include <iostream>
 #include <vector>
 
-#include <opencv2/opencv.hpp>
-#include <opencv2/core.hpp>
+#include <webots/Camera.hpp>
+
 #include <opencv2/core/core.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include "opencv2/imgproc.hpp"
-#include "opencv2/imgcodecs.hpp"
-#include "opencv2/highgui.hpp"
+#include <opencv2/highgui/highgui.hpp>
 
 #include "ISubject.hpp"
 #include "IObserver.hpp"
 
 
+using namespace cv;
+
 namespace bungie {
   class ObjectRecognitionController : public ISubject {
     public:
-      ObjectRecognitionController(){ // cv::Mat image
+      ObjectRecognitionController(Camera* _cam){ // cv::Mat image
         std::cout << "ObjectRecognition [CREATE]" << std::endl;
+        
+        //unsigned char img_data[] = {
+          // first row, 4 colored pixels
+        //  0, 0, 0,
+        //  255, 0, 0,
+        //  0, 0, 0 ,
+        //  0, 255, 0,
 
-
-         //cv::Mat image = cv::imread("card_screenshot.png");
-         //cv::namedWindow("window", cv::WINDOW_AUTOSIZE);
-         //cv::imshow("window", image);
+          // second row, 4 colored pixels
+        //  0, 0, 255,
+        //  0, 0, 0,
+        //  255, 0, 255,
+        //  0, 0, 0
+        //};
+        
+        // get a correct pointer to the data
+        //unsigned char * img_data_ptr = (unsigned char*) &img_data;
+        
+        //cv::Mat img(2, 4, CV_8UC3, img_data_ptr);
+        //cv::cvtColor(img, img, cv::COLOR_BGR2RGB);
+        Mat fileImg = imread("card_screenshot.png");
+        //cv::Mat image = new cv::Mat(_cam->getWidth(), _cam->getHeight(), CV_8UC3, _cam->getImage());
+        //cv::namedWindow("window", cv::WINDOW_AUTOSIZE);
+        //cv::imshow("window", img);
       };
       ~ObjectRecognitionController(){
         std::cout << "ObjectRecognition [DESTROY]" << std::endl;

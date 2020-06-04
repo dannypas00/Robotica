@@ -47,8 +47,8 @@
 ###
 ### ---- Linked libraries ----
 ### if your program needs additional libraries:
-### INCLUDE = -I"/my_library_path/include"
-### LIBRARIES = -L"/path/to/my/library" -lmy_library -lmy_other_library
+#INCLUDE = -I"C:\opencv\build\include"
+#LIBRARIES = -L"C:\opencv\build\bin" -opencv_videoio_ffmpeg430_64
 ###
 ### ---- Linking options ----
 ### if special linking flags are needed:
@@ -61,7 +61,7 @@
 ### ---- Debug mode ----
 ### if you want to display the gcc command line for compilation and link, as
 ### well as the rm command details used for cleaning:
-### VERBOSE = 1
+#VERBOSE = 1
 ###
 ###-----------------------------------------------------------------------------
 

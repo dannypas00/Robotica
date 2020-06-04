@@ -6,12 +6,11 @@
 #include <webots/Brake.hpp>
 
 namespace bungie {
-
 class WheelController {
   public:
     WheelController(webots::Robot *robot);
     ~WheelController();
-    
+
     void PowerMotors(char direction, double velocity);
   private:
     webots::Motor *left_motor;
