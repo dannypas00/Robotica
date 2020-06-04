@@ -49,21 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormRobot.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FormRobot.cs" />
     <Compile Include="FormRobot.Designer.cs">
       <DependentUpon>FormRobot.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMainMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FormMainMenu.cs" />
     <Compile Include="FormMainMenu.Designer.cs">
       <DependentUpon>FormMainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FormSettings.cs" />
     <Compile Include="FormSettings.Designer.cs">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
@@ -79,9 +73,6 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FormMainMenu.cs.vsspell">
-      <DependentUpon>FormMainMenu.cs</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
