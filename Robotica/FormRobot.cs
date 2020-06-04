@@ -106,7 +106,7 @@ namespace Client_side
 
 		private void BtnSpeak_Click(object sender, EventArgs e)
 		{
-
+            SpeechRec.ExecProcess();
 		}
 	}
 }

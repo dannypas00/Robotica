@@ -24,7 +24,7 @@ namespace Client_side
             Environment.SpecialFolder.ApplicationData), @"..\Local\Programs\Python\Python38\python.exe");
 
             // 2) Provide script and arguments
-            var script = @"Z:\ICT\Robotica\GitHub\Robotica\backup2.py";
+            var script = @"Z:\ICT\Robotica\GitHub\Robotica\Robotica\backup2.py";
             string path = @".'\backup.py";
             var script2 = Path.Combine(Environment.CurrentDirectory) + @"\backup.py";
             var script3 = Path.GetFullPath(path);
@@ -63,21 +63,25 @@ namespace Client_side
             if (preppedCommand == "drive forward\r\n")
             {
                 Client.GetInstance().Send("RF", "10");
+                Console.WriteLine("Driving forward");
             }
 
             else if (preppedCommand == "turn left\r\n")
             {
-                Client.GetInstance().Send("yawLeft", "5");
+                Client.GetInstance().Send("RO", "5");
+                Console.WriteLine("Turning left");
             }
 
             else if (preppedCommand == "turn right\r\n")
             {
-                Client.GetInstance().Send("yawRight", "5");
+                Client.GetInstance().Send("RO", "-5");
+                Console.WriteLine("Turning right");
             }
 
             else if (preppedCommand == "drive backwards\r\n")
             {
                 Client.GetInstance().Send("RB", "10");
+                Console.WriteLine("Gelukt, achteruit.");
             }
 
 

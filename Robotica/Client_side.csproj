@@ -49,15 +49,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormRobot.cs" />
+    <Compile Include="FormRobot.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormRobot.Designer.cs">
       <DependentUpon>FormRobot.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMainMenu.cs" />
+    <Compile Include="FormMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormMainMenu.Designer.cs">
       <DependentUpon>FormMainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSettings.cs" />
+    <Compile Include="FormSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormSettings.Designer.cs">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
