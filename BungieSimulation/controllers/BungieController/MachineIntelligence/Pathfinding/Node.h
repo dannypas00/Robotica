@@ -9,6 +9,7 @@ namespace bungie {
     {
         Vector3 pos;
         Vector3 parentPos;
+        vector<Node&> neighbors;
         //Distance between current node and start node
         float gCost;
         //Distance from current node to end node

@@ -28,16 +28,24 @@ namespace bungie {
         while (!openList.empty() && openList.size() < allMap.size()){
             Node node;
             float temp = FLT_MAX;
-            Node* itNode;
-            for (Node it : openList) {
-                Node *n = &it;
-                if (n->fCost < temp) {
-                    temp = n->fCost;
-                    itNode = &it;
+            vector<Node>::iterator itNode;
+            for (vector<Node>::iterator it = openList.begin(); it != openList.end(); it = next(it)) {
+                Node n = *it;
+                if (n.fCost < temp) {
+                    temp = n.fCost;
+                    itNode = it;
                 }
             }
             node = *itNode;
-            //openList.erase(*itNode);
+            openList.erase(itNode);
+
+            x = node.pos.x;
+            y = node.pos.y;
+            closedList.emplace_back(node);
+
+            for (Node& neighbor : node.neighbors) {
+                //Calculate f, g, and h costs
+            }
         }
     }
 }
