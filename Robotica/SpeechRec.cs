@@ -15,7 +15,7 @@ namespace Client_side
         {
 
         }
-
+         //TODO: Verwijder nutteloze code. Console.Writelines en script2/3
         public static void ExecProcess()
         {
             // 1) Create process info
@@ -24,6 +24,9 @@ namespace Client_side
             Environment.SpecialFolder.ApplicationData), @"..\Local\Programs\Python\Python38\python.exe");
 
             // 2) Provide script and arguments
+            // script locatie kan via de Solution explorer gevonden worden door op backup2.py te klikken en dan het full path
+            // dat daar staat erin te slaan.
+
             var script = @"Z:\ICT\Robotica\GitHub\Robotica\Robotica\backup2.py";
             string path = @".'\backup.py";
             var script2 = Path.Combine(Environment.CurrentDirectory) + @"\backup.py";
