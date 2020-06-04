@@ -66,7 +66,7 @@ namespace Client_side
         {
             if(currentBtn !=null)
             {
-                currentBtn.BackColor = Color.FromArgb(31, 30, 68); //orignal color
+                currentBtn.BackColor = Color.FromArgb(31, 30, 68); // Original color
                 currentBtn.ForeColor = Color.Gainsboro;
                 currentBtn.TextAlign = ContentAlignment.MiddleLeft;
                 currentBtn.IconColor = Color.Gainsboro;
@@ -79,7 +79,7 @@ namespace Client_side
         {
         if (currentChildForm != null)
             {
-                //open only form
+                // Open only form
                 currentChildForm.Close();
             }
             currentChildForm = childform;
@@ -92,7 +92,7 @@ namespace Client_side
             childform.Show();
         }
 
-        //Drag Form
+        // Drag Form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void Releasecapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -101,15 +101,15 @@ namespace Client_side
 
         private void BtnRobot_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color1);               //pakt kleur uit kleuren tabel
-            OpenChildForm(new FormRobot());                         //Roept nieuwe form aan
+            ActivateButton(sender, RGBColors.color1);               // pakt kleur uit kleuren tabel
+            OpenChildForm(new FormRobot());                         // Roept nieuwe form aan
 
         }
 
         private void BtnSettings_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color2);               //pakt kleur uit kleuren tabel
-            OpenChildForm(new FormSettings());                      //Roept nieuwe form aan
+            ActivateButton(sender, RGBColors.color2);               // pakt kleur uit kleuren tabel
+            OpenChildForm(new FormSettings());                      // Roept nieuwe form aan
         }
 
         private void IconPictureBox_Exit_Click(object sender, EventArgs e)
@@ -122,7 +122,7 @@ namespace Client_side
             MessageBox.Show("Shortcuts:\nForward: 'W'\nBackward: 'S'\nLeft: 'A'\nRight: 'D'");
         }
 
-        //Drag
+        // Drag
         private void PanelTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
             Releasecapture();
