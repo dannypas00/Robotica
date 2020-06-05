@@ -8,6 +8,7 @@
 #include <webots/Keyboard.hpp>
 
 #include "WheelController.hpp"
+#include "ArmController.hpp"
 
 #define TIME_STEP 64
 
@@ -19,7 +20,9 @@ class RobotController {
   static RobotController& getInstance();
   
   void Drive(char direction, double velocity);
-  //TODO: Add drive towards function
+  void MoveUnits(char direction, double units);
+  
+  void MoveArm(char direction, double velocity);
     
   webots::Robot& getRobot() { return *robot; }
   
@@ -29,6 +32,7 @@ class RobotController {
   webots::Robot *robot;
   
   WheelController* wheel_controller;
+  ArmController* arm_controller;
   RobotController();
   RobotController(const RobotController&) = default;
 };
