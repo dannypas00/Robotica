@@ -12,7 +12,7 @@
 #include "MachineIntelligence/MeasureWeightController.h"
 #include "MachineIntelligence/Strategies/TransportRockStrategy.h"
 #include "MachineIntelligence/NSA.h"
-
+#include "TCPServer/TCPServer.hpp" 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
 using namespace bungie;
@@ -35,7 +35,8 @@ int main(int argc, char **argv) {
   Keyboard keyboard = Keyboard();
   keyboard.enable(32);
   
-  std::cout << "Hello, world!";
+  std::cout << "Hello, world!" << std::endl;
+  TCPServer::getInstance().test();
     NSA nsa = NSA();
     MeasureWeightController weightController = MeasureWeightController();
     TransportRockStrategy strategy = TransportRockStrategy(weightController);
@@ -45,6 +46,7 @@ int main(int argc, char **argv) {
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
   while (RobotController::getInstance().getRobot().step(timeStep) != -1) {
+    
     // Read the sensors:
     // Enter here functions to read sensor data, like:
     //  double val = ds->getValue();
