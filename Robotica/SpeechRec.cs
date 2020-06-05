@@ -15,7 +15,7 @@ namespace Client_side
         {
 
         }
-         //TODO: Verwijder nutteloze code. Console.Writelines en script2/3
+
         public static void ExecProcess()
         {
             // 1) Create process info
@@ -24,14 +24,11 @@ namespace Client_side
             Environment.SpecialFolder.ApplicationData), @"..\Local\Programs\Python\Python38\python.exe");
 
             // 2) Provide script and arguments
-            // script locatie kan via de Solution explorer gevonden worden door op backup2.py te klikken en dan het full path
-            // dat daar staat erin te slaan.
+            // Script locatie can be found through the Solution Explorer and clicking the backup2.py file and copying
+            // the Full path into the script variable between the "".
 
             var script = @"Z:\ICT\Robotica\GitHub\Robotica\Robotica\backup2.py";
-            string path = @".'\backup.py";
-            var script2 = Path.Combine(Environment.CurrentDirectory) + @"\backup.py";
-            var script3 = Path.GetFullPath(path);
-
+            
             psi.Arguments = $"\"{script}";
 
             // 3) Process configuration
@@ -50,50 +47,38 @@ namespace Client_side
                 results = process.StandardOutput.ReadToEnd();
             }
 
-            // 5) Display output
-            //Console.WriteLine("Errors:");
-            //Console.WriteLine(errors);
-            //Console.WriteLine();
-            //Console.WriteLine("Results:");
-            Console.WriteLine(results);
-
-
+            // 5) Send the commands to the Robot
+            
             string givenCommand = results;
             string preppedCommand;
             preppedCommand = givenCommand.Replace("\r\n", String.Empty);
             preppedCommand = givenCommand.ToLower();
-            Console.WriteLine(preppedCommand);
+            
+            //Console.Writelines are there for debugging.
             if (preppedCommand == "drive forward\r\n")
             {
                 Client.GetInstance().Send("RF", "10");
-                Console.WriteLine("Driving forward");
+                //Console.WriteLine("Driving forward");
             }
 
             else if (preppedCommand == "turn left\r\n")
             {
                 Client.GetInstance().Send("RO", "5");
-                Console.WriteLine("Turning left");
+                //Console.WriteLine("Turning left");
             }
 
             else if (preppedCommand == "turn right\r\n")
             {
                 Client.GetInstance().Send("RO", "-5");
-                Console.WriteLine("Turning right");
+                //Console.WriteLine("Turning right");
             }
 
             else if (preppedCommand == "drive backwards\r\n")
             {
                 Client.GetInstance().Send("RB", "10");
-                Console.WriteLine("Gelukt, achteruit.");
+                //Console.WriteLine("Gelukt, achteruit.");
             }
 
-
-            // 6) Saving commands to a text file
-            //string givenCommands = @"Z:\ICT\GivenCommands.txt";
-            //TextWriter tw = new StreamWriter(givenCommands, true);
-            //tw.WriteLine(results);
-            //tw.Close();
-            //Console.ReadKey();
         }
     }
 }
