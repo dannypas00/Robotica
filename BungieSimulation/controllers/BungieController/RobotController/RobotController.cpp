@@ -21,8 +21,10 @@ void RobotController::Drive(char direction, double velocity){
   wheel_controller->PowerMotors(direction, velocity);
 }
 
-void RobotController::MoveUnits(char direction, double units){
-   
+void RobotController::DriveUnits(char direction, double distance) {
+  if (direction == 'b')
+    distance *= -1;
+  wheel_controller->SetMotorsPosition(distance);
 }
 
 void RobotController::MoveArm(char direction, double velocity){

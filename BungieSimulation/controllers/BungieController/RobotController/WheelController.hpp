@@ -14,6 +14,7 @@ class WheelController {
     ~WheelController();
     
     void PowerMotors(char direction, double velocity);
+    void SetMotorsPosition(double position);
 
   private:
 

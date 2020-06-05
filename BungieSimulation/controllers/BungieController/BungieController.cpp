@@ -36,11 +36,13 @@ int main(int argc, char **argv) {
   keyboard.enable(32);
   
   std::cout << "Hello, world!";
-    NSA nsa = NSA();
-    MeasureWeightController weightController = MeasureWeightController();
-    TransportRockStrategy strategy = TransportRockStrategy(weightController);
+    //NSA nsa = NSA();
+    //MeasureWeightController weightController = MeasureWeightController();
+    //TransportRockStrategy strategy = TransportRockStrategy(weightController);
     //MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
-    nsa.ExecuteAssignment(strategy);
+    //nsa.ExecuteAssignment(strategy);
+    
+    //RobotController::getInstance().DriveUnits('f', 5);
   
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller

@@ -20,10 +20,10 @@ class RobotController {
   static RobotController& getInstance();
   
   void Drive(char direction, double velocity);
-  void MoveUnits(char direction, double units);
+  void DriveUnits(char direction, double distance);
   
   void MoveArm(char direction, double velocity);
-    
+ 
   webots::Robot& getRobot() { return *robot; }
   
   ~RobotController();
