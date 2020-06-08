@@ -13,6 +13,7 @@ RobotController::RobotController(){
   // create the Robot instance.
   robot = new webots::Robot();
   wheel_controller = new WheelController(robot);
+  arm_controller = new ArmController(robot);
 }
 
 
@@ -26,8 +27,21 @@ void RobotController::DriveUnits(char direction, double velocity, double distanc
   wheel_controller->SetMotorsPosition(distance, velocity);
 }
 
+void RobotController::Rotate(double deg) {
+  //Radial of 1.570 == 90 degrees
+  //1.9145945 radials per unit rotated
+  //0.82 units ~= 90 degrees
+  //~0.0091111 units per degree
+  wheel_controller->SetRotation(deg * 0.0091111);
+}
+
+void RobotController::MoveArm(char direction, double velocity){
+  arm_controller->PowerJointMotors(direction, velocity);
+}
+
 RobotController::~RobotController(){
   delete robot;
   delete wheel_controller;
+  delete arm_controller;
 }
 }

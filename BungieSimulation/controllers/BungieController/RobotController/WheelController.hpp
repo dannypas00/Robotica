@@ -3,7 +3,6 @@
 
 #include <webots/Robot.hpp>
 #include <webots/Motor.hpp>
-#include <webots/Brake.hpp>
 
 namespace bungie {
 
@@ -13,9 +12,10 @@ class WheelController {
 
     WheelController(webots::Robot *robot);
     ~WheelController();
-
+    
     void PowerMotors(char direction, double velocity);
-    void SetMotorsPosition(double position, double velocity);
+    void SetMotorsPosition(double position);
+    void SetRotation(double distance);
 
   private:
 

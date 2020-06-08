@@ -45,10 +45,10 @@ int main(int argc, char **argv) {
     //MeasureWeightController weightController = MeasureWeightController();
     //TransportRockStrategy strategy = TransportRockStrategy(weightController);
     //MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
-    //GateStrategy strategy = GateStrategy();
-    RaceStrategy strategy = RaceStrategy();
-
-    nsa.ExecuteAssignment(strategy);
+    //nsa.ExecuteAssignment(strategy);
+    
+    //RobotController::getInstance().DriveUnits('f', 5);
+    RobotController::getInstance().Rotate(90);
   
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
@@ -70,9 +70,23 @@ int main(int argc, char **argv) {
     case Keyboard::RIGHT:
       RobotController::getInstance().Drive('r', 1.0);
       break;
-    default:
+      case 'W':
+      RobotController::getInstance().MoveArm('u', 1.0);
       break;
+      case 'S':
+      RobotController::getInstance().MoveArm('d', 1.0);
+      break;
+      case 'A':
+      RobotController::getInstance().MoveArm('l', 1.0);
+      break;
+      case 'D':
+      RobotController::getInstance().MoveArm('r', 1.0);
+      break;
+    default:
       //RobotController::getInstance().Drive('f', 0.0);
+      //RobotController::getInstance().MoveArm('l', 0.0);
+      //RobotController::getInstance().MoveArm('u', 0.0);
+      break;
     }
     
     
