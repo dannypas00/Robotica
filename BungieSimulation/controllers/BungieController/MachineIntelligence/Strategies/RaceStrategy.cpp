@@ -6,7 +6,7 @@ int RaceStrategy::ExecuteStrategy()
 	RobotController& controller = RobotController::getInstance();
 	if (distanceMoved < toMove) {
 		//Move 0.45m forwards to reach the rock
-		controller.Drive('f', 10);
+		controller.DriveUnits('f', 10, 20);
 	}
 	return 0;
 }

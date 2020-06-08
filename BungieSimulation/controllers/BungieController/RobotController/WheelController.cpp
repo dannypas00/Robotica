@@ -43,9 +43,9 @@ namespace bungie {
     }
   }
   
-    void WheelController::SetMotorsPosition(double distance) {
+    void WheelController::SetMotorsPosition(double distance, double velocity) {
     for (auto i = 0; i <= RIGHT_PAW_MOTOR; i++) {
-      this->motors[i]->setVelocity(1.5);
+      this->motors[i]->setVelocity(velocity);
       this->motors[i]->setPosition(motors[i]->getTargetPosition() + distance);
     }
   }
