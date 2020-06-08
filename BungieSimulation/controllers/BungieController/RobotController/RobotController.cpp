@@ -27,6 +27,14 @@ void RobotController::DriveUnits(char direction, double distance) {
   wheel_controller->SetMotorsPosition(distance);
 }
 
+void RobotController::Rotate(double deg) {
+  //Radial of 1.570 == 90 degrees
+  //1.9145945 radials per unit rotated
+  //0.82 units ~= 90 degrees
+  //~0.0091111 units per degree
+  wheel_controller->SetRotation(deg * 0.0091111);
+}
+
 void RobotController::MoveArm(char direction, double velocity){
   arm_controller->PowerJointMotors(direction, velocity);
 }

@@ -21,6 +21,7 @@ class RobotController {
   
   void Drive(char direction, double velocity);
   void DriveUnits(char direction, double distance);
+  void Rotate(double deg);
   
   void MoveArm(char direction, double velocity);
  

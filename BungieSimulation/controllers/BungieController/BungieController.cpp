@@ -43,12 +43,12 @@ int main(int argc, char **argv) {
     //nsa.ExecuteAssignment(strategy);
     
     //RobotController::getInstance().DriveUnits('f', 5);
+    RobotController::getInstance().Rotate(90);
   
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
   while (RobotController::getInstance().getRobot().step(timeStep) != -1) {
     // Read the sensors:
-    RobotController::getInstance().MoveUnits(1.0, 'f');
     // Enter here functions to read sensor data, like:
     //  double val = ds->getValue();
     int pressed_key = keyboard.getKey();
@@ -78,7 +78,7 @@ int main(int argc, char **argv) {
       RobotController::getInstance().MoveArm('r', 1.0);
       break;
     default:
-      RobotController::getInstance().Drive('f', 0.0);
+      //RobotController::getInstance().Drive('f', 0.0);
       //RobotController::getInstance().MoveArm('l', 0.0);
       //RobotController::getInstance().MoveArm('u', 0.0);
       break;
