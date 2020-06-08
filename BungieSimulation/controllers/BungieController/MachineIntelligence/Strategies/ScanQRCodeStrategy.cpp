@@ -76,6 +76,7 @@ int ScanQRCodeStrategy::ExecuteStrategy()
 		// Do something when the result isn't correct
 		return 1;
 	} */
+	return 1;
 }
 
 // Check if the gotten result is one that we expect to get, if false we retry the scan

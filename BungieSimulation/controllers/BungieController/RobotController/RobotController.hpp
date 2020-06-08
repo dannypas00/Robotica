@@ -20,7 +20,7 @@ class RobotController {
   static RobotController& getInstance();
   
   void Drive(char direction, double velocity);
-  void DriveUnits(char direction, double distance);
+  void DriveUnits(char direction, double velocity, double distance);
   void Rotate(double deg);
   
   void MoveArm(char direction, double velocity);
