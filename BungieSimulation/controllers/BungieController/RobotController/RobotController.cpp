@@ -14,6 +14,9 @@ RobotController::RobotController(){
   robot = new webots::Robot();
   wheel_controller = new WheelController(robot);
   arm_controller = new ArmController(robot);
+  
+  camera = robot->getCamera("front_CAM");
+  camera->enable(TIME_STEP);
 }
 
 

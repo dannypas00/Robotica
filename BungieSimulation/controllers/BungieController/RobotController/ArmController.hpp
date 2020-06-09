@@ -21,6 +21,8 @@ class ArmController {
       TOTAL_MOTORS
     };
     
+  double currentPos;
+    
   webots::Motor* motors[TOTAL_MOTORS];
 };
 }

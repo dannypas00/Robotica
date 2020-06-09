@@ -9,9 +9,9 @@
 // and/or to add some other includes
 #include <RobotController/RobotController.hpp>
 #include <webots/Keyboard.hpp>
-#include "MachineIntelligence/MeasureWeightController.h"
-#include "MachineIntelligence/Strategies/TransportRockStrategy.h"
-#include "MachineIntelligence/NSA.h"
+//#include "MachineIntelligence/MeasureWeightController.h"
+//#include "MachineIntelligence/Strategies/TransportRockStrategy.h"
+//#include "MachineIntelligence/NSA.h"
 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
@@ -34,8 +34,7 @@ int main(int argc, char **argv) {
   //  ds->enable(timeStep);
   Keyboard keyboard = Keyboard();
   keyboard.enable(32);
-  
-  std::cout << "Hello, world!";
+
     //NSA nsa = NSA();
     //MeasureWeightController weightController = MeasureWeightController();
     //TransportRockStrategy strategy = TransportRockStrategy(weightController);
@@ -48,7 +47,7 @@ int main(int argc, char **argv) {
   // - perform simulation steps until Webots is stopping the controller
   while (RobotController::getInstance().getRobot().step(timeStep) != -1) {
     // Read the sensors:
-    RobotController::getInstance().MoveUnits(1.0, 'f');
+    //RobotController::getInstance().MoveUnits(1.0, 'f');
     // Enter here functions to read sensor data, like:
     //  double val = ds->getValue();
     int pressed_key = keyboard.getKey();
@@ -65,7 +64,7 @@ int main(int argc, char **argv) {
     case Keyboard::RIGHT:
       RobotController::getInstance().Drive('r', 1.0);
       break;
-      case 'W':
+      /*case 'W':
       RobotController::getInstance().MoveArm('u', 1.0);
       break;
       case 'S':
@@ -76,7 +75,7 @@ int main(int argc, char **argv) {
       break;
       case 'D':
       RobotController::getInstance().MoveArm('r', 1.0);
-      break;
+      break;*/
     default:
       RobotController::getInstance().Drive('f', 0.0);
       //RobotController::getInstance().MoveArm('l', 0.0);

@@ -18,28 +18,35 @@ namespace bungie {
   
   }
   
-  void ArmController::PowerJointMotors(char direction, double velocity){
-    switch(direction){
+  void ArmController::PowerJointMotors(char direction, double velocity) {
+        switch (direction) {
         case 'u':
-         for (int i = ARM_BASE_MOTOR; i <= ARM_END_MOTOR; i++)
-            this->motors[i]->setVelocity(velocity);
-  
-          break;
+            for (int i = ARM_BASE_MOTOR; i <= ARM_END_MOTOR; i++)
+            {
+
+                //this->motors[i]->setPosition(2.09); //120 deg in radians
+                currentPos += 0.001;
+                this->motors[i]->setPosition(currentPos);
+            }
+            break;
         case 'd':
-          for (int i = ARM_BASE_MOTOR; i <= ARM_END_MOTOR; i++)
-            this->motors[i]->setVelocity(-velocity);
-  
-          break;
+            for (int i = ARM_BASE_MOTOR; i <= ARM_END_MOTOR; i++)
+            {
+                //this->motors[i]->setPosition(1.57); //90 deg in radians
+                currentPos -= 0.001;
+                this->motors[i]->setPosition(currentPos);
+            }
+            break;
         case 'l':
-          this->motors[ARM_ROTATION_MOTOR]->setVelocity(velocity);
-  
-          break;
+            this->motors[ARM_ROTATION_MOTOR]->setVelocity(velocity);
+
+            break;
         case 'r':
-          this->motors[ARM_ROTATION_MOTOR]->setVelocity(-velocity);
+            this->motors[ARM_ROTATION_MOTOR]->setVelocity(-velocity);
             
-          break;
+            break;
+        }
     }
-  }
   
     
   ArmController::~ArmController(){

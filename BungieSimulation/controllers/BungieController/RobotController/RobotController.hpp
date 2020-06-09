@@ -10,6 +10,8 @@
 #include "WheelController.hpp"
 #include "ArmController.hpp"
 
+#include <webots/Camera.hpp>
+
 #define TIME_STEP 64
 
 
@@ -23,6 +25,8 @@ class RobotController {
   void DriveUnits(char direction, double distance);
   
   void MoveArm(char direction, double velocity);
+  
+  const unsigned char* getCamera() { return camera->getImage(); }
  
   webots::Robot& getRobot() { return *robot; }
   
@@ -33,6 +37,8 @@ class RobotController {
   
   WheelController* wheel_controller;
   ArmController* arm_controller;
+  
+  webots::Camera *camera;
   RobotController();
   RobotController(const RobotController&) = default;
 };
