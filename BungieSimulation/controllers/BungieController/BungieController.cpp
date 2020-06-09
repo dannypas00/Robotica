@@ -50,6 +50,7 @@ int main(int argc, char **argv) {
   MoonSurvivalStrategy ms_strategy = MoonSurvivalStrategy();
   DynamicDanceStrategy dance_strategy = DynamicDanceStrategy();
   TraverseMoonStrategy traverse_moon = TraverseMoonStrategy();
+  ScanQRCodeStrategy qr_strategy = ScanQRCodeStrategy();
   GateStrategy gt_strategy = GateStrategy();
   
   // Main loop:
@@ -61,7 +62,7 @@ int main(int argc, char **argv) {
   // - O: TransportRock
   // - H: Poortje
   // - J: Dance
-  
+
   while (RobotController::getInstance().getRobot().step(16) != -1) {
     // Read the sensors:
     // Enter here functions to read sensor data, like:
@@ -86,33 +87,54 @@ int main(int argc, char **argv) {
         executingStrategy = false;
         break;
       case 'U':
-        // Navigate Maze
+        if (!executingStrategy) {
+          executingStrategy = true;
+          // Navigate Maze
+          RobotController::getInstance().Rotate(90);
+        }
         break;
       case 'I':
-        executingStrategy = true;
-        nsa.ExecuteAssignment(ms_strategy);
+        if (!executingStrategy) {
+          executingStrategy = true;
+          nsa.ExecuteAssignment(ms_strategy);
+        }
         break;
       case 'O':
-        executingStrategy = true;        
-        nsa.ExecuteAssignment(tr_strategy);
+        if (!executingStrategy) {
+          executingStrategy = true;        
+          // nsa.ExecuteAssignment(tr_strategy);
+        }
         break;
       case 'H':
-        executingStrategy = true;
-        nsa.ExecuteAssignment(gt_strategy);
+        if (!executingStrategy) {
+          executingStrategy = true;
+          nsa.ExecuteAssignment(gt_strategy);
+        }
         break;
       case 'J':
-        executingStrategy = true;
-        nsa.ExecuteAssignment(dance_strategy);
+        if (!executingStrategy) {
+          executingStrategy = true;
+          nsa.ExecuteAssignment(dance_strategy);
+        }
         break;
-       case 'K':
-        executingStrategy = true;
-        nsa.ExecuteAssignment(traverse_moon);
+      case 'K':
+        if (!executingStrategy) {
+          executingStrategy = true;
+          nsa.ExecuteAssignment(traverse_moon);
+        }
+        break;
+      case 'L':
+        if (!executingStrategy) {
+          executingStrategy = true;
+          nsa.ExecuteAssignment(qr_strategy);
+        }
         break;
       default:
+        //TODO: werkt niet met strategies, omdat het moven asyncrhoon gaat glitched rotate
         // If not exexcuting a strategy, stop when no buttons pressed
-        if (!executingStrategy) {
-                RobotController::getInstance().Drive('f', 0.0);
-        }
+        // if (!executingStrategy) {
+                // RobotController::getInstance().Drive('f', 0.0);
+        // }
         //RobotController::getInstance().MoveArm('l', 0.0);
         //RobotController::getInstance().MoveArm('u', 0.0);
         break;
