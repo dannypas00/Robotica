@@ -9,12 +9,11 @@ int DynamicDanceStrategy::ExecuteStrategy()
 {
 	RobotController& controller = RobotController::getInstance();
 
-	// Music file
-	std::string musicFile = "muziekjes.mp3";
+	// Do somehting with music here
 
 	// Start dance
-	//controller.Dance();
-	controller.Drive('r', 0.5);
+	controller.DriveUnits('f', 0.5, 8);
+	// controller.Drive('r', 0.5);
 	//Done
 	return 0;
 }
