@@ -1,4 +1,5 @@
 #include "WheelController.hpp"
+#include <cmath>
 
 using namespace std;
 
@@ -44,8 +45,23 @@ namespace bungie {
   }
   
   void WheelController::SetMotorsPosition(double distance) {
-    for (auto i = 0; i < TOTAL_MOTORS; i++) {
-      this->motors[i]->setPosition(motors[i]->getTargetPosition() + distance);
+    for (auto i = 0; i <= RIGHT_PAW_MOTOR; i++) {
+      this->motors[i]->setVelocity(1.5);
+      this->motors[i]->setPosition(this->motors[i]->getTargetPosition() + distance);
+    }
+  }
+  
+  void WheelController::SetRotation(double distance) {
+    if (signbit(distance) == 1) {
+      this->motors[0]->setVelocity(0.5);
+      this->motors[0]->setPosition(this->motors[0]->getTargetPosition() + abs(distance));
+      this->motors[1]->setVelocity(0.5);
+      this->motors[1]->setPosition(this->motors[0]->getTargetPosition() + abs(distance));
+    } else {
+      this->motors[2]->setVelocity(0.5);
+      this->motors[2]->setPosition(this->motors[0]->getTargetPosition() + distance);
+      this->motors[3]->setVelocity(0.5);
+      this->motors[3]->setPosition(this->motors[0]->getTargetPosition() + distance);
     }
   }
   
