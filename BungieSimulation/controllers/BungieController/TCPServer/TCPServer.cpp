@@ -6,27 +6,30 @@ namespace bungie{
 static int serverSocket;
 static fd_set rfds;
 
-//Singleton TCPServer instance
+// Singleton TCPServer instance
 TCPServer& TCPServer::getInstance(){
    static TCPServer _instance;
 
    return _instance;
 }
+// Constructor
 TCPServer::TCPServer(){
   // create the TCPServer instance.
   printf("Creating TCPServer\n");
   initialize();
 }
+// Testing Function (Remove before rollout)
 void TCPServer::test(){
   printf("Working\n");
 }
+// Initianlization of Socket server
 void TCPServer::initialize() {
   printf("starting socket\n");
   serverSocket = create_socket_server(SOCKET_PORT);
   //FD_ZERO(&rfds);
  //FD_SET(serverSocket, &rfds);
 }
-
+// Creation of Socket server and start of listening
 int TCPServer::create_socket_server(int port) {
   int serverSocket, rc;
   struct sockaddr_in address;
@@ -82,7 +85,7 @@ int TCPServer::create_socket_server(int port) {
   //return(serverSocket);
   return(accept_client(serverSocket));
 }
-
+// Handle Client connection
 int TCPServer::accept_client(int server_fd) {
   int clientSocket;
   struct sockaddr_in client;
@@ -106,7 +109,7 @@ int TCPServer::accept_client(int server_fd) {
 
   return clientSocket;
 }
-
+// Handle commands
 void TCPServer::run() {
   char commandLength;
   int command;
@@ -134,14 +137,13 @@ void TCPServer::run() {
     std::cout << command_length << std::endl;
      char msg[256];
     command = recv(serverSocket, msg, command_length, 0);
-
-
   if (command < 0) {
     printf("error reading from socket\n");
     return;
   }
 
   msg[command] = '\0';
+  // Handle Commands Here:
   printf("Received %d bytes: %s\n", command, msg);
 
 }
