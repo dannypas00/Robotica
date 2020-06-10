@@ -4,10 +4,12 @@ namespace bungie {
 int RaceStrategy::ExecuteStrategy()
 {
 	RobotController& controller = RobotController::getInstance();
-	if (distanceMoved < toMove) {
-		//Move 0.45m forwards to reach the rock
-		controller.DriveUnits('f', 10, 20);
-	}
+	
+	// Move forwards to win race
+	// TODO: implement when we know what we need to do (no model provided from school yet)
+	controller.DriveUnits('f', 10, 20);
+
+	// Done
 	return 0;
 }
 }

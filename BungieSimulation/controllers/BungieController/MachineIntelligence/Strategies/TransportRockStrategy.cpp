@@ -12,25 +12,27 @@ int TransportRockStrategy::ExecuteStrategy()
 	VisionController vision;
 	RobotController& controller = RobotController::getInstance();
 
-	//Subscribe to the vision objects for the stone and the container to put the stone into
+	// TODO: Implement and test this after the arm is done & we have the correct models
+
+	// Subscribe to the vision objects for the stone and the container to put the stone into
 	vision.Subscribe("Stone");
 	vision.Subscribe("Container");
 
-	//Move 0.15m forwards to reach the rock
+	// Move 0.15m forwards to reach the rock
 	controller.DriveUnits('f', 1.0, 0.15);
-	//Wait for the rock to be detected by vision
+	// Wait for the rock to be detected by vision
 	const Vector3 vision_stone = vision.See(); //Temporarily a vector to substitute the vision object struct
-	//Pick up the rock
+	// Pick up the rock
 
-	//controller.GatherObject(false, 1, vision_stone);
+	// controller.GatherObject(false, 1, vision_stone);
 	
-	//Move 0.5m forwards to reach the container
+	// Move 0.5m forwards to reach the container
 	controller.DriveUnits('f', 1.0, 0.5);
-	//Wait for the container to be detected by vision
+	// Wait for the container to be detected by vision
 	const Vector3 vision_container = vision.See();//Temporarily a vector to substitute the vision object struct
-	//Put the rock into the container
+	// Put the rock into the container
 
-	//controller.PutStone(vision_container);
+	// controller.PutStone(vision_container);
 	return 0;
 }
 }

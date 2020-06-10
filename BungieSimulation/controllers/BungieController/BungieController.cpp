@@ -18,6 +18,7 @@
 #include "MachineIntelligence/Strategies/DynamicDanceStrategy.h"
 #include "MachineIntelligence/Strategies/TraverseMoonStrategy.h"
 #include "MachineIntelligence/Strategies/RaceStrategy.h"
+// #include <webots/supervisor.hpp>
 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
@@ -42,8 +43,18 @@ int main(int argc, char **argv) {
   Keyboard keyboard = Keyboard();
   keyboard.enable(32);
   
+  // webots::Supervisor *supervisor = new webots::Supervisor();
+
+  // do this once only
+  // webots::Node *robot_node = supervisor->getFromDef("BUNGIE_ROVER");
+  // webots::Field *trans_field = robot_node->getField("rotation");
+  // const double *values = trans_field->getSFVec3f();
+      // std::cout << "MY_ROBOT is at position: " << values[0] << ' '
+              // << values[1] << ' ' << values[2] << std::endl;
+  
   // Initiate NSA()
   NSA nsa = NSA();
+  
   // All strategies and required classes
   MeasureWeightController weightController = MeasureWeightController();
   TransportRockStrategy tr_strategy = TransportRockStrategy(weightController);
@@ -62,11 +73,11 @@ int main(int argc, char **argv) {
   // - O: TransportRock
   // - H: Poortje
   // - J: Dance
-
+  // - K: TraverseMoon
+  // - L: Vision / QR
+  
   while (RobotController::getInstance().getRobot().step(16) != -1) {
-    // Read the sensors:
-    // Enter here functions to read sensor data, like:
-    //  double val = ds->getValue();
+    // Get pressed key, -1 = none pressed
     int pressed_key = keyboard.getKey();
     
     switch(pressed_key){
@@ -89,7 +100,6 @@ int main(int argc, char **argv) {
       case 'U':
         if (!executingStrategy) {
           executingStrategy = true;
-          // Navigate Maze
           RobotController::getInstance().Rotate(90);
         }
         break;

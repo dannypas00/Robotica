@@ -6,9 +6,10 @@ MoonMazeStrategy::MoonMazeStrategy() {
 
 int MoonMazeStrategy::ExecuteStrategy()
 {
-	// Execute pathfinding here
+	// Execute the pathfinding here
+	// TODO: implement pathfinding
 	
-	//Done
+	// Done
 	return 0;
 }
 }

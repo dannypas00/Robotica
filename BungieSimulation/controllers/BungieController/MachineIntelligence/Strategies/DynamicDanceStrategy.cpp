@@ -9,12 +9,15 @@ int DynamicDanceStrategy::ExecuteStrategy()
 {
 	RobotController& controller = RobotController::getInstance();
 
-	// Do somehting with music here
+	// Prepare music file here, afterwards start to move towards the dance floor
 
-	// Start dance
+	// Navigate forwards to the dance floor
 	controller.DriveUnits('f', 0.5, 8);
-	// controller.Drive('r', 0.5);
-	//Done
+	
+	// Show some moves
+	// TODO: Implement dance
+	
+	// Done
 	return 0;
 }
 }
