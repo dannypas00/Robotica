@@ -11,6 +11,7 @@
 #include <webots/Keyboard.hpp>
 #include "MachineIntelligence/MeasureWeightController.h"
 #include "MachineIntelligence/Strategies/TransportRockStrategy.h"
+#include "MachineIntelligence/Strategies/PathfindingStrategy.h"
 #include "MachineIntelligence/NSA.h"
 
 // All the webots classes are defined in the "webots" namespace
@@ -37,9 +38,10 @@ int main(int argc, char **argv) {
   
   std::cout << "Hello, world!";
     NSA nsa = NSA();
-    MeasureWeightController weightController = MeasureWeightController();
-    TransportRockStrategy strategy = TransportRockStrategy(weightController);
+    //MeasureWeightController weightController = MeasureWeightController();
+    //TransportRockStrategy strategy = TransportRockStrategy(weightController);
     //MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
+    PathfindingStrategy strategy = PathfindingStrategy();
     nsa.ExecuteAssignment(strategy);
   
   // Main loop:

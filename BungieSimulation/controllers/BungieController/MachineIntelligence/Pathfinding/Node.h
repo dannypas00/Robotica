@@ -1,7 +1,8 @@
 #ifndef NODE
 #define NODE
 
-#include "Vector3.h"
+#include "../Vector3.h"
+#include <vector>
 #include <cmath>
 
 namespace bungie {
@@ -9,13 +10,14 @@ namespace bungie {
     {
         Vector3 pos;
         Vector3 parentPos;
-        vector<Node&> neighbors;
+        std::vector<Node*> neighbours;
         //Distance between current node and start node
         float gCost;
         //Distance from current node to end node
         float hCost; 
         //Total cost of node
         float fCost;
+        bool closed = false;
     };
 
     inline bool operator < (const Node& lhs, const Node& rhs)
@@ -23,8 +25,8 @@ namespace bungie {
         return lhs.fCost < rhs.fCost;
     }
 
-    static bool isDestination(double x, double y, Node dest) {
-        if (x == dest.pos.x && y == dest.pos.y) {
+    static bool isDestination(Vector3 pos, Node* targetNode) {
+        if (pos == targetNode->pos) {
             return true;
         }
         return false;
@@ -34,12 +36,12 @@ namespace bungie {
         return hCost + gCost;
     }
 
-    static double calculateG(Vector3 current, Node start) {
-        return abs(current.distancePoints(current, start.pos));
+    static double calculateG(Node* neighbour, Node* target) {
+        return abs(neighbour->pos.distancePoints(neighbour->pos, target->pos) + neighbour->gCost);
     }
 
-    static double calculateH(Vector3 current, Node dest) {
-        return abs(current.distancePoints(current, dest.pos));
+    static double calculateH(Vector3 current, Node* targetNode) {
+        return abs(current.distancePoints(current, targetNode->pos));
     }
 }
 

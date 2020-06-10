@@ -29,7 +29,7 @@ public:
 	Vector3 operator*(const float rhs) const;
 	Vector3 operator/(const float rhs) const;
 	Vector3& operator-=(const Vector3& rhs);
-	bool operator==(const Vector3& rhs) const
+	bool operator==(const Vector3& rhs) const;
 
 private:
 };
