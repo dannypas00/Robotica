@@ -1,5 +1,7 @@
 #include "AStar.h"
 
+
+#include <iostream>
 #include <vector>
 #include <stack>
 #include "Node.h"
@@ -20,6 +22,7 @@ namespace bungie {
         player->hCost = 0.0;
         player->gCost = 0.0;
         player->parentPos = player->pos;
+        player->parent = player;
 
         vector<Node*> openList;
         openList.emplace_back(player);
@@ -49,17 +52,20 @@ namespace bungie {
                 
                 if (isDestination(neighbour->pos, dest)) {
                     destinationFound = true;
+                    dest->parent = node;
+                    dest->parentPos = node->pos;
                     return AStar::makePath(allMap, dest);
                 }
-                else if (neighbour->closed) {
+                else if (!neighbour->closed) {
                     double gNew = calculateG(neighbour, node);
                     double hNew = calculateH(neighbour->pos, player);
-                    double fNew = calculateF(neighbour->hCost, neighbour->gCost);
+                    double fNew = calculateF(hNew, gNew);
                     if (neighbour->fCost == INFINITY || neighbour->fCost > fNew) {
                         neighbour->fCost = fNew;
                         neighbour->gCost = gNew;
                         neighbour->hCost = hNew;
                         neighbour->parentPos = node->pos;
+                        neighbour->parent = node;
                         openList.emplace_back(neighbour);
                     }
                 }
@@ -72,13 +78,13 @@ namespace bungie {
     vector<Node*> AStar::makePath(vector<Node*>* map, Node* dest) {
         try {
             cout << "Found a path" << endl;
-            Vector3& pos = dest->pos;
+            //Vector3& pos = dest->pos;
             stack<Node*> path;
             vector<Node*> usablePath;
-
-            for(Node* temp : *map) {
-                if (temp->pos == temp->parentPos) break;
+            Node* temp = dest;
+            while (temp != temp->parent && temp->parent != nullptr) {
                 path.push(temp);
+                temp = temp->parent;
             }
             
             while (!path.empty()) {
@@ -91,6 +97,6 @@ namespace bungie {
         catch (const exception& e) {    
             cout << e.what() << endl;
         }
-        return vector<Node*>();
+        //return vector<Node*>();
     }
 }
