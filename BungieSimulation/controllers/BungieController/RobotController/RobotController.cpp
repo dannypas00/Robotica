@@ -10,7 +10,6 @@ RobotController& RobotController::getInstance(){
 }
   
 RobotController::RobotController(){
-  // create the Robot instance.
   robot = new webots::Robot();
   wheel_controller = new WheelController(robot);
   arm_controller = new ArmController(robot);
@@ -33,7 +32,7 @@ void RobotController::DriveUnits(char direction, double distance) {
   wheel_controller->SetMotorsPosition(distance);
 }
 
-void RobotController::Rotate(double deg) {
+void RobotController::Turn(double deg) {
   //Radial of 1.570 == 90 degrees
   //1.9145945 radials per unit rotated
   //0.82 units ~= 90 degrees
