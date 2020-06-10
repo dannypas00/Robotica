@@ -4,7 +4,7 @@ using namespace std;
 
 namespace bungie{
 static int serverSocket;
-//static fd_set rfds;
+static fd_set rfds;
 
 //Singleton TCPServer instance
 TCPServer& TCPServer::getInstance(){
@@ -77,9 +77,72 @@ int TCPServer::create_socket_server(int port) {
     return -1;
   }
   printf("Waiting for a connection on port %d...\n", port);
-
-  //return accept_client(serverSocket);
-  return(serverSocket);
+    //std::thread first (accept_client(serverSocket))
+  //std::thread clientThread(&accept_client, serverSocket);
+  //return(serverSocket);
+  return(accept_client(serverSocket));
 }
 
+int TCPServer::accept_client(int server_fd) {
+  int clientSocket;
+  struct sockaddr_in client;
+#ifndef _WIN32
+  socklen_t asize;
+#else
+  int asize;
+#endif
+  struct hostent *client_info;
+ printf("Accepted conn");
+  asize = sizeof(struct sockaddr_in);
+
+  clientSocket = accept(server_fd, (struct sockaddr *)&client, &asize);
+   printf("Accepted conn");
+  if (clientSocket == -1) {
+    printf("cannot accept client\n");
+    return -1;
+  }
+  client_info = gethostbyname((char *)inet_ntoa(client.sin_addr));
+  printf("Accepted connection from: %s \n", client_info->h_name);
+
+  return clientSocket;
+}
+
+void TCPServer::run() {
+  char commandLength;
+  int command;
+  int number;
+  char header[10];
+  struct timeval tv = {0, 0};
+  FD_ZERO(&rfds);
+  FD_SET(serverSocket, &rfds);
+  /*
+   * Watch TCPIP file descriptor to see when it has input.
+   * No wait - polling as fast as possible
+   */
+  number = select(serverSocket + 1, &rfds, NULL, NULL, &tv);
+  /* If there is no data at the socket, then redo loop */
+  if (number == 0){
+    return;
+  }
+
+
+     commandLength = recv(serverSocket, header, 10, 0);
+     //printf("Received %d bytes: %s\n", commandLength);
+
+    int command_length = atoi(header);
+    //printf(command_length);
+    std::cout << command_length << std::endl;
+     char msg[256];
+    command = recv(serverSocket, msg, command_length, 0);
+
+
+  if (command < 0) {
+    printf("error reading from socket\n");
+    return;
+  }
+
+  msg[command] = '\0';
+  printf("Received %d bytes: %s\n", command, msg);
+
+}
 }

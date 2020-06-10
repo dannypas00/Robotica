@@ -13,6 +13,7 @@
 #include "MachineIntelligence/Strategies/TransportRockStrategy.h"
 #include "MachineIntelligence/NSA.h"
 #include "TCPServer/TCPServer.hpp" 
+#include <thread>
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
 using namespace bungie;
@@ -24,6 +25,10 @@ using namespace bungie;
 // a controller program.
 // The arguments of the main function can be specified by the
 // "controllerArgs" field of the Robot node
+
+
+
+
 int main(int argc, char **argv) {
   // get the time step of the current world.
   int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
@@ -36,17 +41,17 @@ int main(int argc, char **argv) {
   keyboard.enable(32);
   
   std::cout << "Hello, world!" << std::endl;
-  TCPServer::getInstance().test();
+ 
     NSA nsa = NSA();
     MeasureWeightController weightController = MeasureWeightController();
     TransportRockStrategy strategy = TransportRockStrategy(weightController);
     //MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
     nsa.ExecuteAssignment(strategy);
-  
+
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
   while (RobotController::getInstance().getRobot().step(timeStep) != -1) {
-    
+     TCPServer::getInstance().run();
     // Read the sensors:
     // Enter here functions to read sensor data, like:
     //  double val = ds->getValue();
@@ -67,7 +72,7 @@ int main(int argc, char **argv) {
     default:
       RobotController::getInstance().Drive('f', 0.0);
     }
-    
+  
     // Process sensor data here.
 
     // Enter here functions to send actuator commands, like:

@@ -64,6 +64,12 @@
 ### VERBOSE = 1
 ###
 ###-----------------------------------------------------------------------------
+ifeq ($(OS),Windows_NT)
+LIBRARIES=-lws2_32
+
+VERBOSE = 1
+endif
+
 CXX_SOURCES := $(wildcard ./*.cpp) $(wildcard ./**/*.cpp) $(wildcard ./**/**/*.cpp)
 ### Do not modify: this includes Webots global Makefile.include
 space :=

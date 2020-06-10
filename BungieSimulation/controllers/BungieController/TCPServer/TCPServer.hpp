@@ -4,6 +4,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <time.h>
+#include <iostream>
 // #include <webots/distance_sensor.h>
 // #include <webots/led.h>
 // #include <webots/light_sensor.h>
@@ -17,7 +18,9 @@
 #include <ws2tcpip.h>
 #include <iphlpapi.h>
 #include <stdio.h>
-#pragma comment(lib, "ws2_32.lib")
+#include <thread>   
+//#include <future>
+//#pragma comment(lib, "ws2_32.lib")
 #else
 #include <arpa/inet.h>  /* definition of inet_ntoa */
 #include <netdb.h>      /* definition of gethostbyname */
@@ -43,6 +46,6 @@ class TCPServer {
     TCPServer();
     void initialize();
     int create_socket_server(int port);
-  
+    int accept_client(int server_fd);
 };
 }
