@@ -2,7 +2,6 @@
 #define PATHFINDING_STRATEGY
 #include <vector>
 #include "..\MIStrategy.h"
-#include "..\..\RobotController\RobotController.hpp"
 #include "..\Pathfinding\Node.h"
 #include "..\Pathfinding\AStar.h"
 

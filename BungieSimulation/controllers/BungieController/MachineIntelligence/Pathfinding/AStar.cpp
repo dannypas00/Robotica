@@ -1,6 +1,4 @@
 #include "AStar.h"
-
-
 #include <iostream>
 #include <vector>
 #include <stack>
@@ -14,7 +12,6 @@ namespace bungie {
             cout << "Bereikt" << endl;
             return empty;
         }
-        vector<Node*> closedList;
 
         float x = player->pos.x;
         float y = player->pos.y;
@@ -31,6 +28,7 @@ namespace bungie {
         while (!openList.empty() && openList.size() < allMap->size()){
             Node* node;
             float temp = INFINITY;
+            //Iterator for-loop is because vector::erase() only works with an iterator, not with values
             vector<Node*>::iterator itNode;
             for (vector<Node*>::iterator it = openList.begin(); it != openList.end(); it = next(it)) {
                 Node* n = *it;
@@ -44,7 +42,6 @@ namespace bungie {
 
             x = node->pos.x;
             y = node->pos.y;
-            closedList.emplace_back(node);
             node->closed = true;
 
             for (Node* neighbour : node->neighbours) {
@@ -78,15 +75,16 @@ namespace bungie {
     vector<Node*> AStar::makePath(vector<Node*>* map, Node* dest) {
         try {
             cout << "Found a path" << endl;
-            //Vector3& pos = dest->pos;
             stack<Node*> path;
             vector<Node*> usablePath;
             Node* temp = dest;
+            //Loop through the entire map from the end until the start is reached
             while (temp != temp->parent && temp->parent != nullptr) {
                 path.push(temp);
                 temp = temp->parent;
             }
             
+            //Move from stack to vector and invert path
             while (!path.empty()) {
                 Node* top = path.top();
                 path.pop();
@@ -97,6 +95,5 @@ namespace bungie {
         catch (const exception& e) {    
             cout << e.what() << endl;
         }
-        //return vector<Node*>();
     }
 }

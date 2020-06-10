@@ -22,11 +22,7 @@ namespace bungie {
         bool closed = false;
     };
 
-    inline bool operator < (const Node& lhs, const Node& rhs)
-    {//We need to overload "<" to put our struct into a set
-        return lhs.fCost < rhs.fCost;
-    }
-
+    //Return displayable string of coordinates
     static std::string ToString(Node* n)
     {
         std::ostringstream strs;

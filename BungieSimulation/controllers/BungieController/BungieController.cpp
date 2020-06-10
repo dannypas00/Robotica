@@ -36,7 +36,7 @@ int main(int argc, char **argv) {
   Keyboard keyboard = Keyboard();
   keyboard.enable(32);
   
-  std::cout << "Hello, world!";
+  std::cout << "Hello, world!" << std::endl;
     NSA nsa = NSA();
     //MeasureWeightController weightController = MeasureWeightController();
     //TransportRockStrategy strategy = TransportRockStrategy(weightController);
