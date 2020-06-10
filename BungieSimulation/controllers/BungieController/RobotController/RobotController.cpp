@@ -17,6 +17,9 @@ RobotController::RobotController(){
   
   camera = robot->getCamera("front_CAM");
   camera->enable(TIME_STEP);
+  
+  touch_sensor = robot->getTouchSensor("touch_sensor");
+  touch_sensor->enable(TIME_STEP);
 }
 
 
@@ -42,9 +45,16 @@ void RobotController::MoveArm(char direction, double velocity){
   arm_controller->PowerJointMotors(direction, velocity);
 }
 
+double RobotController::getWeightOfStoredObject(){
+  const double* force = touch_sensor->getValues();
+  return (sqrt((force[0]*force[0])+(force[1]*force[1])+(force[2]*force[2]))/3.73);
+}
+
 RobotController::~RobotController(){
   delete robot;
   delete wheel_controller;
   delete arm_controller;
+  delete camera;
+  delete touch_sensor;
 }
 }

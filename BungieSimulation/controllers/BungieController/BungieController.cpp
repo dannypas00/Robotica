@@ -9,9 +9,12 @@
 // and/or to add some other includes
 #include <RobotController/RobotController.hpp>
 #include <webots/Keyboard.hpp>
-//#include "MachineIntelligence/MeasureWeightController.h"
-//#include "MachineIntelligence/Strategies/TransportRockStrategy.h"
-//#include "MachineIntelligence/NSA.h"
+
+#include <iostream>
+
+#include "MachineIntelligence/MeasureWeightController.h"
+#include "MachineIntelligence/Strategies/TransportRockStrategy.h"
+#include "MachineIntelligence/NSA.h"
 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
@@ -48,10 +51,8 @@ int main(int argc, char **argv) {
   // - perform simulation steps until Webots is stopping the controller
   while (RobotController::getInstance().getRobot().step(timeStep) != -1) {
     // Read the sensors:
-<<<<<<< HEAD
     //RobotController::getInstance().MoveUnits(1.0, 'f');
-=======
->>>>>>> 76c29f908538a372027564c3c7b8f882f165e5a9
+    std::cout << RobotController::getInstance().getWeightOfStoredObject() << std::endl;
     // Enter here functions to read sensor data, like:
     //  double val = ds->getValue();
     int pressed_key = keyboard.getKey();

@@ -3,6 +3,8 @@
 
 #include <webots/Robot.hpp>
 #include <webots/Motor.hpp>
+#include <webots/TouchSensor.hpp>
+#include <webots/Camera.hpp>
 
 //Testing
 #include <webots/Keyboard.hpp>
@@ -10,7 +12,7 @@
 #include "WheelController.hpp"
 #include "ArmController.hpp"
 
-#include <webots/Camera.hpp>
+#include <cmath>
 
 #define TIME_STEP 64
 
@@ -28,6 +30,8 @@ class RobotController {
   void MoveArm(char direction, double velocity);
   
   const unsigned char* getCamera() { return camera->getImage(); }
+  
+  double getWeightOfStoredObject();
  
   webots::Robot& getRobot() { return *robot; }
   
@@ -40,6 +44,8 @@ class RobotController {
   ArmController* arm_controller;
   
   webots::Camera *camera;
+  webots::TouchSensor *touch_sensor;
+  
   RobotController();
   RobotController(const RobotController&) = default;
 };
