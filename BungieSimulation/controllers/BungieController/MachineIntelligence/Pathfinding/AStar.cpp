@@ -6,9 +6,15 @@
 using namespace std;
 
 namespace bungie {
+    /// @brief Calculate the shortest path between player and dest by using the A* algorithm
+    /// @param player The player's current node (or any starting node)
+    /// @param dest The destination node to path to
+    /// @param allMap A vector containing all traversible nodes
+    /// @brief The shortest path from player to dest as calculated with A*
+    /// @return vector<Node*>
     vector<Node*> AStar::aStar(Node* player, Node* dest, vector<Node*>* allMap){
         vector<Node*> empty;
-        if (isDestination(player->pos, dest)){
+        if (isDestination(player, dest)){
             cout << "Bereikt" << endl;
             return empty;
         }
@@ -46,8 +52,7 @@ namespace bungie {
 
             for (Node* neighbour : node->neighbours) {
                 //Calculate f, g, and h costs
-                
-                if (isDestination(neighbour->pos, dest)) {
+                if (isDestination(neighbour, dest)) {
                     destinationFound = true;
                     dest->parent = node;
                     dest->parentPos = node->pos;
@@ -55,7 +60,7 @@ namespace bungie {
                 }
                 else if (!neighbour->closed) {
                     double gNew = calculateG(neighbour, node);
-                    double hNew = calculateH(neighbour->pos, player);
+                    double hNew = calculateH(neighbour, player);
                     double fNew = calculateF(hNew, gNew);
                     if (neighbour->fCost == INFINITY || neighbour->fCost > fNew) {
                         neighbour->fCost = fNew;
@@ -72,6 +77,11 @@ namespace bungie {
         return empty;
     }
 
+    /// @brief Generate the quickest path to destination
+    /// @param map Vector of all traversible nodes
+    /// @param dest Destination node
+    /// @brief Shortest path to destination as calculated by A*
+    /// @return vector<Node*>
     vector<Node*> AStar::makePath(vector<Node*>* map, Node* dest) {
         try {
             cout << "Found a path" << endl;
