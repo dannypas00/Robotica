@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['weightsensor_25',['WeightSensor',['../classbungie_1_1WeightSensor.html',1,'bungie']]],
-  ['wheel_5fcontroller_26',['wheel_controller',['../classbungie_1_1RobotController.html#a527992f4e9281b0411b000948f3accf1',1,'bungie::RobotController']]],
-  ['wheelcontroller_27',['WheelController',['../classbungie_1_1WheelController.html',1,'bungie::WheelController'],['../classbungie_1_1WheelController.html#ae89babfbc98c45d0faefbad6a5b64102',1,'bungie::WheelController::WheelController()']]]
+  ['touch_5fsensor_29',['touch_sensor',['../classbungie_1_1RobotController.html#aae311b0450d8418dced647c6f29b8332',1,'bungie::RobotController']]],
+  ['turn_30',['Turn',['../classbungie_1_1RobotController.html#aff2c04784b7ea54509d9b23949c73239',1,'bungie::RobotController']]]
 ];

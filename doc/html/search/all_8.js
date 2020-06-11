@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['setmotorsposition_19',['SetMotorsPosition',['../classbungie_1_1WheelController.html#a2616cba09676340c81d2d62cd6209d09',1,'bungie::WheelController']]],
-  ['setrotation_20',['SetRotation',['../classbungie_1_1WheelController.html#a62ef1c1886eaea47013e18330104f63d',1,'bungie::WheelController']]]
+  ['powerjointmotors_22',['PowerJointMotors',['../classbungie_1_1ArmController.html#a56bb70021c4fbaa31c28252b311db491',1,'bungie::ArmController']]],
+  ['powermotors_23',['PowerMotors',['../classbungie_1_1WheelController.html#aeb3c0dc70c270aceebb68a89a1736d45',1,'bungie::WheelController']]]
 ];

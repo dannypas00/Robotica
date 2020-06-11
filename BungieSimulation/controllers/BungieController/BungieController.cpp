@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
   int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
   Keyboard keyboard = Keyboard();
   keyboard.enable(32);
-
+  RobotController::getInstance().setLED(255, 255, 255);
   //NSA nsa = NSA();
   //MeasureWeightController weightController = MeasureWeightController();
   //TransportRockStrategy strategy = TransportRockStrategy(weightController);
@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
   // - perform simulation steps until Webots is stopping the controller
   while (RobotController::getInstance().getRobot().step(timeStep) != -1) {
     //RobotController::getInstance().MoveUnits(1.0, 'f');
-    std::cout << RobotController::getInstance().getWeightOfStoredObject() << std::endl;
+    std::cout << RobotController::getInstance().getDistanceFront() << std::endl;
     int pressed_key = keyboard.getKey();
     switch(pressed_key){
     case Keyboard::UP:
@@ -65,15 +65,19 @@ int main(int argc, char **argv) {
       break;
     case 'W':
       RobotController::getInstance().MoveArm('u', 12.0);
+      RobotController::getInstance().setLED(255, 0, 0);
       break;
     case 'S':
       RobotController::getInstance().MoveArm('d', 12.0);
+      RobotController::getInstance().setLED(0, 255, 0, 1);
       break;
     case 'A':
       RobotController::getInstance().MoveArm('l', 12.0);
+      RobotController::getInstance().setLED(0, 0, 255, 2);
       break;
     case 'D':
       RobotController::getInstance().MoveArm('r', 12.0);
+      RobotController::getInstance().setLED(255, 255, 255);
       break;
     default:
       RobotController::getInstance().Drive('f', 0.0);

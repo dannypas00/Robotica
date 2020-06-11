@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['_7earmcontroller_28',['~ArmController',['../classbungie_1_1ArmController.html#af5d404878c8612fd9ab35114a900a00b',1,'bungie::ArmController']]],
-  ['_7erobotcontroller_29',['~RobotController',['../classbungie_1_1RobotController.html#a10a0a3035dc8b788e880accb32b79039',1,'bungie::RobotController']]],
-  ['_7ewheelcontroller_30',['~WheelController',['../classbungie_1_1WheelController.html#a6ae3be29f7b2aef12fa117a087ed6da7',1,'bungie::WheelController']]]
+  ['vector3_31',['Vector3',['../classbungie_1_1Vector3.html',1,'bungie']]],
+  ['visioncontroller_32',['VisionController',['../classbungie_1_1VisionController.html',1,'bungie']]]
 ];

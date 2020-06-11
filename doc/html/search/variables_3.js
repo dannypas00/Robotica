@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['robot_61',['robot',['../classbungie_1_1RobotController.html#aa20f324bf15ada61d85e9bffc7744e87',1,'bungie::RobotController']]]
+  ['led_5fleft_74',['led_left',['../classbungie_1_1RobotController.html#a4045cecbc7085a64d14f919114b28155',1,'bungie::RobotController']]],
+  ['led_5fright_75',['led_right',['../classbungie_1_1RobotController.html#aa9437db386d3e17137863850a357ded5',1,'bungie::RobotController']]]
 ];

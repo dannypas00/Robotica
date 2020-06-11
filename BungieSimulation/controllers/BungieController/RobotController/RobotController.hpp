@@ -4,8 +4,10 @@
 #include <webots/Robot.hpp>
 #include <webots/Motor.hpp>
 #include <webots/TouchSensor.hpp>
+#include <webots/DistanceSensor.hpp>
 #include <webots/Camera.hpp>
 #include <webots/Keyboard.hpp>
+#include <webots/LED.hpp>
 
 #include "WheelController.hpp"
 #include "ArmController.hpp"
@@ -23,7 +25,7 @@ public:
   /// @brief Gives the instance of the singleton controller class.
   /// @return RobotController& The instance of itself.
   static RobotController& getInstance();
-
+  
   /// @brief Order robot to drive in certain direction at given speed.
   /// @param char direction The direction given as the characters: 'l' for left, 'r' for right, 'f'for forward and 'b' for backwards.
   /// @param double velocity The velocity stands for radians per second the wheels should rotate.
@@ -54,6 +56,22 @@ public:
   /// @brief Get weight of the item in the storagebox on the robot.
   /// @return double Weight of item calcutated from gigen force by a force-3D sensor.
   double getWeightOfStoredObject();
+  
+  /// @brief Get distance meassured with the front distance sensor in meters.
+  /// @return double Distance returned by the front sensor.
+  double getDistanceFront();
+  
+  /// @brief Get distance meassured with the back distance sensor in meters.
+  /// @return double Distance returned by the back sensor.
+  double getDistanceBack();
+  
+  /// @brief Set the LED's of the robot on or off with given color.
+  /// @param int r The red value for the color from 0 to 255.
+  /// @param int g The green value for the color from 0 to 255.
+  /// @param int b The blue value for the color from 0 to 255.
+  /// @param int number To switch between powering all LED's = 0, the left LED's = 1 and right LED's = 2.
+  /// @return void
+  void setLED(int r, int g, int b, int number = 0);
 
   /// @brief Get the WeBots Robot object.
   /// @return webots::Robot& Reference to the WeBots Robot object.
@@ -69,17 +87,35 @@ private:
 
   /// @brief The instance of the WheelController.
   WheelController* wheel_controller;
+  
   /// @brief The instance of the ArmController.
   ArmController* arm_controller;
   
   /// @brief The instance of the WeBots Camera.
   webots::Camera* camera;
+  
   /// @brief The instance of the WeBots TouchSensor.
   webots::TouchSensor* touch_sensor;
   
+  /// @brief The instance of the WeBots DistanceSensor.
+  webots::DistanceSensor* distance_sensor_front;
+  
+  /// @brief The instance of the WeBots DistanceSensor.
+  webots::DistanceSensor* distance_sensor_back; 
+  
+  /// @brief The instance of the WeBots LED.
+  webots::LED* led_left;
+  
+  /// @brief The instance of the WeBots LED.
+  webots::LED* led_right;
+  
   /// @brief The private constructor of the singleton RobotController.
   RobotController();
-
+  
+  /// @brief Initializes all the sensors of the robot, called in constructor.
+  /// @return void
+  void initSensors();
+  
   /// @brief The default private constructor of the RobotController.
   /// @param const RobotController& Reference of the RobotController type.
   RobotController(const RobotController&) = default;
