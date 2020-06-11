@@ -63,22 +63,20 @@ int main(int argc, char **argv) {
     case Keyboard::RIGHT:
       RobotController::getInstance().Drive('r', 1.0);
       break;
-      /*case 'W':
-      RobotController::getInstance().MoveArm('u', 1.0);
+    case 'W':
+      RobotController::getInstance().MoveArm('u', 12.0);
       break;
-      case 'S':
-      RobotController::getInstance().MoveArm('d', 1.0);
+    case 'S':
+      RobotController::getInstance().MoveArm('d', 12.0);
       break;
-      case 'A':
-      RobotController::getInstance().MoveArm('l', 1.0);
+    case 'A':
+      RobotController::getInstance().MoveArm('l', 12.0);
       break;
-      case 'D':
-      RobotController::getInstance().MoveArm('r', 1.0);
-      break;*/
+    case 'D':
+      RobotController::getInstance().MoveArm('r', 12.0);
+      break;
     default:
-      //RobotController::getInstance().Drive('f', 0.0);
-      //RobotController::getInstance().MoveArm('l', 0.0);
-      //RobotController::getInstance().MoveArm('u', 0.0);
+      RobotController::getInstance().Drive('f', 0.0);
       break;
     }
   };

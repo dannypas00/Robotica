@@ -12,7 +12,7 @@ RobotController& RobotController::getInstance(){
 RobotController::RobotController(){
   robot = new webots::Robot();
   wheel_controller = new WheelController(robot);
-  arm_controller = new ArmController(robot);
+  arm_controller = new ArmController(robot, 1.0);
   
   camera = robot->getCamera("front_CAM");
   camera->enable(TIME_STEP);
@@ -40,8 +40,24 @@ void RobotController::Turn(double deg) {
   wheel_controller->SetRotation(deg * 0.0091111);
 }
 
-void RobotController::MoveArm(char direction, double velocity){
-  arm_controller->PowerJointMotors(direction, velocity);
+void RobotController::MoveArm(char direction, double rotation){
+  switch (direction) {
+  case 'u':
+    arm_controller->Rotate(+rotation);
+    break;
+
+  case 'd':
+    arm_controller->Rotate(-rotation);
+    break;
+
+  case 'l':
+    arm_controller->Rotate(ArmController::ROTATABLE_BASE, +rotation);
+    break;
+
+  case 'r':
+    arm_controller->Rotate(ArmController::ROTATABLE_BASE, -rotation);
+    break;
+  }
 }
 
 double RobotController::getWeightOfStoredObject(){
@@ -56,4 +72,5 @@ RobotController::~RobotController(){
   delete camera;
   delete touch_sensor;
 }
+
 }
