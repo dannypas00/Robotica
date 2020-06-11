@@ -43,7 +43,7 @@ public:
 
   /// @brief Order robotarm to move in certain direction.
   /// @param char direction The direction given as the characters: 'l' for left, 'r' for right, 'f'for forward and 'b' for backwards.
-  /// @param double velocity The velocity stands for radians per second the joints in the arm should rotate.
+  /// @param double rotation The rotation stands for the amount of degrees the joints in the arm should rotate.
   /// @return void
   void MoveArm(char direction, double rotation);
 
