@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
   // - perform simulation steps until Webots is stopping the controller
   while (RobotController::getInstance().getRobot().step(timeStep) != -1) {
     //RobotController::getInstance().MoveUnits(1.0, 'f');
-    std::cout << RobotController::getInstance().getWeightOfStoredObject() << std::endl;
+    std::cout << RobotController::getInstance().getDistanceFront() << std::endl;
     int pressed_key = keyboard.getKey();
     switch(pressed_key){
     case Keyboard::UP:

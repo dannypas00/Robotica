@@ -14,11 +14,21 @@ RobotController::RobotController(){
   wheel_controller = new WheelController(robot);
   arm_controller = new ArmController(robot);
   
+  this->initSensors();
+}
+
+void RobotController::initSensors(){
   camera = robot->getCamera("front_CAM");
   camera->enable(TIME_STEP);
   
   touch_sensor = robot->getTouchSensor("touch_sensor");
   touch_sensor->enable(TIME_STEP);
+  
+  distance_sensor_front = robot->getDistanceSensor("distance_sensor_front");
+  distance_sensor_front->enable(TIME_STEP);
+  
+  distance_sensor_back = robot->getDistanceSensor("distance_sensor_back");
+  distance_sensor_back->enable(TIME_STEP);
 }
 
 
@@ -47,6 +57,14 @@ void RobotController::MoveArm(char direction, double velocity){
 double RobotController::getWeightOfStoredObject(){
   const double* force = touch_sensor->getValues();
   return (sqrt((force[0]*force[0])+(force[1]*force[1])+(force[2]*force[2]))/3.73);
+}
+
+double RobotController::getDistanceFront(){
+  return distance_sensor_front->getValue();
+}
+
+double RobotController::getDistanceBack(){
+  return distance_sensor_back->getValue();
 }
 
 RobotController::~RobotController(){
