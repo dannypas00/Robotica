@@ -29,6 +29,9 @@ void RobotController::initSensors(){
   
   distance_sensor_back = robot->getDistanceSensor("distance_sensor_back");
   distance_sensor_back->enable(TIME_STEP);
+  
+  led_left = robot->getLED("LED_left");
+  led_right = robot->getLED("LED_right");
 }
 
 
@@ -65,6 +68,24 @@ double RobotController::getDistanceFront(){
 
 double RobotController::getDistanceBack(){
   return distance_sensor_back->getValue();
+}
+
+void RobotController::setLED(int r, int g, int b, int number) {
+  int color = ((( r << 8) | g) <<8) | b;
+  switch(number){
+    case 0:
+      led_left->set(color);
+      led_right->set(color);
+      break;
+    case 1:
+      led_left->set(color);
+      led_right->set(0);
+      break;
+    case 2:
+      led_left->set(0);
+      led_right->set(color);
+      break;
+  }
 }
 
 RobotController::~RobotController(){

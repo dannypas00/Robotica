@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
   int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
   Keyboard keyboard = Keyboard();
   keyboard.enable(32);
-
+  RobotController::getInstance().setLED(255, 255, 255);
   //NSA nsa = NSA();
   //MeasureWeightController weightController = MeasureWeightController();
   //TransportRockStrategy strategy = TransportRockStrategy(weightController);
@@ -63,18 +63,22 @@ int main(int argc, char **argv) {
     case Keyboard::RIGHT:
       RobotController::getInstance().Drive('r', 1.0);
       break;
-      /*case 'W':
-      RobotController::getInstance().MoveArm('u', 1.0);
+    case 'W':
+      //RobotController::getInstance().MoveArm('u', 1.0);
+      RobotController::getInstance().setLED(255, 0, 0);
       break;
-      case 'S':
-      RobotController::getInstance().MoveArm('d', 1.0);
+    case 'S':
+    RobotController::getInstance().setLED(0, 255, 0, 1);
+      //RobotController::getInstance().MoveArm('d', 1.0);
       break;
-      case 'A':
-      RobotController::getInstance().MoveArm('l', 1.0);
+    case 'A':
+    RobotController::getInstance().setLED(0, 0, 255, 2);
+      //RobotController::getInstance().MoveArm('l', 1.0);
       break;
-      case 'D':
-      RobotController::getInstance().MoveArm('r', 1.0);
-      break;*/
+    case 'D':
+    RobotController::getInstance().setLED(255, 255, 255);
+      //RobotController::getInstance().MoveArm('r', 1.0);
+      break;
     default:
       //RobotController::getInstance().Drive('f', 0.0);
       //RobotController::getInstance().MoveArm('l', 0.0);

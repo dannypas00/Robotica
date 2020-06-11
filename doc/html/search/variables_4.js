@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['touch_5fsensor_62',['touch_sensor',['../classbungie_1_1RobotController.html#aae311b0450d8418dced647c6f29b8332',1,'bungie::RobotController']]]
+  ['motors_76',['motors',['../classbungie_1_1ArmController.html#aa9732e5c57ae2142c4a3213bb4bb6c6a',1,'bungie::ArmController::motors()'],['../classbungie_1_1WheelController.html#a5a3e5ef1b3b76b17a015e118ec9245c9',1,'bungie::WheelController::motors()']]]
 ];

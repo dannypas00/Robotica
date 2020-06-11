@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['motors_60',['motors',['../classbungie_1_1ArmController.html#aa9732e5c57ae2142c4a3213bb4bb6c6a',1,'bungie::ArmController::motors()'],['../classbungie_1_1WheelController.html#a5a3e5ef1b3b76b17a015e118ec9245c9',1,'bungie::WheelController::motors()']]]
+  ['distance_5fsensor_5fback_72',['distance_sensor_back',['../classbungie_1_1RobotController.html#aa0bc1f2ae133461fbfeaf9e63af04282',1,'bungie::RobotController']]],
+  ['distance_5fsensor_5ffront_73',['distance_sensor_front',['../classbungie_1_1RobotController.html#a89d883cf8fe6082f527b35ac2c977704',1,'bungie::RobotController']]]
 ];

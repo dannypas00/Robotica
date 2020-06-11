@@ -7,6 +7,7 @@
 #include <webots/DistanceSensor.hpp>
 #include <webots/Camera.hpp>
 #include <webots/Keyboard.hpp>
+#include <webots/LED.hpp>
 
 #include "WheelController.hpp"
 #include "ArmController.hpp"
@@ -63,6 +64,14 @@ public:
   /// @brief Get distance meassured with the back distance sensor in meters.
   /// @return double Distance returned by the back sensor.
   double getDistanceBack();
+  
+  /// @brief Set the LED's of the robot on or off with given color.
+  /// @param int r The red value for the color from 0 to 255.
+  /// @param int g The green value for the color from 0 to 255.
+  /// @param int b The blue value for the color from 0 to 255.
+  /// @param int number To switch between powering all LED's = 0, the left LED's = 1 and right LED's = 2.
+  /// @return void
+  void setLED(int r, int g, int b, int number = 0);
 
   /// @brief Get the WeBots Robot object.
   /// @return webots::Robot& Reference to the WeBots Robot object.
@@ -93,6 +102,12 @@ private:
   
   /// @brief The instance of the WeBots DistanceSensor.
   webots::DistanceSensor* distance_sensor_back; 
+  
+  /// @brief The instance of the WeBots LED.
+  webots::LED* led_left;
+  
+  /// @brief The instance of the WeBots LED.
+  webots::LED* led_right;
   
   /// @brief The private constructor of the singleton RobotController.
   RobotController();
