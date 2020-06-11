@@ -13,6 +13,8 @@
 #include "MachineIntelligence/Strategies/TransportRockStrategy.h"
 #include "MachineIntelligence/NSA.h"
 #include "TCPServer/TCPServer.hpp" 
+#include "TCPServer/IObserver.hpp" 
+#include "TCPServer/ISubject.hpp" 
 #include <thread>
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
@@ -41,6 +43,9 @@ int main(int argc, char **argv) {
   keyboard.enable(32);
   
   std::cout << "Hello, world!" << std::endl;
+
+  TCPServerObserver observerA = TCPServerObserver();
+  TCPServer::getInstance().registObserver(observerA);
  
     NSA nsa = NSA();
     MeasureWeightController weightController = MeasureWeightController();

@@ -4,7 +4,10 @@
 #include <string.h>
 #include <sys/types.h>
 #include <time.h>
+#include <vector>
 #include <iostream>
+
+#include "ISubject.hpp"
 // #include <webots/distance_sensor.h>
 // #include <webots/led.h>
 // #include <webots/light_sensor.h>
@@ -35,11 +38,16 @@
 
 namespace bungie {
 
-class TCPServer {
+class TCPServer : public TCPServerSubject {
   public:
     static TCPServer& getInstance();
     void test();
     void run();
+
+    
+    void registObserver(TCPServerObserver _observer);
+    void removeObserver(TCPServerObserver _observer);
+    void notifyObservers(std::string _key, std::string _value);
     
   private:
     static TCPServer _instance;
@@ -47,5 +55,7 @@ class TCPServer {
     void initialize();
     int create_socket_server(int port);
     int accept_client(int server_fd);
+
+    std::vector<TCPServerObserver> _observers;
 };
 }

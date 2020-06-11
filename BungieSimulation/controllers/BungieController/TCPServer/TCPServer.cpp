@@ -1,6 +1,6 @@
 #include "TCPServer.hpp"
 
-using namespace std;
+//using namespace std;
 
 namespace bungie{
 static int serverSocket;
@@ -16,6 +16,9 @@ TCPServer& TCPServer::getInstance(){
 TCPServer::TCPServer(){
   // create the TCPServer instance.
   printf("Creating TCPServer\n");
+
+  _observers = std::vector<TCPServerObserver>();
+
   initialize();
 }
 // Testing Function (Remove before rollout)
@@ -146,5 +149,29 @@ void TCPServer::run() {
   // Handle Commands Here:
   printf("Received %d bytes: %s\n", command, msg);
 
+  std::string a = "key";
+  std::string b = "1234";
+  notifyObservers(a, b);
+
 }
+
+void TCPServer::registObserver(TCPServerObserver _observer){
+  _observers.push_back(_observer);
+}
+
+void TCPServer::removeObserver(TCPServerObserver _observer){
+  for(int i = 0; i < _observers.size(); i++){
+    if(&_observers[i] == &_observer){
+     _observers.erase(_observers.begin() + i);
+    }
+  }
+}
+
+void TCPServer::notifyObservers(std::string _key, std::string _value){
+  for(int i = 0; i < _observers.size(); i++){
+    _observers[i].update( _key,  _value);
+  }
+}
+
+
 }
