@@ -1,0 +1,27 @@
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #5a5a5a;
+}
+
+.content-block {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#playerDiv {
+  /*height: calc(100% - 150px);*/
+  height: 100%;
+  width: 100%;
+}
+
+.test {
+  margin: 0;
+  padding:0;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
