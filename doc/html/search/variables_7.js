@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wheel_5fcontroller_79',['wheel_controller',['../classbungie_1_1RobotController.html#a527992f4e9281b0411b000948f3accf1',1,'bungie::RobotController']]]
+  ['velocity_91',['velocity',['../classbungie_1_1ArmController.html#a2753dcac8a764a9b66860170b8389fca',1,'bungie::ArmController']]]
 ];
