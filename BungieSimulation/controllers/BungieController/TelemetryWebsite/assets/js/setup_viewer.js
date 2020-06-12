@@ -50,16 +50,57 @@ function connect() {
   ipInput.disabled = true;
   portInput.disabled = true;
 
+  // Hide loading divs and show content from WeBots
+  $('#robot-data-status-waiting').hide();
+  $('#robot-data-warnings-waiting').hide();
+  $('#robot-data-status').show();
+  $('#robot-data-warnings').show();
+
   // Subscribe to the Console/Terminal of the WeBots UI
   $('.webotsConsoleLogs').bind('DOMSubtreeModified', function(){
+    // Get data and reset fields
     let data = $('.webotsConsoleLogs').contents();
-    $('#robot-data').empty();
+    $('#robot-data-status').empty();
+    $('#robot-data-warnings').empty();
+    // Latest and currently running action
+    let currentAction = null;
     // Based on the values form WeBots itself, we append them to the side div
-    // TODO: Add styling based on output, sort them based on type (warning/executing/position)
     for (i = 0; i < data.length; i++) {
-      $('#robot-data').append('<li class="list-group-item">' + data[i].innerHTML + '</li>');
+      let splitData = data[i].innerHTML.split(" ");
+
+      if (splitData[1] == "[ACTION]" || splitData[1] == "[STATUS]") {
+        let color = ((splitData[1] == "[ACTION]") ? 'blue' : 'green');
+        $('#robot-data-status').append('<li class="list-group-item" style="color: ' + color + '">' + data[i].innerHTML + '</li>');
+        if (splitData[1] == "[ACTION]") {
+          currentAction = data[i].innerHTML;
+        }
+      } else {
+        $('#robot-data-warnings').append('<li class="list-group-item">' + data[i].innerHTML + '</li>');
+      }
     }
+
+    // Done getting data, check current task
+    if (currentAction != null) {
+      let splitAction = currentAction.split(" ");
+      splitAction.splice(splitAction[0], 2);
+      $('#currentAction').html('<span style="font-weight: bold;">Last Command: </span><span style="color: blue; font-weight: bold;"> ' + splitAction.join(" ") + '</span>');
+    }
+
   });
+}
+
+/*
+* Clear all console data, hide and show certain divs
+*/
+function clearConsole() {
+  $('#robot-data-status').empty();
+  $('#robot-data-warnings').empty();
+  $('#currentAction').empty();
+  $('.webotsConsoleLogs').empty();
+  $('#robot-data-status-waiting').show();
+  $('#robot-data-warnings-waiting').show();
+  $('#robot-data-status').hide();
+  $('#robot-data-warnings').hide();
 }
 
 /*
@@ -74,7 +115,7 @@ function disconnect() {
   connectButton.onclick = connect;
   ipInput.disabled = false;
   portInput.disabled = false;
-  $('#robot-data').empty();
+  clearConsole();
 }
 
 window.addEventListener('load', init, false);
