@@ -15,39 +15,46 @@ namespace Client_side
         {
 
         }
-
+        /// <summary>
+        /// De functie die word aangeroepen als er op Spraak word gedrukt in de controller.
+        /// </summary>
         public static void ExecProcess()
         {
-            // 1) Create process info
+            // 1) Het aanmaken van het proces en de interpreter klaar zetten om code uit te kunnen voeren binnen C#.
             var psi = new ProcessStartInfo();
+            //Door middel van de Path.Combine en de specialfolder environment, kan er een deel van het pad naar de python.exe (interpreter) worden weggenomen. 
+            // Hierdoor kan het gemakkelijker door andere mensen gebruikt worden. Aangezien vanuit die folders het pad hetzelfde is.
             psi.FileName = Path.Combine(Environment.GetFolderPath(
             Environment.SpecialFolder.ApplicationData), @"..\Local\Programs\Python\Python38\python.exe");
 
-            // 2) Provide script and arguments
-            // Script locatie can be found through the Solution Explorer and clicking the backup2.py file and copying
-            // the Full path into the script variable between the "".
+            // 2) Aanlevering van het uit te voeren stuk python code.
+            // Script locatie kan gevonden worden binnen de Solution Explorer en daarvandaan kan het full path binnen de  "" gekopieerd worden.
 
             var script = @"Z:\ICT\Robotica\GitHub\Robotica\Robotica\backup2.py";
             
             psi.Arguments = $"\"{script}";
 
-            // 3) Process configuration
+            // 3) Optie calibratie
+            // Hier worden een paar opties goed gezet, zodat de output en error meldingen er goed uitkomen.
             psi.UseShellExecute = false;
             psi.CreateNoWindow = true;
             psi.RedirectStandardOutput = true;
             psi.RedirectStandardError = true;
 
-            // 4) Execute process and get output
+            // 4) Voert de python code uit en slaat ze op in de desbetreffende variabelen.
             var errors = "";
             var results = "";
 
+            //Hier word het proces gestart om de python code te runnen en worden ze in de variabelen opgeslagen.
             using (var process = Process.Start(psi))
             {
                 errors = process.StandardError.ReadToEnd();
                 results = process.StandardOutput.ReadToEnd();
             }
 
-            // 5) Send the commands to the Robot
+            // 5) Stuurt commando's naar de Robot en verwerkt ze.
+            // Ik wou de commando's hier nog om zetten in allemaal kleine letters en de \r\n erachter weg wipen maar dat wou eerst nog niet lukken. 
+            // Het had iets te maken met dat de input van python komt en dat ik het hier dan moeilijk kan filteren. 
             
             string givenCommand = results;
             string preppedCommand;
