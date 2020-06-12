@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
       Py_XDECREF(pFunc);
       Py_DECREF(pModule);
       
-      std::cout << "return value: " << pValue << std::endl;
+      std::cout << "return value: " << PyBytes_AS_STRING(pValue) << std::endl;
   }
   else {
       PyErr_Print();

@@ -4,4 +4,4 @@ def a():
     print("aaaa")
     
 def returnValue():
-    return "100"
+    return bytes("fakka", 'utf-8')
