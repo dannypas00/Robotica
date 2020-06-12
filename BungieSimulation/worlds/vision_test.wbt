@@ -18,8 +18,8 @@ WorldInfo {
 }
 Viewpoint {
   fieldOfView 0.895398
-  orientation -0.42142940546048796 0.8948782821830993 0.14693575565615408 0.9209913101398115
-  position 4.432334826771465 1.0428395424131105 4.068630235003456
+  orientation -0.5143464281307928 0.8340899458156623 0.19935323964842042 0.7452438316752471
+  position 0.03267499841050553 0.0588147533114352 0.3100029712304321
   near 0.1
   followType "Mounted Shot"
 }
@@ -79,11 +79,19 @@ DEF GROUND Solid {
   boundingObject USE GROUND_SHAPE
   locked TRUE
 }
+Bron {
+  translation -0.2 -0.1 0
+  color 0.905882 0.854902 0.0431373
+}
+Rock-sizeable {
+  translation 4.352330773327069 -0.009655075086745964 1.4864509305977875
+  rotation 0.22968176607349827 0.9402856678536142 0.2512153442018248 3.0394675257426047
+}
 DEF MoonSurvival Transform {
   children [
     Solid {
-      translation 4.236774065323187 3.4463736537909675 -3.274950658930098
-      rotation 0.3733088007043023 0.35656818971239895 0.8564459500762076 -1.5854099303296332
+      translation 4.238942853536787 3.4457546435031663 -3.2759699977202152
+      rotation 0.3730763600583572 0.35690108755590644 0.856408572625834 -1.5857002679500312
       children [
         DEF Beker-indi Transform {
           translation 4.7684 -0.0451 -0.0423
@@ -236,6 +244,46 @@ DEF MoonSurvival Transform {
   ]
 }
 SurveyorSrv1 {
-  translation 2.79 0.05 1.93
+  hidden position_0_0 6.865861267367453e-11
+  hidden position_0_1 7.457301011947545e-11
+  hidden position_0_2 8.048749319524057e-11
+  hidden position_0_3 -8.640221963399506e-11
+  hidden position_0_4 -9.231606632066671e-11
+  hidden position_0_5 3.7719340609613016e-11
+  hidden position_0_6 -4.363395341405438e-11
+  hidden position_0_7 -4.9549104380724804e-11
+  hidden position_0_8 5.5462363440907644e-11
+  hidden position_0_9 6.137705749898823e-11
+  translation 2.790953044090658 -0.03286047060534178 1.9283096785024108
+  rotation -0.02047550260006368 0.9995906323625667 -0.01998302995741557 1.546740887524568
   controller "RobotVisionTestController"
+}
+Solid {
+  translation -0.2 0.3 1.74
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "D:/programming/workspace/python/OpenCV Workshop/objectrecognition/QR-code-Schoppen.png"
+          ]
+        }
+        roughnessMap ImageTexture {
+        }
+        metalness 0
+        normalMap ImageTexture {
+        }
+        occlusionMap ImageTexture {
+        }
+      }
+      geometry Box {
+        size 0.6 0.6 0.6
+      }
+    }
+  ]
+  name "wooden box"
+  model "wooden box"
+  boundingObject Box {
+    size 0.6 0.6 0.6
+  }
 }

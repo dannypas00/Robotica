@@ -43,12 +43,10 @@
 ###
 ### ---- Compilation options ----
 ### if special compilation flags are necessary:
-### CFLAGS = -Wno-unused-result
+#CFLAGS = -g
 ###
 ### ---- Linked libraries ----
 ### if your program needs additional libraries:
-#INCLUDE = -I"C:\opencv\build\include"
-#LIBRARIES = -L"C:\opencv\build\bin" -opencv_videoio_ffmpeg430_64
 ###
 ### ---- Linking options ----
 ### if special linking flags are needed:
@@ -61,7 +59,10 @@
 ### ---- Debug mode ----
 ### if you want to display the gcc command line for compilation and link, as
 ### well as the rm command details used for cleaning:
-#VERBOSE = 1
+INCLUDE = -I"D:\programming\python\include"
+LIBRARIES = -L"D:\programming\python" -lpython3 -lpython37
+
+VERBOSE = 1
 ###
 ###-----------------------------------------------------------------------------
 
