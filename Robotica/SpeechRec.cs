@@ -17,6 +17,8 @@ namespace Client_side
         }
         /// <summary>
         /// De functie die word aangeroepen als er op Spraak word gedrukt in de controller.
+        /// Om de Python code te laten werken zijn er twee libraries nodig, deze zijn te downloaden via twee PIP commando's 
+        /// pip install speechrecognition AND pip install PyAudio
         /// </summary>
         public static void ExecProcess()
         {
