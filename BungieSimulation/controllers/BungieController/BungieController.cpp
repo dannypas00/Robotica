@@ -1,14 +1,14 @@
-// File:          bungie_controller.cpp
-// Date:
-// Description:
-// Author:
+// File:           bungie_controller.cpp
+// Date:           10/06/2020
+// Description:    Main class for the controller
+// Author:         Ghosts
 // Modifications:
 
-// You may need to add webots include files such as
-// <webots/DistanceSensor.hpp>, <webots/Motor.hpp>, etc.
-// and/or to add some other includes
 #include <RobotController/RobotController.hpp>
 #include <webots/Keyboard.hpp>
+
+#include <iostream>
+
 #include "MachineIntelligence/MeasureWeightController.h"
 #include "MachineIntelligence/Strategies/TransportRockStrategy.h"
 #include "MachineIntelligence/NSA.h"
@@ -17,37 +17,38 @@
 using namespace webots;
 using namespace bungie;
 
-// This is the main program of your controller.
+// This is the main program of the controller.
 // It creates an instance of your Robot instance, launches its
 // function(s) and destroys it at the end of the execution.
 // Note that only one instance of Robot should be created in
 // a controller program.
 // The arguments of the main function can be specified by the
 // "controllerArgs" field of the Robot node
+
+/// @brief The main function of the controller
+/// @param int argc The amount of arguments passed to the main function.
+/// @param char **argv An array of c-style strings containing the arguments passed to the main function.
+/// @return int, 0 if no errors accured.
 int main(int argc, char **argv) {
   // get the time step of the current world.
   int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
-  // You should insert a getDevice-like function in order to get the
-  // instance of a device of the robot. Something like:
-  //  Motor *motor = robot->getMotor("motorname");
-  //  DistanceSensor *ds = robot->getDistanceSensor("dsname");
-  //  ds->enable(timeStep);
   Keyboard keyboard = Keyboard();
   keyboard.enable(32);
+  RobotController::getInstance().setLED(255, 255, 255);
+  //NSA nsa = NSA();
+  //MeasureWeightController weightController = MeasureWeightController();
+  //TransportRockStrategy strategy = TransportRockStrategy(weightController);
+  //MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
+  //nsa.ExecuteAssignment(strategy);
   
-  std::cout << "Hello, world!";
-    NSA nsa = NSA();
-    MeasureWeightController weightController = MeasureWeightController();
-    TransportRockStrategy strategy = TransportRockStrategy(weightController);
-    //MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
-    nsa.ExecuteAssignment(strategy);
+  //RobotController::getInstance().DriveUnits('f', 5);
+  RobotController::getInstance().Turn(90);
   
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
   while (RobotController::getInstance().getRobot().step(timeStep) != -1) {
-    // Read the sensors:
-    // Enter here functions to read sensor data, like:
-    //  double val = ds->getValue();
+    //RobotController::getInstance().MoveUnits(1.0, 'f');
+    std::cout << RobotController::getInstance().getDistanceFront() << std::endl;
     int pressed_key = keyboard.getKey();
     switch(pressed_key){
     case Keyboard::UP:
@@ -62,17 +63,30 @@ int main(int argc, char **argv) {
     case Keyboard::RIGHT:
       RobotController::getInstance().Drive('r', 1.0);
       break;
+    case 'W':
+      RobotController::getInstance().MoveArm('u', 12.0);
+      RobotController::getInstance().setLED(255, 0, 0);
+      break;
+    case 'S':
+      RobotController::getInstance().MoveArm('d', 12.0);
+      RobotController::getInstance().setLED(0, 255, 0, 1);
+      break;
+    case 'A':
+      RobotController::getInstance().MoveArm('l', 12.0);
+      RobotController::getInstance().CloseGrabber();
+      RobotController::getInstance().setLED(0, 0, 255, 2);
+      break;
+    case 'D':
+      RobotController::getInstance().MoveArm('r', 12.0);
+      RobotController::getInstance().OpenGrabber();
+      RobotController::getInstance().setLED(255, 255, 255);
+      break;
     default:
       RobotController::getInstance().Drive('f', 0.0);
+      break;
     }
-    
-    // Process sensor data here.
-
-    // Enter here functions to send actuator commands, like:
-    //  motor->setPosition(10.0);
   };
-
-  // Enter here exit cleanup code.
+  // Exit and cleanup code.
   
   return 0;
 }
