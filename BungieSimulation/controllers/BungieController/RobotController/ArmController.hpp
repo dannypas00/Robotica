@@ -88,6 +88,8 @@ public:
   /// @return void
   void SetRotation(Device device, double angle);
   
+  void RotateGrabberJoints(double position);
+  
   /// @brief Deconstructs the ArmController instance.
   ~ArmController();
 

@@ -73,6 +73,14 @@ void RobotController::MoveArm(char direction, double rotation){
   }
 }
 
+void RobotController::OpenGrabber(){
+  arm_controller->RotateGrabberJoints(60);
+}
+
+void RobotController::CloseGrabber(){
+  arm_controller->RotateGrabberJoints(0);
+}
+
 double RobotController::getWeightOfStoredObject(){
   const double* force = touch_sensor->getValues();
   return (sqrt((force[0]*force[0])+(force[1]*force[1])+(force[2]*force[2]))/3.73);

@@ -85,6 +85,20 @@ void ArmController::SetRotation(Device device, double angle) {
       break;
   }
 }
+
+void ArmController::RotateGrabberJoints(double position){
+  this->motors[LEFT_CLAW_JOINT]->setPosition(this->convertDegToRad(position));
+  this->motors[RIGHT_CLAW_JOINT]->setPosition(this->convertDegToRad(position));
+  
+  double last_position = 0;
+  
+  while(this->positionSensors[LEFT_CLAW_JOINT]->getValue() != last_position){
+    last_position = this->positionSensors[LEFT_CLAW_JOINT]->getValue();
+    if (this->robot->step(this->robot->getBasicTimeStep()) == -1)
+      break;
+  }
+}
+
 double ArmController::convertRadToDeg(const double radians) {
   static constexpr auto DEGREES_PER_RADIAN = 360.0/(2.0*M_PI);
   return radians * DEGREES_PER_RADIAN;

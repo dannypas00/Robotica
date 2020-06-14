@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['powermotors_26',['PowerMotors',['../classbungie_1_1WheelController.html#aeb3c0dc70c270aceebb68a89a1736d45',1,'bungie::WheelController']]]
+  ['opengrabber_27',['OpenGrabber',['../classbungie_1_1RobotController.html#ab927c78e59658c3219aa2d838b04a17b',1,'bungie::RobotController']]]
 ];

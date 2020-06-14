@@ -47,6 +47,14 @@ public:
   /// @param double rotation The rotation stands for the amount of degrees the joints in the arm should rotate.
   /// @return void
   void MoveArm(char direction, double rotation);
+  
+  /// @brief Opens the grabber of the robot arm.
+  /// @return void
+  void OpenGrabber();
+  
+  /// @brief Closes the grabber of the robot arm.
+  /// @return void
+  void CloseGrabber();
 
   /// @brief Get the image of the camera at executed tick.
   /// @return const unsigned char* Camera image given by the camera on the robot.

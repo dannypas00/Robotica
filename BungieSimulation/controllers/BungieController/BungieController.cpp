@@ -73,10 +73,12 @@ int main(int argc, char **argv) {
       break;
     case 'A':
       RobotController::getInstance().MoveArm('l', 12.0);
+      RobotController::getInstance().CloseGrabber();
       RobotController::getInstance().setLED(0, 0, 255, 2);
       break;
     case 'D':
       RobotController::getInstance().MoveArm('r', 12.0);
+      RobotController::getInstance().OpenGrabber();
       RobotController::getInstance().setLED(255, 255, 255);
       break;
     default:

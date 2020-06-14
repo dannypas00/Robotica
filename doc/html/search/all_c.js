@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['vector3_37',['Vector3',['../classbungie_1_1Vector3.html',1,'bungie']]],
-  ['velocity_38',['velocity',['../classbungie_1_1ArmController.html#a2753dcac8a764a9b66860170b8389fca',1,'bungie::ArmController']]],
-  ['visioncontroller_39',['VisionController',['../classbungie_1_1VisionController.html',1,'bungie']]]
+  ['touch_5fsensor_37',['touch_sensor',['../classbungie_1_1RobotController.html#aae311b0450d8418dced647c6f29b8332',1,'bungie::RobotController']]],
+  ['turn_38',['Turn',['../classbungie_1_1RobotController.html#aff2c04784b7ea54509d9b23949c73239',1,'bungie::RobotController']]]
 ];
