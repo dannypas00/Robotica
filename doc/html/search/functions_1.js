@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['drive_49',['Drive',['../classbungie_1_1RobotController.html#acfca05a041bca4b630b82a48fe523cc6',1,'bungie::RobotController']]],
-  ['driveunits_50',['DriveUnits',['../classbungie_1_1RobotController.html#afe2ed120c903924879945b433978a7da',1,'bungie::RobotController']]]
+  ['convertdegtorad_56',['convertDegToRad',['../classbungie_1_1ArmController.html#a115ccdef87603effb1048f0479817b6d',1,'bungie::ArmController']]],
+  ['convertradtodeg_57',['convertRadToDeg',['../classbungie_1_1ArmController.html#ae33263ba8c1c6eed41f674b89a96845f',1,'bungie::ArmController']]]
 ];

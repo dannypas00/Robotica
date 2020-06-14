@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['setled_62',['setLED',['../classbungie_1_1RobotController.html#a1d197bff019afa569741f97b8e2ec503',1,'bungie::RobotController']]],
-  ['setmotorsposition_63',['SetMotorsPosition',['../classbungie_1_1WheelController.html#a2616cba09676340c81d2d62cd6209d09',1,'bungie::WheelController']]],
-  ['setrotation_64',['SetRotation',['../classbungie_1_1WheelController.html#a62ef1c1886eaea47013e18330104f63d',1,'bungie::WheelController']]]
+  ['robotcontroller_70',['RobotController',['../classbungie_1_1RobotController.html#acfc2413cc5838f0612137baff790b0da',1,'bungie::RobotController::RobotController()'],['../classbungie_1_1RobotController.html#a11b3b2e1afdbcdd9b7cf68ab0145a9c5',1,'bungie::RobotController::RobotController(const RobotController &amp;)=default'],['../classbungie_1_1RobotController.html#a726c9af77325de328f7506b5e016a0a1',1,'bungie::RobotController::RobotController(RobotController &amp;&amp;)=default']]],
+  ['rotate_71',['Rotate',['../classbungie_1_1ArmController.html#af93d6ab8667a6f80c06f73cc957e562c',1,'bungie::ArmController::Rotate(double rotation)'],['../classbungie_1_1ArmController.html#a74ec352581144580d24daef8f1286686',1,'bungie::ArmController::Rotate(double base_rotation, double shoulder_rotation, double elbow_rotation, double wrist_rotation)'],['../classbungie_1_1ArmController.html#a4ae8e60a8369fb1fc815e155c130b3f6',1,'bungie::ArmController::Rotate(double shoulder_rotation, double elbow_rotation, double wrist_rotation)'],['../classbungie_1_1ArmController.html#a1212dfd910ea12d51cf82e90627b0660',1,'bungie::ArmController::Rotate(Device device, double rotation)']]]
 ];

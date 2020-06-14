@@ -87,9 +87,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aff2c04784b7ea54509d9b23949c73239"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1RobotController.html#aff2c04784b7ea54509d9b23949c73239">Turn</a> (double deg)</td></tr>
 <tr class="memdesc:aff2c04784b7ea54509d9b23949c73239"><td class="mdescLeft">&#160;</td><td class="mdescRight">Order robot to turn to a certain angle.  <a href="classbungie_1_1RobotController.html#aff2c04784b7ea54509d9b23949c73239">More...</a><br /></td></tr>
 <tr class="separator:aff2c04784b7ea54509d9b23949c73239"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af26c7c092d64f9bb66416f9ab3b3b815"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1RobotController.html#af26c7c092d64f9bb66416f9ab3b3b815">MoveArm</a> (char direction, double velocity)</td></tr>
-<tr class="memdesc:af26c7c092d64f9bb66416f9ab3b3b815"><td class="mdescLeft">&#160;</td><td class="mdescRight">Order robotarm to move in certain direction.  <a href="classbungie_1_1RobotController.html#af26c7c092d64f9bb66416f9ab3b3b815">More...</a><br /></td></tr>
-<tr class="separator:af26c7c092d64f9bb66416f9ab3b3b815"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a430d7c7fd582400892aef94b0b569899"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1RobotController.html#a430d7c7fd582400892aef94b0b569899">MoveArm</a> (char direction, double rotation)</td></tr>
+<tr class="memdesc:a430d7c7fd582400892aef94b0b569899"><td class="mdescLeft">&#160;</td><td class="mdescRight">Order robotarm to move in certain direction.  <a href="classbungie_1_1RobotController.html#a430d7c7fd582400892aef94b0b569899">More...</a><br /></td></tr>
+<tr class="separator:a430d7c7fd582400892aef94b0b569899"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97d68e4540b5072d394402c139507373"><td class="memItemLeft" align="right" valign="top">const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1RobotController.html#a97d68e4540b5072d394402c139507373">getCamera</a> ()</td></tr>
 <tr class="memdesc:a97d68e4540b5072d394402c139507373"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the image of the camera at executed tick.  <a href="classbungie_1_1RobotController.html#a97d68e4540b5072d394402c139507373">More...</a><br /></td></tr>
 <tr class="separator:a97d68e4540b5072d394402c139507373"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -492,8 +492,8 @@ webots::LED *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 
 </div>
 </div>
-<a id="af26c7c092d64f9bb66416f9ab3b3b815"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af26c7c092d64f9bb66416f9ab3b3b815">&#9670;&nbsp;</a></span>MoveArm()</h2>
+<a id="a430d7c7fd582400892aef94b0b569899"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a430d7c7fd582400892aef94b0b569899">&#9670;&nbsp;</a></span>MoveArm()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -508,7 +508,7 @@ webots::LED *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>velocity</em>&#160;</td>
+          <td class="paramname"><em>rotation</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -522,7 +522,7 @@ webots::LED *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">char</td><td>direction The direction given as the characters: 'l' for left, 'r' for right, 'f'for forward and 'b' for backwards. </td></tr>
-    <tr><td class="paramname">double</td><td>velocity The velocity stands for radians per second the joints in the arm should rotate. </td></tr>
+    <tr><td class="paramname">double</td><td>rotation The rotation stands for the amount of degrees the joints in the arm should rotate. </td></tr>
   </table>
   </dd>
 </dl>
@@ -616,7 +616,7 @@ webots::LED *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 11 2020 18:53:32 for Bungie by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 12 2020 00:13:15 for Bungie by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

@@ -66,8 +66,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classbungie_1_1ArmController-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -80,45 +81,92 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="ArmController_8hpp_source.html">ArmController.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a288f8fb411cc2dba14d02cb6862cbd5f"><td class="memItemLeft" align="right" valign="top"><a id="a288f8fb411cc2dba14d02cb6862cbd5f"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#a288f8fb411cc2dba14d02cb6862cbd5f">Device</a> { <br />
+&#160;&#160;<b>ROTATABLE_BASE</b>, 
+<b>SHOULDER_JOINT</b>, 
+<b>ELBOW_JOINT</b>, 
+<b>WRIST_JOINT</b>, 
+<br />
+&#160;&#160;<b>TOTAL_DEVICES</b>
+<br />
+ }</td></tr>
+<tr class="memdesc:a288f8fb411cc2dba14d02cb6862cbd5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum, enumerating every device used in the arm. <br /></td></tr>
+<tr class="separator:a288f8fb411cc2dba14d02cb6862cbd5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a56eae05063df0b04d67ae6dc9e64ecb6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#a56eae05063df0b04d67ae6dc9e64ecb6">ArmController</a> (webots::Robot *robot)</td></tr>
-<tr class="memdesc:a56eae05063df0b04d67ae6dc9e64ecb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classbungie_1_1ArmController.html" title="Class used for controlling the arm of the Bungie Rover.">ArmController</a> instance.  <a href="classbungie_1_1ArmController.html#a56eae05063df0b04d67ae6dc9e64ecb6">More...</a><br /></td></tr>
-<tr class="separator:a56eae05063df0b04d67ae6dc9e64ecb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56bb70021c4fbaa31c28252b311db491"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#a56bb70021c4fbaa31c28252b311db491">PowerJointMotors</a> (char direction, double velocity)</td></tr>
-<tr class="memdesc:a56bb70021c4fbaa31c28252b311db491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the arm into the given direction.  <a href="classbungie_1_1ArmController.html#a56bb70021c4fbaa31c28252b311db491">More...</a><br /></td></tr>
-<tr class="separator:a56bb70021c4fbaa31c28252b311db491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc4d66d2e33932bbfa996bf4706b5a77"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#abc4d66d2e33932bbfa996bf4706b5a77">ArmController</a> (webots::Robot *<a class="el" href="classbungie_1_1ArmController.html#a71e60c0902fe562d8f8a3b14c3f45ba7">robot</a>, double <a class="el" href="classbungie_1_1ArmController.html#a2753dcac8a764a9b66860170b8389fca">velocity</a>=0.0)</td></tr>
+<tr class="memdesc:abc4d66d2e33932bbfa996bf4706b5a77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classbungie_1_1ArmController.html" title="Class used for controlling the arm of the Bungie Rover.">ArmController</a> instance.  <a href="classbungie_1_1ArmController.html#abc4d66d2e33932bbfa996bf4706b5a77">More...</a><br /></td></tr>
+<tr class="separator:abc4d66d2e33932bbfa996bf4706b5a77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef139862273dbf9e031ed4c3d2e3f5a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#aef139862273dbf9e031ed4c3d2e3f5a0">SetVelocity</a> (double <a class="el" href="classbungie_1_1ArmController.html#a2753dcac8a764a9b66860170b8389fca">velocity</a>)</td></tr>
+<tr class="memdesc:aef139862273dbf9e031ed4c3d2e3f5a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the velocity at which to rotate the arm.  <a href="classbungie_1_1ArmController.html#aef139862273dbf9e031ed4c3d2e3f5a0">More...</a><br /></td></tr>
+<tr class="separator:aef139862273dbf9e031ed4c3d2e3f5a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af93d6ab8667a6f80c06f73cc957e562c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#af93d6ab8667a6f80c06f73cc957e562c">Rotate</a> (double rotation)</td></tr>
+<tr class="memdesc:af93d6ab8667a6f80c06f73cc957e562c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience method, rotate every hingejoint in the arm.  <a href="classbungie_1_1ArmController.html#af93d6ab8667a6f80c06f73cc957e562c">More...</a><br /></td></tr>
+<tr class="separator:af93d6ab8667a6f80c06f73cc957e562c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74ec352581144580d24daef8f1286686"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#a74ec352581144580d24daef8f1286686">Rotate</a> (double base_rotation, double shoulder_rotation, double elbow_rotation, double wrist_rotation)</td></tr>
+<tr class="memdesc:a74ec352581144580d24daef8f1286686"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience method, rotating the base, shoulder, elbow and wrist joints.  <a href="classbungie_1_1ArmController.html#a74ec352581144580d24daef8f1286686">More...</a><br /></td></tr>
+<tr class="separator:a74ec352581144580d24daef8f1286686"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ae8e60a8369fb1fc815e155c130b3f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#a4ae8e60a8369fb1fc815e155c130b3f6">Rotate</a> (double shoulder_rotation, double elbow_rotation, double wrist_rotation)</td></tr>
+<tr class="memdesc:a4ae8e60a8369fb1fc815e155c130b3f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience method, rotating the shoulder, elbow and wrist joints.  <a href="classbungie_1_1ArmController.html#a4ae8e60a8369fb1fc815e155c130b3f6">More...</a><br /></td></tr>
+<tr class="separator:a4ae8e60a8369fb1fc815e155c130b3f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1212dfd910ea12d51cf82e90627b0660"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#a1212dfd910ea12d51cf82e90627b0660">Rotate</a> (<a class="el" href="classbungie_1_1ArmController.html#a288f8fb411cc2dba14d02cb6862cbd5f">Device</a> device, double rotation)</td></tr>
+<tr class="memdesc:a1212dfd910ea12d51cf82e90627b0660"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotates the specified joint the given amount of degrees.  <a href="classbungie_1_1ArmController.html#a1212dfd910ea12d51cf82e90627b0660">More...</a><br /></td></tr>
+<tr class="separator:a1212dfd910ea12d51cf82e90627b0660"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24af2eb64fde9f3db81bb226193c82ae"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#a24af2eb64fde9f3db81bb226193c82ae">GetRotation</a> (<a class="el" href="classbungie_1_1ArmController.html#a288f8fb411cc2dba14d02cb6862cbd5f">Device</a> device) const</td></tr>
+<tr class="memdesc:a24af2eb64fde9f3db81bb226193c82ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current rotation of the specified joint.  <a href="classbungie_1_1ArmController.html#a24af2eb64fde9f3db81bb226193c82ae">More...</a><br /></td></tr>
+<tr class="separator:a24af2eb64fde9f3db81bb226193c82ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6dd5a81bf1f61ebce28b2c9c51860a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#af6dd5a81bf1f61ebce28b2c9c51860a6">SetRotations</a> (double angle)</td></tr>
+<tr class="memdesc:af6dd5a81bf1f61ebce28b2c9c51860a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience method, sets the rotation of every hingejoint in the arm.  <a href="classbungie_1_1ArmController.html#af6dd5a81bf1f61ebce28b2c9c51860a6">More...</a><br /></td></tr>
+<tr class="separator:af6dd5a81bf1f61ebce28b2c9c51860a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a048fb655315f22cb46aab4b94a012496"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#a048fb655315f22cb46aab4b94a012496">SetRotations</a> (double base_angle, double shoulder_angle, double elbow_angle, double wrist_angle)</td></tr>
+<tr class="memdesc:a048fb655315f22cb46aab4b94a012496"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience method, sets the rotation of the base, shoulder, elbow and wrist joints.  <a href="classbungie_1_1ArmController.html#a048fb655315f22cb46aab4b94a012496">More...</a><br /></td></tr>
+<tr class="separator:a048fb655315f22cb46aab4b94a012496"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf88a529df6b43e64f75310d1f970223"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#aaf88a529df6b43e64f75310d1f970223">SetRotations</a> (double shoulder_angle, double elbow_angle, double wrist_angle)</td></tr>
+<tr class="memdesc:aaf88a529df6b43e64f75310d1f970223"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience method, sets the rotation of the shoulder, elbow and wrist joints.  <a href="classbungie_1_1ArmController.html#aaf88a529df6b43e64f75310d1f970223">More...</a><br /></td></tr>
+<tr class="separator:aaf88a529df6b43e64f75310d1f970223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0b7a3bbe0af6e5fd2210ac39716af17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#ac0b7a3bbe0af6e5fd2210ac39716af17">SetRotation</a> (<a class="el" href="classbungie_1_1ArmController.html#a288f8fb411cc2dba14d02cb6862cbd5f">Device</a> device, double angle)</td></tr>
+<tr class="memdesc:ac0b7a3bbe0af6e5fd2210ac39716af17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the rotation of the specified joint to the given angle.  <a href="classbungie_1_1ArmController.html#ac0b7a3bbe0af6e5fd2210ac39716af17">More...</a><br /></td></tr>
+<tr class="separator:ac0b7a3bbe0af6e5fd2210ac39716af17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5d404878c8612fd9ab35114a900a00b"><td class="memItemLeft" align="right" valign="top"><a id="af5d404878c8612fd9ab35114a900a00b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#af5d404878c8612fd9ab35114a900a00b">~ArmController</a> ()</td></tr>
 <tr class="memdesc:af5d404878c8612fd9ab35114a900a00b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deconstructs the <a class="el" href="classbungie_1_1ArmController.html" title="Class used for controlling the arm of the Bungie Rover.">ArmController</a> instance. <br /></td></tr>
 <tr class="separator:af5d404878c8612fd9ab35114a900a00b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
-Private Types</h2></td></tr>
-<tr class="memitem:a39693f87512b8e4f8b9e6c9d32cfaadf"><td class="memItemLeft" align="right" valign="top"><a id="a39693f87512b8e4f8b9e6c9d32cfaadf"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#a39693f87512b8e4f8b9e6c9d32cfaadf">Motor</a> { <br />
-&#160;&#160;<b>ARM_ROTATION_MOTOR</b>, 
-<b>ARM_BASE_MOTOR</b>, 
-<b>ARM_MID_MOTOR</b>, 
-<b>ARM_END_MOTOR</b>, 
-<br />
-&#160;&#160;<b>TOTAL_MOTORS</b>
-<br />
- }</td></tr>
-<tr class="memdesc:a39693f87512b8e4f8b9e6c9d32cfaadf"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum, enumerating every motor used in the arm. <br /></td></tr>
-<tr class="separator:a39693f87512b8e4f8b9e6c9d32cfaadf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:ae33263ba8c1c6eed41f674b89a96845f"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#ae33263ba8c1c6eed41f674b89a96845f">convertRadToDeg</a> (double radians)</td></tr>
+<tr class="memdesc:ae33263ba8c1c6eed41f674b89a96845f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience method, converts radians to degrees.  <a href="classbungie_1_1ArmController.html#ae33263ba8c1c6eed41f674b89a96845f">More...</a><br /></td></tr>
+<tr class="separator:ae33263ba8c1c6eed41f674b89a96845f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a115ccdef87603effb1048f0479817b6d"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#a115ccdef87603effb1048f0479817b6d">convertDegToRad</a> (double degrees)</td></tr>
+<tr class="memdesc:a115ccdef87603effb1048f0479817b6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience method, converts degrees to radians.  <a href="classbungie_1_1ArmController.html#a115ccdef87603effb1048f0479817b6d">More...</a><br /></td></tr>
+<tr class="separator:a115ccdef87603effb1048f0479817b6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:aa9732e5c57ae2142c4a3213bb4bb6c6a"><td class="memItemLeft" align="right" valign="top"><a id="aa9732e5c57ae2142c4a3213bb4bb6c6a"></a>
-webots::Motor *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#aa9732e5c57ae2142c4a3213bb4bb6c6a">motors</a> [TOTAL_MOTORS]</td></tr>
-<tr class="memdesc:aa9732e5c57ae2142c4a3213bb4bb6c6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The motors powering the arm. <br /></td></tr>
-<tr class="separator:aa9732e5c57ae2142c4a3213bb4bb6c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71e60c0902fe562d8f8a3b14c3f45ba7"><td class="memItemLeft" align="right" valign="top"><a id="a71e60c0902fe562d8f8a3b14c3f45ba7"></a>
+webots::Robot *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#a71e60c0902fe562d8f8a3b14c3f45ba7">robot</a></td></tr>
+<tr class="memdesc:a71e60c0902fe562d8f8a3b14c3f45ba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The robot containing the arm being controlled. <br /></td></tr>
+<tr class="separator:a71e60c0902fe562d8f8a3b14c3f45ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fdbf0ee8f59466dee78f837c2625530"><td class="memItemLeft" align="right" valign="top"><a id="a3fdbf0ee8f59466dee78f837c2625530"></a>
+webots::Motor *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#a3fdbf0ee8f59466dee78f837c2625530">motors</a> [TOTAL_DEVICES]</td></tr>
+<tr class="memdesc:a3fdbf0ee8f59466dee78f837c2625530"><td class="mdescLeft">&#160;</td><td class="mdescRight">The motors powering the arm. <br /></td></tr>
+<tr class="separator:a3fdbf0ee8f59466dee78f837c2625530"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1057a0ddb6b904c1a83502bde5933160"><td class="memItemLeft" align="right" valign="top"><a id="a1057a0ddb6b904c1a83502bde5933160"></a>
+webots::PositionSensor *&#160;</td><td class="memItemRight" valign="bottom"><b>positionSensors</b> [TOTAL_DEVICES]</td></tr>
+<tr class="separator:a1057a0ddb6b904c1a83502bde5933160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2753dcac8a764a9b66860170b8389fca"><td class="memItemLeft" align="right" valign="top"><a id="a2753dcac8a764a9b66860170b8389fca"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1ArmController.html#a2753dcac8a764a9b66860170b8389fca">velocity</a></td></tr>
+<tr class="memdesc:a2753dcac8a764a9b66860170b8389fca"><td class="mdescLeft">&#160;</td><td class="mdescRight">The velocity at which the arm rotates. <br /></td></tr>
+<tr class="separator:a2753dcac8a764a9b66860170b8389fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class used for controlling the arm of the Bungie Rover. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a56eae05063df0b04d67ae6dc9e64ecb6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56eae05063df0b04d67ae6dc9e64ecb6">&#9670;&nbsp;</a></span>ArmController()</h2>
+<a id="abc4d66d2e33932bbfa996bf4706b5a77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc4d66d2e33932bbfa996bf4706b5a77">&#9670;&nbsp;</a></span>ArmController()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -127,40 +175,13 @@ webots::Motor *&#160;</td><td class="memItemRight" valign="bottom"><a class="el"
           <td class="memname">bungie::ArmController::ArmController </td>
           <td>(</td>
           <td class="paramtype">webots::Robot *&#160;</td>
-          <td class="paramname"><em>robot</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Constructs a new <a class="el" href="classbungie_1_1ArmController.html" title="Class used for controlling the arm of the Bungie Rover.">ArmController</a> instance. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">webots::Robot*</td><td>A pointer to the robot containing the arm to control. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a56bb70021c4fbaa31c28252b311db491"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56bb70021c4fbaa31c28252b311db491">&#9670;&nbsp;</a></span>PowerJointMotors()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void bungie::ArmController::PowerJointMotors </td>
-          <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>direction</em>, </td>
+          <td class="paramname"><em>robot</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>velocity</em>&#160;</td>
+          <td class="paramname"><em>velocity</em> = <code>0.0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -170,11 +191,459 @@ webots::Motor *&#160;</td><td class="memItemRight" valign="bottom"><a class="el"
       </table>
 </div><div class="memdoc">
 
-<p>Moves the arm into the given direction. </p>
+<p>Constructs a new <a class="el" href="classbungie_1_1ArmController.html" title="Class used for controlling the arm of the Bungie Rover.">ArmController</a> instance. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">direction</td><td>The direction to turn the arm into. </td></tr>
-    <tr><td class="paramname">velocity</td><td>The velocity, in radians per second, at which to rotate the arm. </td></tr>
+    <tr><td class="paramname">robot</td><td>A pointer to the robot containing the arm to control. </td></tr>
+    <tr><td class="paramname">velocity</td><td>The velocity at which to rotate the arm (default = 0.0). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a115ccdef87603effb1048f0479817b6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a115ccdef87603effb1048f0479817b6d">&#9670;&nbsp;</a></span>convertDegToRad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double bungie::ArmController::convertDegToRad </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>degrees</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convenience method, converts degrees to radians. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">degrees</td><td>The amount in degrees. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>double The amount in radians. </dd></dl>
+
+</div>
+</div>
+<a id="ae33263ba8c1c6eed41f674b89a96845f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae33263ba8c1c6eed41f674b89a96845f">&#9670;&nbsp;</a></span>convertRadToDeg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double bungie::ArmController::convertRadToDeg </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>radians</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convenience method, converts radians to degrees. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">radians</td><td>The amount in radians. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>double The amount in degrees. </dd></dl>
+
+</div>
+</div>
+<a id="a24af2eb64fde9f3db81bb226193c82ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24af2eb64fde9f3db81bb226193c82ae">&#9670;&nbsp;</a></span>GetRotation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double bungie::ArmController::GetRotation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classbungie_1_1ArmController.html#a288f8fb411cc2dba14d02cb6862cbd5f">Device</a>&#160;</td>
+          <td class="paramname"><em>device</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current rotation of the specified joint. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>The device associated with the joint. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>double The current rotation of the specified joint. </dd></dl>
+
+</div>
+</div>
+<a id="a1212dfd910ea12d51cf82e90627b0660"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1212dfd910ea12d51cf82e90627b0660">&#9670;&nbsp;</a></span>Rotate() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bungie::ArmController::Rotate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classbungie_1_1ArmController.html#a288f8fb411cc2dba14d02cb6862cbd5f">Device</a>&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>rotation</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rotates the specified joint the given amount of degrees. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>The device associated with the joint to rotate. </td></tr>
+    <tr><td class="paramname">rotation</td><td>The amount of degrees to rotate the specified joint. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a74ec352581144580d24daef8f1286686"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74ec352581144580d24daef8f1286686">&#9670;&nbsp;</a></span>Rotate() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bungie::ArmController::Rotate </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>base_rotation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>shoulder_rotation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>elbow_rotation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>wrist_rotation</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convenience method, rotating the base, shoulder, elbow and wrist joints. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">base_rotation</td><td>The amount of degrees to rotate the base. </td></tr>
+    <tr><td class="paramname">shoulder_rotation</td><td>The amount of degrees to rotate the shoulder joint. </td></tr>
+    <tr><td class="paramname">elbow_rotation</td><td>The amount of degrees to rotate the elbow joint. </td></tr>
+    <tr><td class="paramname">wrist_rotation</td><td>The amount of degrees to rotate the wrist joint. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="af93d6ab8667a6f80c06f73cc957e562c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af93d6ab8667a6f80c06f73cc957e562c">&#9670;&nbsp;</a></span>Rotate() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bungie::ArmController::Rotate </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>rotation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convenience method, rotate every hingejoint in the arm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rotation</td><td>The amount of degrees to rotate the joints. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a4ae8e60a8369fb1fc815e155c130b3f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ae8e60a8369fb1fc815e155c130b3f6">&#9670;&nbsp;</a></span>Rotate() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bungie::ArmController::Rotate </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>shoulder_rotation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>elbow_rotation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>wrist_rotation</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convenience method, rotating the shoulder, elbow and wrist joints. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shoulder_rotation</td><td>The amount of degrees to rotate the shoulder joint. </td></tr>
+    <tr><td class="paramname">elbow_rotation</td><td>The amount of degrees to rotate the elbow joint. </td></tr>
+    <tr><td class="paramname">wrist_rotation</td><td>The amount of degrees to rotate the wrist joint. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="ac0b7a3bbe0af6e5fd2210ac39716af17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0b7a3bbe0af6e5fd2210ac39716af17">&#9670;&nbsp;</a></span>SetRotation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bungie::ArmController::SetRotation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classbungie_1_1ArmController.html#a288f8fb411cc2dba14d02cb6862cbd5f">Device</a>&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the rotation of the specified joint to the given angle. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>The device associated with the joint to set the rotation of. </td></tr>
+    <tr><td class="paramname">angle</td><td>The amount of degrees to set the rotation of the specified joint to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="af6dd5a81bf1f61ebce28b2c9c51860a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6dd5a81bf1f61ebce28b2c9c51860a6">&#9670;&nbsp;</a></span>SetRotations() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bungie::ArmController::SetRotations </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convenience method, sets the rotation of every hingejoint in the arm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>The amount of degrees to set the rotation to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a048fb655315f22cb46aab4b94a012496"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a048fb655315f22cb46aab4b94a012496">&#9670;&nbsp;</a></span>SetRotations() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bungie::ArmController::SetRotations </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>base_angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>shoulder_angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>elbow_angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>wrist_angle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convenience method, sets the rotation of the base, shoulder, elbow and wrist joints. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">base_angle</td><td>The amount of degrees to set the rotation of the base to. </td></tr>
+    <tr><td class="paramname">shoulder_angle</td><td>The amount of degrees to set the rotation of the shoulder joint to. </td></tr>
+    <tr><td class="paramname">elbow_angle</td><td>The amount of degrees to set the rotation of the elbow joint to. </td></tr>
+    <tr><td class="paramname">wrist_angle</td><td>The amount of degrees to set the rotation of the wrist joint to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="aaf88a529df6b43e64f75310d1f970223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf88a529df6b43e64f75310d1f970223">&#9670;&nbsp;</a></span>SetRotations() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bungie::ArmController::SetRotations </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>shoulder_angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>elbow_angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>wrist_angle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convenience method, sets the rotation of the shoulder, elbow and wrist joints. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shoulder_angle</td><td>The amount of degrees to set the rotation of the shoulder joint to. </td></tr>
+    <tr><td class="paramname">elbow_angle</td><td>The amount of degrees to set the rotation of the elbow joint to. </td></tr>
+    <tr><td class="paramname">wrist_angle</td><td>The amount of degrees to set the rotation of the wrist joint to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="aef139862273dbf9e031ed4c3d2e3f5a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef139862273dbf9e031ed4c3d2e3f5a0">&#9670;&nbsp;</a></span>SetVelocity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bungie::ArmController::SetVelocity </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>velocity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the velocity at which to rotate the arm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">velocity</td><td>The velocity at which to rotate the arm. </td></tr>
   </table>
   </dd>
 </dl>
@@ -189,7 +658,7 @@ webots::Motor *&#160;</td><td class="memItemRight" valign="bottom"><a class="el"
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 11 2020 18:53:32 for Bungie by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 12 2020 00:13:15 for Bungie by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

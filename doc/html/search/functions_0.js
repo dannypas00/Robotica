@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['armcontroller_48',['ArmController',['../classbungie_1_1ArmController.html#a56eae05063df0b04d67ae6dc9e64ecb6',1,'bungie::ArmController']]]
+  ['armcontroller_55',['ArmController',['../classbungie_1_1ArmController.html#abc4d66d2e33932bbfa996bf4706b5a77',1,'bungie::ArmController']]]
 ];
