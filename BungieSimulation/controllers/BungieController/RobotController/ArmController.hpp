@@ -88,6 +88,9 @@ public:
   /// @return void
   void SetRotation(Device device, double angle);
   
+  /// @brief Sets the rotation of the grabber joints to the given angle.
+  /// @param position The amount of degrees to set the rotaton of the grabber joints to.
+  /// @return void
   void RotateGrabberJoints(double position);
   
   /// @brief Deconstructs the ArmController instance.
