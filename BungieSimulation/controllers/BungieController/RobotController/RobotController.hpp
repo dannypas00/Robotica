@@ -21,7 +21,6 @@ namespace bungie {
 class RobotController {
 
 public:
-
   /// @brief Gives the instance of the singleton controller class.
   /// @return RobotController& The instance of itself.
   static RobotController& getInstance();
@@ -81,7 +80,6 @@ public:
   ~RobotController();
 
 private:
-
   /// @brief The WeBots Robot instance of the controller.
   webots::Robot* robot;
 

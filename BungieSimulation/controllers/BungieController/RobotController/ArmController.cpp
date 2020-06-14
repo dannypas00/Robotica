@@ -39,6 +39,23 @@ void ArmController::PowerJointMotors(char direction, double velocity) {
   }
 }
 
+void ArmController::PowerClawMotors(char direction, double velocity) {
+  switch (direction) {
+  case 'o':
+    for (int i = ARM_BASE_MOTOR; i < TOTAL_MOTORS; i++)
+      this->motors[i]->setVelocity(velocity);
+
+    break;
+
+  case 'c':
+    for (int i = ARM_BASE_MOTOR; i < TOTAL_MOTORS; i++)
+      this->motors[i]->setVelocity(-velocity);
+
+    break;
+
+  }
+}
+
   
 ArmController::~ArmController() {
   for (auto i = 0; i < TOTAL_MOTORS; i++)

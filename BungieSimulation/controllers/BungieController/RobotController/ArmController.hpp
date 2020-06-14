@@ -21,6 +21,12 @@ public:
   /// @return void
   void PowerJointMotors(char direction, double velocity);
   
+  /// @brief Moves the arm into the given direction.
+  /// @param direction The direction to turn the arm into.
+  /// @param velocity The velocity, in radians per second, at which to rotate the arm.
+  /// @return void
+  void PowerClawMotors(char direction, double velocity);
+  
   /// @brief Deconstructs the ArmController instance.
   ~ArmController();
 
