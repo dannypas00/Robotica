@@ -18,7 +18,6 @@
 #include "MachineIntelligence/Strategies/DynamicDanceStrategy.h"
 #include "MachineIntelligence/Strategies/TraverseMoonStrategy.h"
 #include "MachineIntelligence/Strategies/RaceStrategy.h"
-// #include <webots/supervisor.hpp>
 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
@@ -35,6 +34,7 @@ int main(int argc, char **argv) {
   // get the time step of the current world.
   int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
   bool executingStrategy = false;
+  bool manualControlls = true;
   // You should insert a getDevice-like function in order to get the
   // instance of a device of the robot. Something like:
   //  Motor *motor = robot->getMotor("motorname");
@@ -42,15 +42,6 @@ int main(int argc, char **argv) {
   //  ds->enable(timeStep);
   Keyboard keyboard = Keyboard();
   keyboard.enable(32);
-  
-  // webots::Supervisor *supervisor = new webots::Supervisor();
-
-  // do this once only
-  // webots::Node *robot_node = supervisor->getFromDef("BUNGIE_ROVER");
-  // webots::Field *trans_field = robot_node->getField("rotation");
-  // const double *values = trans_field->getSFVec3f();
-      // std::cout << "MY_ROBOT is at position: " << values[0] << ' '
-              // << values[1] << ' ' << values[2] << std::endl;
   
   // Initiate NSA()
   NSA nsa = NSA();
@@ -80,73 +71,95 @@ int main(int argc, char **argv) {
     // Get pressed key, -1 = none pressed
     int pressed_key = keyboard.getKey();
     
+    // Data for telemetry site
+    // std::cout << "[DATA] [POS] position!" << std::endl;
+    // std::cout << "[DATA] [ROT] rotation!" << std::endl;
+    
     switch(pressed_key){
       case Keyboard::UP:
-        RobotController::getInstance().Drive('f', 1.0);
+        if (manualControlls) {
+          RobotController::getInstance().Drive('f', 1.0);
+        }
         break;
       case Keyboard::DOWN:
-        RobotController::getInstance().Drive('b', 1.0);
+        if (manualControlls) {
+          RobotController::getInstance().Drive('b', 1.0);
+        }
         break;
       case Keyboard::LEFT:
-        RobotController::getInstance().Drive('l', 1.0);
+        if (manualControlls) {
+          RobotController::getInstance().Drive('l', 1.0);
+        }
         break;
       case Keyboard::RIGHT:
-        RobotController::getInstance().Drive('r', 1.0);
+        if (manualControlls) {
+          RobotController::getInstance().Drive('r', 1.0);
+        }
         break;
       case 'R':
-        std::cout << "Stopped running strategy!" << std::endl;
-        executingStrategy = false;
+        if (executingStrategy) {
+          std::cout << "[ACTION] Stopped running strategy!" << std::endl;
+          std::cout << "[DATA] [MODE] Manual!" << std::endl;
+          executingStrategy = false;
+          manualControlls = true;
+        }
         break;
       case 'U':
         if (!executingStrategy) {
           executingStrategy = true;
+          manualControlls = false;
           RobotController::getInstance().Rotate(90);
         }
         break;
       case 'I':
         if (!executingStrategy) {
           executingStrategy = true;
+          manualControlls = false;
           nsa.ExecuteAssignment(ms_strategy);
         }
         break;
       case 'O':
         if (!executingStrategy) {
-          executingStrategy = true;        
+          executingStrategy = true;
+          manualControlls = false;        
           // nsa.ExecuteAssignment(tr_strategy);
         }
         break;
       case 'H':
         if (!executingStrategy) {
           executingStrategy = true;
+          manualControlls = false;
           nsa.ExecuteAssignment(gt_strategy);
         }
         break;
       case 'J':
         if (!executingStrategy) {
           executingStrategy = true;
+          manualControlls = false;
           nsa.ExecuteAssignment(dance_strategy);
         }
         break;
       case 'K':
         if (!executingStrategy) {
           executingStrategy = true;
+          manualControlls = false;
           nsa.ExecuteAssignment(traverse_moon);
         }
         break;
       case 'L':
         if (!executingStrategy) {
           executingStrategy = true;
+          manualControlls = false;
           nsa.ExecuteAssignment(qr_strategy);
         }
         break;
       default:
-        //TODO: werkt niet met strategies, omdat het moven asyncrhoon gaat glitched rotate
-        // If not exexcuting a strategy, stop when no buttons pressed
-        // if (!executingStrategy) {
-                // RobotController::getInstance().Drive('f', 0.0);
-        // }
-        //RobotController::getInstance().MoveArm('l', 0.0);
-        //RobotController::getInstance().MoveArm('u', 0.0);
+        if (manualControlls && !executingStrategy) {
+          // TODO: werkt niet met strategies, omdat het moven asyncrhoon gaat glitched rotate
+          // RobotController::getInstance().Drive('f', 0.0);
+        } else {
+        
+        }
         break;
       }
   };

@@ -33,7 +33,7 @@
 			<form class="form-inline mt-2 mt-md-0">
 				<input id="IPInput" type="text" class="form-control mr-sm-2" value="localhost" aria-describedby="host" placeholder="localhost">
 				<input id="PortInput" type="text" class="form-control mr-sm-2" value="1234" aria-describedby="port" placeholder="1234">
-				<input id="ConnectButton" type="button" class="btn btn-outline-success my-2 my-sm-0" value="Connect" onclick="connect()" />
+				<input id="ConnectButton" type="button" class="btn btn-outline-success my-2 my-sm-0" value="Connect Webots" onclick="connect()" />
 			</form>
 			<div class="navbar-nav mr-auto"></div>
 			<form class="form-inline mt-2 mt-md-0">
@@ -55,15 +55,27 @@
 			<div class="col-3">
 				<ul class="nav nav-pills" id="myTab" role="tablist">
 					<li class="nav-item w-50">
-						<a class="nav-link active" style="text-align: center" id="status-tab" data-toggle="tab" href="#status" role="tab" aria-controls="status" aria-selected="true">Robot Status</a>
+						<a class="nav-link active" style="text-align: center" id="status-tab" data-toggle="tab" href="#status" role="tab" aria-controls="status" aria-selected="true">Robot Status <span id="robot-status-count" style="display: none" class="badge badge-light"></span></a>
 					</li>
 					<li class="nav-item w-50">
-						<a class="nav-link" id="warnings-tab" style="text-align: center" data-toggle="tab" href="#warnings" role="tab" aria-controls="warnings" aria-selected="false">WeBots Logs</a>
+						<a class="nav-link" id="warnings-tab" style="text-align: center" data-toggle="tab" href="#warnings" role="tab" aria-controls="warnings" aria-selected="false">WeBots Logs <span id="webots-log-count"  style="display: none" class="badge badge-light"></span></a>
 					</li>
 				</ul>
 
 				<div class="card mt-2" style="min-height: 780px; max-height: 790px;">
 
+					<div class="card-header">
+						<div class="row">
+							<div class="col-sm d-flex justify-content-center"><strong>Position</strong></div>
+							<div class="col-sm d-flex justify-content-center"><strong>Rotation</strong></div>
+							<div class="col-sm d-flex justify-content-center"><strong>Mode</strong></div>
+						</div>
+						<div class="row">
+							<div class="col-sm d-flex justify-content-center"><span id="robot-position">x: 1 y: 2 x: 3</span></div>
+							<div class="col-sm d-flex justify-content-center"><span id="robot-rotation">0.123 rad</span></div>
+							<div class="col-sm d-flex justify-content-center"><span id="robot-mode">Manual</span></div>
+						</div>
+					</div>
 					<div class="card-header" id="currentAction">
 						No action running...
 					</div>
@@ -94,4 +106,5 @@
 </main>
 
 </body>
+
 </html>

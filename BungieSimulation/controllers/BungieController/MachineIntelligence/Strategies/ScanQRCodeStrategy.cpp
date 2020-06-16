@@ -9,7 +9,7 @@ int ScanQRCodeStrategy::ExecuteStrategy()
 {
 	VisionController vision;
 	RobotController& controller = RobotController::getInstance();
-           std::cout << "Running QR/Vision Strategy!" << std::endl;
+	std::cout << "[ACTION] Running Vision!" << std::endl;
            
 	// Get the QR result from the shown QR code
 	// TODO: replace this with result from website / controller

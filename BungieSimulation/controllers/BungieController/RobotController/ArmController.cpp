@@ -10,7 +10,7 @@ namespace bungie {
     {
     for (auto* motor : this->motors) {
       motor->setPosition(INFINITY);
-      motor->setVelocity(1.0);
+      motor->setVelocity(0);
     }
   }
   

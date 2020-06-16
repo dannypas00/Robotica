@@ -12,6 +12,8 @@ int TransportRockStrategy::ExecuteStrategy()
 	VisionController vision;
 	RobotController& controller = RobotController::getInstance();
 
+	std::cout << "[ACTION] Running TransportRock!" << std::endl;
+
 	// TODO: Implement and test this after the arm is done & we have the correct models
 
 	// Subscribe to the vision objects for the stone and the container to put the stone into

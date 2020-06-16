@@ -11,6 +11,8 @@ int PlantFlagStrategy::ExecuteStrategy()
 	VisionController vision;
 	RobotController& controller = RobotController::getInstance();
 
+	std::cout << "[ACTION] Running PlantFlag!" << std::endl;
+
 	// Subscribe to vision to get the flag
 	// TODO: Implement real vision here and not hardcoded test stuff
 	vision.Subscribe("Flag");

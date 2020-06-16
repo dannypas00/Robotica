@@ -9,6 +9,8 @@ int DynamicDanceStrategy::ExecuteStrategy()
 {
 	RobotController& controller = RobotController::getInstance();
 
+	std::cout << "[ACTION] Executing dance!" << std::endl;
+
 	// Prepare music file here, afterwards start to move towards the dance floor
 
 	// Navigate forwards to the dance floor

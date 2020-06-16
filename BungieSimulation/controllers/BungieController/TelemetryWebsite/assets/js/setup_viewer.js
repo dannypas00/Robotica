@@ -50,6 +50,10 @@ function connect() {
   ipInput.disabled = true;
   portInput.disabled = true;
 
+  // Set some variables
+  webotNotificationCount = 0;
+  robotNotificationCount = 0;
+
   // Hide loading divs and show content from WeBots
   $('#robot-data-status-waiting').hide();
   $('#robot-data-warnings-waiting').hide();
@@ -60,8 +64,7 @@ function connect() {
   $('.webotsConsoleLogs').bind('DOMSubtreeModified', function(){
     // Get data and reset fields
     let data = $('.webotsConsoleLogs').contents();
-    $('#robot-data-status').empty();
-    $('#robot-data-warnings').empty();
+    $('.webotsConsoleLogs').empty()
     // Latest and currently running action
     let currentAction = null;
     // Based on the values form WeBots itself, we append them to the side div
@@ -69,12 +72,22 @@ function connect() {
       let splitData = data[i].innerHTML.split(" ");
 
       if (splitData[1] == "[ACTION]" || splitData[1] == "[STATUS]") {
+        robotNotificationCount  = (robotNotificationCount + 1);
         let color = ((splitData[1] == "[ACTION]") ? 'blue' : 'green');
         $('#robot-data-status').append('<li class="list-group-item" style="color: ' + color + '">' + data[i].innerHTML + '</li>');
         if (splitData[1] == "[ACTION]") {
           currentAction = data[i].innerHTML;
         }
+      } else if (splitData[1] == "[DATA]") {
+        if (splitData[2] == "[POS]") {
+          $('#robot-position').html(splitData[3]);
+        } else if (splitData[2] == "[MODE]") {
+          $('#robot-mode').html(splitData[3]);
+        } else if (splitData[2] == "[ROT]") {
+          $('#robot-rotation').html(splitData[3]);
+        }
       } else {
+        webotNotificationCount = (webotNotificationCount + 1);
         $('#robot-data-warnings').append('<li class="list-group-item">' + data[i].innerHTML + '</li>');
       }
     }
@@ -84,23 +97,56 @@ function connect() {
       let splitAction = currentAction.split(" ");
       splitAction.splice(splitAction[0], 2);
       $('#currentAction').html('<span style="font-weight: bold;">Last Command: </span><span style="color: blue; font-weight: bold;"> ' + splitAction.join(" ") + '</span>');
+      $('#robot-mode').html('Autonomous');
     }
 
+    // Update notification Count
+    updateTabHeaders()
   });
 }
 
 /*
-* Clear all console data, hide and show certain divs
+* Update tab headers to show notification count
+*/
+function updateTabHeaders(statusCount, webotCount) {
+  var statusTab = $('#status-tab').hasClass("active");
+  var webotsTab = $('#warnings-tab').hasClass("active");
+
+  if (statusTab) {
+    if (webotCount == 0) {
+      $('#webots-log-count').hide();
+    } else {
+      $('#webots-log-count').show();
+      $('#webots-log-count').html(webotCount);
+    }
+  } else if (webotsTab) {
+    if (statusCount == 0) {
+      $('#robot-status-count').hide();
+    } else {
+      $('#robot-status-count').show();
+      $('#robot-status-count').html(statusCount);
+    }
+  }
+}
+
+/*
+* Clear all console data, hide and show certain divs, re-add base text
 */
 function clearConsole() {
   $('#robot-data-status').empty();
   $('#robot-data-warnings').empty();
   $('#currentAction').empty();
   $('.webotsConsoleLogs').empty();
+
   $('#robot-data-status-waiting').show();
   $('#robot-data-warnings-waiting').show();
+
+  $('#webots-log-count').hide();
+  $('#robot-status-count').hide();
   $('#robot-data-status').hide();
   $('#robot-data-warnings').hide();
+
+  $('#currentAction').html('No action running...');
 }
 
 /*
