@@ -106,7 +106,7 @@ class ObjectRecognitionFactory:
                 if filterMode == 0: type = ObjectRecognitionCardType.HARTEN
                 if filterMode == 1: type = ObjectRecognitionCardType.KLAVER
 
-            print(str(type) + " / " + str(peri) + " / " + str(approx))
+            #print(str(type) + " / " + str(peri) + " / " + str(approx))
 
             cards.append(CardData(ObjectRecognitionType.CARD, type, cnt))
         return cards
