@@ -6,9 +6,11 @@ MoonMazeStrategy::MoonMazeStrategy() {
 
 int MoonMazeStrategy::ExecuteStrategy()
 {
-	// Execute pathfinding here
+	std::cout << "[ACTION] Running MazeStrategy!" << std::endl;
+	// Execute the pathfinding here
+	// TODO: implement pathfinding
 	
-	//Done
+	// Done
 	return 0;
 }
 }

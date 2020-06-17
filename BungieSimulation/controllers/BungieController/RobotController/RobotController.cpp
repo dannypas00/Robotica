@@ -34,7 +34,6 @@ void RobotController::initSensors(){
   led_right = robot->getLED("LED_right");
 }
 
-
 void RobotController::Drive(char direction, double velocity){
   wheel_controller->PowerMotors(direction, velocity);
 }

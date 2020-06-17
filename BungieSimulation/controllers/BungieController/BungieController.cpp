@@ -9,9 +9,15 @@
 
 #include <iostream>
 
+#include "MachineIntelligence/NSA.h"
 #include "MachineIntelligence/MeasureWeightController.h"
 #include "MachineIntelligence/Strategies/TransportRockStrategy.h"
-#include "MachineIntelligence/NSA.h"
+#include "MachineIntelligence/Strategies/GateStrategy.h"
+#include "MachineIntelligence/Strategies/MoonSurvivalStrategy.h"
+#include "MachineIntelligence/Strategies/ScanQRCodeStrategy.h"
+#include "MachineIntelligence/Strategies/DynamicDanceStrategy.h"
+#include "MachineIntelligence/Strategies/TraverseMoonStrategy.h"
+#include "MachineIntelligence/Strategies/RaceStrategy.h"
 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
@@ -31,62 +37,163 @@ using namespace bungie;
 /// @return int, 0 if no errors accured.
 int main(int argc, char **argv) {
   // get the time step of the current world.
+  // int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
+  bool executingStrategy = false;
+  bool manualControlls = true;
+
+  // get the time step of the current world.
   int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
   Keyboard keyboard = Keyboard();
   keyboard.enable(32);
   RobotController::getInstance().setLED(255, 255, 255);
-  //NSA nsa = NSA();
-  //MeasureWeightController weightController = MeasureWeightController();
-  //TransportRockStrategy strategy = TransportRockStrategy(weightController);
-  //MoonSurvivalStrategy strategy = MoonSurvivalStrategy();
-  //nsa.ExecuteAssignment(strategy);
   
-  //RobotController::getInstance().DriveUnits('f', 5);
-  RobotController::getInstance().Turn(90);
+  // Initiate NSA()
+  NSA nsa = NSA();
+  
+  // All strategies and required classes
+  MeasureWeightController weightController = MeasureWeightController();
+  TransportRockStrategy tr_strategy = TransportRockStrategy(weightController);
+  MoonSurvivalStrategy ms_strategy = MoonSurvivalStrategy();
+  DynamicDanceStrategy dance_strategy = DynamicDanceStrategy();
+  TraverseMoonStrategy traverse_moon = TraverseMoonStrategy();
+  ScanQRCodeStrategy qr_strategy = ScanQRCodeStrategy();
+  GateStrategy gt_strategy = GateStrategy();
   
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
+  
+  // Commands: 
+  // - U: Navigate Maze
+  // - I: Moon Survival
+  // - O: TransportRock
+  // - H: Poortje
+  // - J: Dance
+  // - K: TraverseMoon
+  // - L: Vision / QR
+  
   while (RobotController::getInstance().getRobot().step(timeStep) != -1) {
-    //RobotController::getInstance().MoveUnits(1.0, 'f');
-    std::cout << RobotController::getInstance().getDistanceFront() << std::endl;
+    // Get pressed key, -1 = none pressed
     int pressed_key = keyboard.getKey();
+    // std::cout << RobotController::getInstance().getDistanceFront() << std::endl;
+    // Data for telemetry site
+    // std::cout << "[DATA] [POS] position!" << std::endl;
+    // std::cout << "[DATA] [ROT] rotation!" << std::endl;
+    
+    // If the user chooses to run an strategy we stop all manual inputs untill its done
+    // Afterwards it should automatically turn "manualControlls" to true, but for now you
+    // Have to press "R" to regain manual controll untill we can fix this
     switch(pressed_key){
-    case Keyboard::UP:
-      RobotController::getInstance().Drive('f', 1.0);
-      break;
-    case Keyboard::DOWN:
-      RobotController::getInstance().Drive('b', 1.0);
-      break;
-    case Keyboard::LEFT:
-      RobotController::getInstance().Drive('l', 1.0);
-      break;
-    case Keyboard::RIGHT:
-      RobotController::getInstance().Drive('r', 1.0);
-      break;
-    case 'W':
-      RobotController::getInstance().MoveArm('u', 12.0);
-      RobotController::getInstance().setLED(255, 0, 0);
-      break;
-    case 'S':
-      RobotController::getInstance().MoveArm('d', 12.0);
-      RobotController::getInstance().setLED(0, 255, 0, 1);
-      break;
-    case 'A':
-      RobotController::getInstance().MoveArm('l', 12.0);
-      RobotController::getInstance().CloseGrabber();
-      RobotController::getInstance().setLED(0, 0, 255, 2);
-      break;
-    case 'D':
-      RobotController::getInstance().MoveArm('r', 12.0);
-      RobotController::getInstance().OpenGrabber();
-      RobotController::getInstance().setLED(255, 255, 255);
-      break;
-    default:
-      RobotController::getInstance().Drive('f', 0.0);
-      break;
-    }
+      case Keyboard::UP:
+        if (manualControlls) {
+          RobotController::getInstance().Drive('f', 1.0);
+        }
+        break;
+      case Keyboard::DOWN:
+        if (manualControlls) {
+          RobotController::getInstance().Drive('b', 1.0);
+        }
+        break;
+      case Keyboard::LEFT:
+        if (manualControlls) {
+          RobotController::getInstance().Drive('l', 1.0);
+        }
+        break;
+      case Keyboard::RIGHT:
+        if (manualControlls) {
+          RobotController::getInstance().Drive('r', 1.0);
+        }
+        break;
+      case 'W':
+        if (manualControlls) {
+          RobotController::getInstance().MoveArm('u', 12.0);
+          RobotController::getInstance().setLED(255, 0, 0);
+        }
+        break;
+      case 'S':
+        if (manualControlls) {
+          RobotController::getInstance().MoveArm('d', 12.0);
+          RobotController::getInstance().setLED(0, 255, 0, 1);
+        }
+        break;
+      case 'A':
+        if (manualControlls) {
+          RobotController::getInstance().MoveArm('l', 12.0);
+          RobotController::getInstance().CloseGrabber();
+          RobotController::getInstance().setLED(0, 0, 255, 2);
+        }
+        break;
+      case 'D':
+        if (manualControlls) {
+          RobotController::getInstance().MoveArm('r', 12.0);
+          RobotController::getInstance().OpenGrabber();
+          RobotController::getInstance().setLED(255, 255, 255);
+        }
+        break;  
+      case 'R':
+        if (executingStrategy) {
+          std::cout << "[ACTION] Stopped running strategy!" << std::endl;
+          std::cout << "[DATA] [MODE] Manual!" << std::endl;
+          executingStrategy = false;
+          manualControlls = true;
+        }
+        break;
+      case 'U':
+        if (!executingStrategy) {
+          executingStrategy = true;
+          manualControlls = false;
+          RobotController::getInstance().Turn(90);
+        }
+        break;
+      case 'I':
+        if (!executingStrategy) {
+          executingStrategy = true;
+          manualControlls = false;
+          nsa.ExecuteAssignment(ms_strategy);
+        }
+        break;
+      case 'O':
+        if (!executingStrategy) {
+          executingStrategy = true;
+          manualControlls = false;        
+          // nsa.ExecuteAssignment(tr_strategy);
+        }
+        break;
+      case 'H':
+        if (!executingStrategy) {
+          executingStrategy = true;
+          manualControlls = false;
+          nsa.ExecuteAssignment(gt_strategy);
+        }
+        break;
+      case 'J':
+        if (!executingStrategy) {
+          executingStrategy = true;
+          manualControlls = false;
+          nsa.ExecuteAssignment(dance_strategy);
+        }
+        break;
+      case 'K':
+        if (!executingStrategy) {
+          executingStrategy = true;
+          manualControlls = false;
+          nsa.ExecuteAssignment(traverse_moon);
+        }
+        break;
+      case 'L':
+        if (!executingStrategy) {
+          executingStrategy = true;
+          manualControlls = false;
+          nsa.ExecuteAssignment(qr_strategy);
+        }
+        break;
+      default:
+        if (manualControlls && !executingStrategy) {
+          // TODO: werkt niet met strategies, moven pleurt uit elkaar
+          RobotController::getInstance().Drive('f', 0.0);
+        }
+        break;
+      }
   };
   // Exit and cleanup code.
-  
   return 0;
 }
