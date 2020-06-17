@@ -1,0 +1,36 @@
+#VRML_OBJ R2020a utf8
+DEF Dansvloer Solid {
+  translation 0 -0.07 0
+  children [
+    Transform {
+      translation 0 0.001 0
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.807843 0.917647 0.972549
+              shininess 0
+            }
+          }
+          geometry Cylinder {
+            height 0.001
+            radius 0.95
+          }
+        }
+      ]
+    }
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.133333 0.580392 0.823529
+        }
+      }
+      geometry Cylinder {
+        height 0.001
+      }
+    }
+  ]
+  boundingObject Cylinder {
+    height 0.01
+  }
+}

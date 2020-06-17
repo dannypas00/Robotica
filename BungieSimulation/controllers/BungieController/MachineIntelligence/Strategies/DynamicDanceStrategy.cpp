@@ -9,13 +9,17 @@ int DynamicDanceStrategy::ExecuteStrategy()
 {
 	RobotController& controller = RobotController::getInstance();
 
-	// Music file
-	std::string musicFile = "muziekjes.mp3";
+	std::cout << "[ACTION] Executing dance!" << std::endl;
 
-	// Start dance
-	//controller.Dance();
+	// Prepare music file here, afterwards start to move towards the dance floor
 
-	//Done
+	// Navigate forwards to the dance floor
+	controller.DriveUnits('f', 8);
+	
+	// Show some moves
+	// TODO: Implement dance
+	
+	// Done
 	return 0;
 }
 }
