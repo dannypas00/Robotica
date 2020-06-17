@@ -96,9 +96,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad41003216ef85edd08f429dc4fe51729"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1RobotController.html#ad41003216ef85edd08f429dc4fe51729">CloseGrabber</a> ()</td></tr>
 <tr class="memdesc:ad41003216ef85edd08f429dc4fe51729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the grabber of the robot arm.  <a href="classbungie_1_1RobotController.html#ad41003216ef85edd08f429dc4fe51729">More...</a><br /></td></tr>
 <tr class="separator:ad41003216ef85edd08f429dc4fe51729"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97d68e4540b5072d394402c139507373"><td class="memItemLeft" align="right" valign="top">const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1RobotController.html#a97d68e4540b5072d394402c139507373">getCamera</a> ()</td></tr>
-<tr class="memdesc:a97d68e4540b5072d394402c139507373"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the image of the camera at executed tick.  <a href="classbungie_1_1RobotController.html#a97d68e4540b5072d394402c139507373">More...</a><br /></td></tr>
-<tr class="separator:a97d68e4540b5072d394402c139507373"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cefd7a06685f1ea934043e8ff9c0efb"><td class="memItemLeft" align="right" valign="top">webots::Camera *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1RobotController.html#a8cefd7a06685f1ea934043e8ff9c0efb">getCamera</a> ()</td></tr>
+<tr class="memdesc:a8cefd7a06685f1ea934043e8ff9c0efb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the image of the camera at executed tick.  <a href="classbungie_1_1RobotController.html#a8cefd7a06685f1ea934043e8ff9c0efb">More...</a><br /></td></tr>
+<tr class="separator:a8cefd7a06685f1ea934043e8ff9c0efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a0b8e440709baf2ea2438b8b8df8dc7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbungie_1_1RobotController.html#a7a0b8e440709baf2ea2438b8b8df8dc7">getWeightOfStoredObject</a> ()</td></tr>
 <tr class="memdesc:a7a0b8e440709baf2ea2438b8b8df8dc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get weight of the item in the storagebox on the robot.  <a href="classbungie_1_1RobotController.html#a7a0b8e440709baf2ea2438b8b8df8dc7">More...</a><br /></td></tr>
 <tr class="separator:a7a0b8e440709baf2ea2438b8b8df8dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -346,8 +346,8 @@ webots::LED *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 
 </div>
 </div>
-<a id="a97d68e4540b5072d394402c139507373"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97d68e4540b5072d394402c139507373">&#9670;&nbsp;</a></span>getCamera()</h2>
+<a id="a8cefd7a06685f1ea934043e8ff9c0efb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cefd7a06685f1ea934043e8ff9c0efb">&#9670;&nbsp;</a></span>getCamera()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -356,7 +356,7 @@ webots::LED *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const unsigned char* bungie::RobotController::getCamera </td>
+          <td class="memname">webots::Camera* bungie::RobotController::getCamera </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -370,7 +370,7 @@ webots::LED *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 </div><div class="memdoc">
 
 <p>Get the image of the camera at executed tick. </p>
-<dl class="section return"><dt>Returns</dt><dd>const unsigned char* Camera image given by the camera on the robot. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>webots::Camera* Pointer to the camera on the robot. </dd></dl>
 
 </div>
 </div>
@@ -662,7 +662,7 @@ webots::LED *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jun 14 2020 16:06:01 for Bungie by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 17 2020 20:51:56 for Bungie by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

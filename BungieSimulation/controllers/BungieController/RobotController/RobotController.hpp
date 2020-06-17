@@ -57,8 +57,8 @@ public:
   void CloseGrabber();
 
   /// @brief Get the image of the camera at executed tick.
-  /// @return const unsigned char* Camera image given by the camera on the robot.
-  const unsigned char* getCamera() { return camera->getImage(); }
+  /// @return webots::Camera* Pointer to the camera on the robot.
+  webots::Camera* getCamera() { return camera; }
 
   /// @brief Get weight of the item in the storagebox on the robot.
   /// @return double Weight of item calcutated from gigen force by a force-3D sensor.

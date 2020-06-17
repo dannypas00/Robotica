@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['getcamera_11',['getCamera',['../classbungie_1_1RobotController.html#a97d68e4540b5072d394402c139507373',1,'bungie::RobotController']]],
+  ['getcamera_11',['getCamera',['../classbungie_1_1RobotController.html#a8cefd7a06685f1ea934043e8ff9c0efb',1,'bungie::RobotController']]],
   ['getdistanceback_12',['getDistanceBack',['../classbungie_1_1RobotController.html#a05321e917e31fdc574b7510d6432210a',1,'bungie::RobotController']]],
   ['getdistancefront_13',['getDistanceFront',['../classbungie_1_1RobotController.html#a7a6da1cdfcdbb92ea9192e9e4b85cefe',1,'bungie::RobotController']]],
   ['getinstance_14',['getInstance',['../classbungie_1_1RobotController.html#ac0ec05c63c6d5969ab65e9f0e2d05df4',1,'bungie::RobotController']]],
