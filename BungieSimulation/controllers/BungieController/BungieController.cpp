@@ -8,6 +8,9 @@
 #include <webots/Keyboard.hpp>
 
 #include <iostream>
+#include <thread>
+#include <future>
+#include <chrono>
 
 #include "MachineIntelligence/NSA.h"
 #include "MachineIntelligence/MeasureWeightController.h"
@@ -18,11 +21,13 @@
 #include "MachineIntelligence/Strategies/DynamicDanceStrategy.h"
 #include "MachineIntelligence/Strategies/TraverseMoonStrategy.h"
 #include "MachineIntelligence/Strategies/RaceStrategy.h"
-
+#include "TCPServer/TCPServer.hpp" 
+#include "TCPServer/IObserver.hpp" 
+#include "TCPServer/ISubject.hpp" 
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
 using namespace bungie;
-
+using namespace std::chrono_literals;
 // This is the main program of the controller.
 // It creates an instance of your Robot instance, launches its
 // function(s) and destroys it at the end of the execution.
@@ -40,7 +45,13 @@ int main(int argc, char **argv) {
   // int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
   bool executingStrategy = false;
   bool manualControlls = true;
+  std::thread serverThread;
+  bool merged = false;
+  TCPServerObserver observerA = TCPServerObserver();
 
+  TCPServer * server = &TCPServer::getInstance();
+  auto future = std::async(std::launch::async, &TCPServer::launch, server);
+  TCPServer::getInstance().registObserver(observerA);
   // get the time step of the current world.
   int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
   Keyboard keyboard = Keyboard();
@@ -72,6 +83,16 @@ int main(int argc, char **argv) {
   // - L: Vision / QR
   
   while (RobotController::getInstance().getRobot().step(timeStep) != -1) {
+    if (merged == false){
+     auto status = future.wait_for(0ms);
+     if (status == std::future_status::ready) {
+        future.get();
+        merged = true;
+      }
+    }
+    else{
+    TCPServer::getInstance().run();
+    }
     // Get pressed key, -1 = none pressed
     int pressed_key = keyboard.getKey();
     // std::cout << RobotController::getInstance().getDistanceFront() << std::endl;
