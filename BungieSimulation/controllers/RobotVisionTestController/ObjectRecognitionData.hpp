@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include "Vector3.h"
+
 namespace bungie {
 
   enum ObjectRecognitionType{
@@ -35,8 +37,9 @@ namespace bungie {
   class QrCode : public ObjectRecognitionData {
   
     public:
-      QrCode(ObjectRecognitionType _type, std::string _data) : ObjectRecognitionData(_type){
+      QrCode(ObjectRecognitionType _type, std::string _data, Vector3 _center) : ObjectRecognitionData(_type){
         this->_data = _data;
+        this->_center = _center;
       };
       
       ~QrCode(){
@@ -47,16 +50,22 @@ namespace bungie {
         return this->_data;
       };
       
+      Vector3 getCenter(){
+        return this->_center;
+      };
+      
     private:
       std::string _data;
+      Vector3 _center;
       
   };
   
   class Card : public ObjectRecognitionData {
   
     public:
-      Card(ObjectRecognitionType _type, std::string _cardType) : ObjectRecognitionData(_type){
+      Card(ObjectRecognitionType _type, std::string _cardType, Vector3 _center) : ObjectRecognitionData(_type){
         this->_cardType = _cardType;
+        this->_center = _center;
       };
       
       ~Card(){
@@ -67,8 +76,13 @@ namespace bungie {
         return this->_cardType;
       };
       
+      Vector3 getCenter(){
+        return this->_center;
+      };
+      
     private:
       std::string _cardType;
+      Vector3 _center;
       
   };
   

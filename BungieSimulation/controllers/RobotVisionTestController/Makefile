@@ -62,6 +62,8 @@
 INCLUDE = -I"D:\programming\python\include"
 LIBRARIES = -L"D:\programming\python" -lpython3 -lpython37
 
+CXX_SOURCES := $(wildcard ./*.cpp) $(wildcard ./**/*.cpp) $(wildcard ./**/**/*.cpp)
+
 VERBOSE = 1
 ###
 ###-----------------------------------------------------------------------------

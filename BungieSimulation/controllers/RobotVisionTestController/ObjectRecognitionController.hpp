@@ -9,6 +9,7 @@
 
 #include "ObjectRecognitionSubject.hpp"
 #include "ObjectRecognitionData.hpp"
+#include "Vector3.h"
 
 using namespace webots;
 
@@ -44,14 +45,15 @@ class ObjectRecognitionController : public ObjectRecognitionSubject {
       }
     };
     
-    void detectAll(Camera* _cam){
+    bool detectAll(Camera* _cam){
       std::string output = this->formatImage(_cam);
       if(output == ""){
-        return;
+        return false;
       }
       
       std::string ret = PythonController::getInstance().callFunctionReturn("detectAll", output);
       this->parsePythonOutput(ret);
+      return true;
     };
     
     void detectQrCode(Camera* _cam){
@@ -94,7 +96,8 @@ class ObjectRecognitionController : public ObjectRecognitionSubject {
       //std::cout << "TEMPERATURE: " << split[3] << "\n";
       
       if(split[0] != ""){ // qr code
-        ObjectRecognitionData* qrData = new QrCode(ObjectRecognitionType::QRCODE, split[0]);
+        std::vector<std::string> qrDataSplit = splitString(split[0], '/');
+        ObjectRecognitionData* qrData = new QrCode(ObjectRecognitionType::QRCODE, qrDataSplit[0], Vector3(std::stod(qrDataSplit[1]), std::stod(qrDataSplit[2]), 0.0f));
         this->notifyObservers(qrData);
       }
       
@@ -102,7 +105,8 @@ class ObjectRecognitionController : public ObjectRecognitionSubject {
         std::vector<std::string> cards = splitString(split[1], ':');
         int size = cards.size();
         for(int i = 0; i < size; i++){
-          ObjectRecognitionData* cardData = new Card(ObjectRecognitionType::CARD, splitString(cards[i], '.')[1]);
+          std::vector<std::string> cardDataSplit = splitString(cards[i], '/');
+          ObjectRecognitionData* cardData = new Card(ObjectRecognitionType::CARD, splitString(cardDataSplit[0], '.')[1], Vector3(std::stod(cardDataSplit[1]), std::stod(cardDataSplit[2]), 0.0f));
           this->notifyObservers(cardData);
         }
       }
@@ -118,7 +122,7 @@ class ObjectRecognitionController : public ObjectRecognitionSubject {
       }
       
       if(split[3] != ""){ // temperature
-        ObjectRecognitionData* temperatureData = new QrCode(ObjectRecognitionType::TEMPERATURE, split[3]);
+        ObjectRecognitionData* temperatureData = new Temperature(ObjectRecognitionType::TEMPERATURE, split[3]);
         this->notifyObservers(temperatureData);
       }
     }

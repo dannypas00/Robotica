@@ -2,12 +2,20 @@ from ObjectRecognitionType import ObjectRecognitionType
 from ObjectRecognitionCardType import ObjectRecognitionCardType
 from enum import Enum
 
+
 """Type's used for temperature state"""
 class TemperatureType(Enum):
     KOUD = 1
     LAUW = 2
     WARM = 3
     HEET = 4
+    
+"""Vector2 class only to store x and y data"""
+class Vector2:
+
+    def __init__(self, _x, _y):
+        self.x = _x
+        self.y = _y
 
 """Base data class"""
 class DetectData:
@@ -23,10 +31,11 @@ class DetectData:
 """Qr data class"""
 class QrData(DetectData):
 
-    def __init__(self, _type, _text, _points):
+    def __init__(self, _type, _text, _points, _center):
         DetectData.__init__(self, _type)
         self.text = _text
         self.points = _points
+        self.center = _center
 
     """Get string that was decoded from a QR code"""
     def getText(self):
@@ -35,14 +44,18 @@ class QrData(DetectData):
     """Get points of detected vision object"""
     def getPoints(self):
         return self.points
+        
+    def getCenter(self):
+        return self.center
 
 """Card data class"""
 class CardData(DetectData):
 
-    def __init__(self, _type, _cardType, _points):
+    def __init__(self, _type, _cardType, _points, _center):
         DetectData.__init__(self, _type)
         self.cardType = _cardType
         self.points = _points
+        self.center = _center
 
     """Get type of card detected"""
     def getCardType(self):
@@ -51,6 +64,9 @@ class CardData(DetectData):
     """Get points of detected vision object"""
     def getPoints(self):
         return self.points
+        
+    def getCenter(self):
+        return self.center
 
 """Mineral data class"""
 class MineralData(DetectData):

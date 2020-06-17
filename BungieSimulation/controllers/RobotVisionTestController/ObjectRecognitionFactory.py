@@ -1,7 +1,9 @@
 import numpy as np
+import math
 import cv2
 
 from DetectData import TemperatureType
+from DetectData import Vector2
 from DetectData import QrData
 from DetectData import CardData
 from DetectData import MineralData
@@ -17,99 +19,107 @@ class ObjectRecognitionFactory:
     def detectQrCode(frame):
         decodedText, points, _ = cv2.QRCodeDetector().detectAndDecode(frame)
         if points is not None:
-            return QrData(ObjectRecognitionType.QR, decodedText, points)
+            return QrData(ObjectRecognitionType.QR, decodedText, points, ObjectRecognitionFactory.calculateCenterValues(frame, points))
         else:
             return None
 
     """Detect a temperature by a color range"""
     def detectTemperature(frame):
-        hls = cv2.cvtColor(frame, cv2.COLOR_BGR2HLS)
-        height, width, depth = hls.shape
-
+        hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+        height, width, depth = hsv.shape
         size_w = 50
         size_h = 50
         y = height//2;
         x = width//2;
-        tiny_image = hls[y-size_h:y+size_h, x-size_w:x+size_w]
-
-        temp = tiny_image
-        for i in range(0, size_h*2):             #looping at python speed...
-         for j in range(0, (size_w*2)):     #...
-             for k in range(1,depth):       #...
-                 temp[i,j,k] = 0
-                 #if k == 1 and i == 1:
-                     #print(temp[i,j*4,0])
-
-        koud = ObjectRecognitionFactory.checkTemperature(tiny_image, cv2.inRange(temp, np.array([50,0,0]), np.array([120, 0, 0])))#KOUD !
-        lauw = ObjectRecognitionFactory.checkTemperature(tiny_image, cv2.inRange(temp, np.array([32,0,0]), np.array([45, 0, 0]))) #LAUW
-        warm = ObjectRecognitionFactory.checkTemperature(tiny_image, cv2.inRange(temp, np.array([23,0,0]), np.array([30, 0, 0]))) #LAUW
-        heet = ObjectRecognitionFactory.checkTemperature(tiny_image, cv2.inRange(temp, np.array([0,0,0]), np.array([23, 0, 0]))) #HEET !
-
-        #print("koud: " + str(koud) + " lauw: " + str(lauw) + " warm: " + str(warm) + " heet: " + str(heet))
-
-        if koud:
-            return TemperatureData(ObjectRecognitionType.TEMPERATURE, TemperatureType.KOUD)
-        if lauw:
-            return TemperatureData(ObjectRecognitionType.TEMPERATURE, TemperatureType.LAUW)
-        if warm:
-            return TemperatureData(ObjectRecognitionType.TEMPERATURE, TemperatureType.WARM)
-        if heet:
-            return TemperatureData(ObjectRecognitionType.TEMPERATURE, TemperatureType.HEET)
-
-        return None;
-
-    """Check the temperature based on the avarage color in cropt frame"""
-    def checkTemperature(frame, mask):
-        res = cv2.bitwise_and(frame, frame, mask= mask)
-        avg_color_per_row = np.average(res, axis=0)
-        avg_color = np.average(avg_color_per_row, axis=0)
-        return avg_color[0] != 0
-
-    """Detect cards using color"""
-    def detectCards(frame):
-        # filter red cards
-        redFrame = ObjectRecognitionImageFactory.filterColorRed(frame)
-        redFrameProcesed = cv2.cvtColor(redFrame, cv2.COLOR_BGR2GRAY)
-
-        # filter black cards
-        blackFrame = ObjectRecognitionImageFactory.filterColorBlack(frame)
-        blackFrameBlur = cv2.medianBlur(frame,5)
-        ret, th1 = cv2.threshold(blackFrameBlur, 200, 255, cv2.THRESH_BINARY)
-        blackFrameProcesed = cv2.cvtColor(th1, cv2.COLOR_BGR2GRAY)
-
-        cards = []
-        cards = np.concatenate((cards, ObjectRecognitionFactory.detectCardType(redFrameProcesed, 0)))
-        cards = np.concatenate((cards, ObjectRecognitionFactory.detectCardType(blackFrameProcesed, 1)))
-
-        return cards
-
-    """Detect card type using color/size/lines"""
-    def detectCardType(frame, filterMode): # 0 == red, 1 == black
-        cards = []
-        contours, hierarchy = cv2.findContours(frame, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        for cnt in contours:
-            area = cv2.contourArea(cnt)
-            if area < 5000 or area > 15000:
+        tiny_image = hsv[y-size_h:y+size_h, x-size_w:x+size_w]
+        center_pixel = tiny_image[25, 25]
+        temperature = TemperatureType.KOUD if center_pixel[0] >= 46 else TemperatureType.LAUW if center_pixel[1] < 97 else TemperatureType.WARM if center_pixel[0] >= 25 else TemperatureType.HEET
+        return TemperatureData(ObjectRecognitionType.TEMPERATURE, temperature)
+        
+    def detectShape(ref_contour, contours, _draw=False):
+        #print(len(ref_contour))
+        current_value = math.inf
+        current_contour = []
+        for contour in contours:
+            match = cv2.matchShapes(ref_contour[0], contour, 1, 0.0)
+    
+            if cv2.contourArea(contour) < 300 or cv2.contourArea(contour) > 100000:
                 continue
-            #print(str(area) + "\n")
-            type = ObjectRecognitionCardType.NONE
-            peri = cv2.arcLength(cnt, True)
-            approx = cv2.approxPolyDP(cnt, 0.04 * peri, True)
+    
+            #print(match)
+            if match <= current_value:
+                current_value = match
+                current_contour = [contour]
+    
+        if len(current_contour) != 0:
+            return current_contour, current_value
+            
+        return None, None
+            
+    def detectCards(frame): # "./img/camera_club.png"
+        # generate template contours
+        cnt_diamond = ObjectRecognitionImageFactory.generateTemplateContours("./img/card-Ruiten.png")
+        cnt_club = ObjectRecognitionImageFactory.generateTemplateContours("./img/card-Klaveren.png", _mode=cv2.THRESH_BINARY_INV)
+        cnt_spades = ObjectRecognitionImageFactory.generateTemplateContours("./img/card-Schoppen.png", _mode=cv2.THRESH_BINARY_INV)
+        cnt_heart = ObjectRecognitionImageFactory.generateTemplateContours("./img/card-Harten.png")
 
-            if len(approx) == 4:
-                if filterMode == 0: type = ObjectRecognitionCardType.RUITEN
-                if filterMode == 1: type = ObjectRecognitionCardType.SCHOPPEN
-            if len(approx) == 5:
-                if filterMode == 0: type = ObjectRecognitionCardType.HARTEN
-                if filterMode == 1: type = ObjectRecognitionCardType.KLAVER
-            if len(approx) == 6:
-                if filterMode == 0: type = ObjectRecognitionCardType.HARTEN
-                if filterMode == 1: type = ObjectRecognitionCardType.KLAVER
-
-            #print(str(type) + " / " + str(peri) + " / " + str(approx))
-
-            cards.append(CardData(ObjectRecognitionType.CARD, type, cnt))
-        return cards
+        # maby array?
+        # create scan image and add image processes
+        img_shapes = frame
+        gsi_shapes = cv2.cvtColor(img_shapes, cv2.COLOR_BGR2GRAY)
+        gsi_shapes = cv2.GaussianBlur(gsi_shapes, (13, 13), 0)
+        gsi_shapes = cv2.threshold(gsi_shapes, 96, 255, cv2.THRESH_BINARY)[1]
+        gsi_shapes = cv2.erode(gsi_shapes, None, iterations=2)
+        gsi_shapes = cv2.dilate(gsi_shapes, None, iterations=1)
+        # get contours of main image
+        cnt_shapes, _ = cv2.findContours(gsi_shapes, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    
+        c1, v1 = ObjectRecognitionFactory.detectShape(cnt_diamond, cnt_shapes)
+        c2, v2 = ObjectRecognitionFactory.detectShape(cnt_club, cnt_shapes)
+        c3, v3 = ObjectRecognitionFactory.detectShape(cnt_spades, cnt_shapes)
+        c4, v4 = ObjectRecognitionFactory.detectShape(cnt_heart, cnt_shapes)
+        
+        match = math.inf
+        cnt = None
+        type = ObjectRecognitionCardType.NONE
+        if v1 < match:
+            match = v1
+            cnt = c1
+            type = ObjectRecognitionCardType.KLAVER
+        if v2 < match:
+            match = v2
+            cnt = c2
+            type = ObjectRecognitionCardType.RUITEN
+        if v3 < match:
+            match = v3
+            cnt = c3
+            type = ObjectRecognitionCardType.SCHOPPEN
+        if v4 < match:
+            match = v4
+            cnt = c4
+            type = ObjectRecognitionCardType.HARTEN
+            
+        if type == ObjectRecognitionCardType.NONE:
+            return None
+            
+        center = ObjectRecognitionFactory.calculateCenterValues(frame, cnt)
+        return CardData(ObjectRecognitionType.CARD, type, cnt, center)
+            
+        #if b == "CLUB":
+        #    contours_poly = cv2.approxPolyDP(c2[0], 3, True)
+        #    boundRect = cv2.boundingRect(contours_poly)
+        #    x, y, w, h = boundRect
+        #    crop_img = img_shapes[y:y+h, x:x+w] #Cropping
+        #    crop_img = filterColorRed(crop_img)
+        #    crop_img = cv2.cvtColor(crop_img, cv2.COLOR_BGR2GRAY)
+        #    cnt_extra, _ = cv2.findContours(crop_img, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+        #    cv2.imshow("crop()->" + fileName, cv2.resize(crop_img, (512, 512)))
+    
+        #    if len(cnt_extra) > 0:
+        #        b = "DIAMOND"
+    
+        #print("detectCards(" + b + ")->" + fileName + " diamond: " + str(v1) + " club: " + str(v2) + " spades: " + str(v3) + " hearts: " + str(v4))
+        
 
     """Detect minerals"""
     def detectMineral(frame):
@@ -138,3 +148,28 @@ class ObjectRecognitionFactory:
             mineral = MineralData(ObjectRecognitionType.MINERAL, boundRect[i], centers[i], radius[i])
 
         return mineral
+        
+    def calculateCenterValues(_frame, _points):
+        center = ObjectRecognitionFactory.getCenterPoint(_points)
+        height, width, channels = _frame.shape
+        x = ObjectRecognitionFactory.translate(center.x, 0, width, -1, 1)
+        y = ObjectRecognitionFactory.translate(center.y, 0, height, -1, 1)
+        return Vector2(x, y)
+    
+    def getCenterPoint(_points):
+        try:
+            M = cv2.moments(_points)
+            cX = int(M["m10"] / M["m00"])
+            cY = int(M["m01"] / M["m00"])
+            return Vector2(cX, cY)
+        except:
+            return Vector2(0.0, 0.0)
+    
+    def translate(value, leftMin, leftMax, rightMin, rightMax):
+        leftSpan = leftMax - leftMin
+        rightSpan = rightMax - rightMin
+        
+        valueScaled = float(value - leftMin) / float(leftSpan)
+        
+        return rightMin + (valueScaled * rightSpan)
+        

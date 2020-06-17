@@ -41,15 +41,14 @@ def detectAll(_imageData):
         
         qrData = ObjectRecognitionFactory.detectQrCode(frame)
         if qrData is not None:
-            output += qrData.text
+            c = qrData.getCenter()
+            output += qrData.getText() + sep_obj_arg + str(c.x) + sep_obj_arg + str(c.y)
             
         output += sep
-        cardsData = ObjectRecognitionFactory.detectCards(frame)
-        if len(cardsData) > 0:
-            for i in range(0, len(cardsData)):
-                output += str(cardsData[i].getCardType())
-                if i < len(cardsData) - 1:
-                    output += sep_obj
+        cardsData = None # ObjectRecognitionFactory.detectCards(frame)
+        if cardsData != None:
+            #c = cardsData[i].getCenter()
+            output += str(cardsData.getCardType())# + sep_obj_arg + "1.0" + sep_obj_arg + "1.0"
                     
         output += sep
         mineralData = ObjectRecognitionFactory.detectMineral(frame)
@@ -63,5 +62,6 @@ def detectAll(_imageData):
                    
     except Exception as e:
         print ("error: " + e)
+        return "".encode("utf-8")
         
-    return output.encode("utf-8");
+    return output.encode("utf-8")

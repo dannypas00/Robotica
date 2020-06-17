@@ -23,7 +23,8 @@ bool done = false;
 void onQrCallback(ObjectRecognitionData* _data){
   QrCode* qr = (QrCode*)_data;
   std::string text = qr->getData();
-  std::cout << "card_type->" << text << std::endl;
+  Vector3 c = qr->getCenter();
+  std::cout << "qr_type->" << text << " center: " << std::to_string(c.x) << " , " << std::to_string(c.y) << std::endl;
 }
 
 void onCardCallback(ObjectRecognitionData* _data){
@@ -64,12 +65,11 @@ int main(int argc, char **argv) {
   ObjectRecognitionController::getInstance().registObserver(observerB);
   ObjectRecognitionController::getInstance().registObserver(observerC);
   ObjectRecognitionController::getInstance().registObserver(observerD);
-  
   while (robot->step(timeStep) != -1) {
     ObjectRecognitionController::getInstance().detectAll(cam);
   };
-  
   PythonController::getInstance().exit();
+  
   
   delete cam;
   delete robot;
