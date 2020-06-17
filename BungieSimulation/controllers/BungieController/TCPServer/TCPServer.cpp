@@ -5,7 +5,8 @@
 namespace bungie{
 static int serverSocket;
 static fd_set rfds;
-
+std::thread Thread;
+static bool connected = false;
 // Singleton TCPServer instance
 TCPServer& TCPServer::getInstance(){
    static TCPServer _instance;
@@ -18,9 +19,11 @@ TCPServer::TCPServer(){
   printf("Creating TCPServer\n");
 
   _observers = std::vector<TCPServerObserver>();
-
-  initialize();
+ // Thread = std::thread([this] { this->initialize(); });
+  //initialize();
+  //std::thread first (TCPServer::initialize);
 }
+
 // Testing Function (Remove before rollout)
 void TCPServer::test(){
   printf("Working\n");
@@ -29,9 +32,20 @@ void TCPServer::test(){
 void TCPServer::initialize() {
   printf("starting socket\n");
   serverSocket = create_socket_server(SOCKET_PORT);
-  //FD_ZERO(&rfds);
- //FD_SET(serverSocket, &rfds);
+  FD_ZERO(&rfds);
+ FD_SET(serverSocket, &rfds);
+
 }
+void TCPServer::launch() {
+//Thread = std::thread([this] { this->initialize(); });
+  // Thread.join();
+  initialize();
+  //  while (connected == false){
+  //   printf("yeet\n");
+  //  run();
+  //}
+}
+
 // Creation of Socket server and start of listening
 int TCPServer::create_socket_server(int port) {
   int serverSocket, rc;
@@ -109,11 +123,12 @@ int TCPServer::accept_client(int server_fd) {
   }
   client_info = gethostbyname((char *)inet_ntoa(client.sin_addr));
   printf("Accepted connection from: %s \n", client_info->h_name);
-
+  connected = true;
   return clientSocket;
 }
 // Handle commands
 void TCPServer::run() {
+  if (connected == true){
   char commandLength;
   int command;
   int number;
@@ -149,10 +164,16 @@ void TCPServer::run() {
   // Handle Commands Here:
   printf("Received %d bytes: %s\n", command, msg);
 
-  std::string a = "key";
-  std::string b = "1234";
+ std::string a;
+ std::string b;
+  a = strtok(msg, ";");
+  b = strtok(NULL, ";");
+ if (a == "Connect"){
+   connected = false;
+ }
+  
   notifyObservers(a, b);
-
+}
 }
 
 void TCPServer::registObserver(TCPServerObserver _observer){
@@ -172,6 +193,17 @@ void TCPServer::notifyObservers(std::string _key, std::string _value){
     _observers[i].update( _key,  _value);
   }
 }
-
+TCPServer::~TCPServer(){
+  // Close socket
+#ifdef _WIN32
+    closesocket(serverSocket);
+#else
+    close(serverSocket);
+#endif
+//Clear observers
+for(int i = 0; i < _observers.size(); i++){
+    _observers.erase(_observers.begin() + i);
+  }
+}
 
 }

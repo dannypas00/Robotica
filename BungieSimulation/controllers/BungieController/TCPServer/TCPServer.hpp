@@ -43,7 +43,7 @@ class TCPServer : public TCPServerSubject {
     static TCPServer& getInstance();
     void test();
     void run();
-
+    void launch();
     
     void registObserver(TCPServerObserver _observer);
     void removeObserver(TCPServerObserver _observer);
@@ -52,6 +52,8 @@ class TCPServer : public TCPServerSubject {
   private:
     static TCPServer _instance;
     TCPServer();
+    ~TCPServer();
+    std::string bufferToString(char* buffer, int bufflen);
     void initialize();
     int create_socket_server(int port);
     int accept_client(int server_fd);
