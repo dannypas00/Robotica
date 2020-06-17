@@ -1,14 +1,14 @@
-// File:          bungie_controller.cpp
-// Date:
-// Description:
-// Author:
+// File:           bungie_controller.cpp
+// Date:           10/06/2020
+// Description:    Main class for the controller
+// Author:         Ghosts
 // Modifications:
 
-// You may need to add webots include files such as
-// <webots/DistanceSensor.hpp>, <webots/Motor.hpp>, etc.
-// and/or to add some other includes
 #include <RobotController/RobotController.hpp>
 #include <webots/Keyboard.hpp>
+
+#include <iostream>
+
 #include "MachineIntelligence/MeasureWeightController.h"
 #include "MachineIntelligence/Strategies/TransportRockStrategy.h"
 #include "MachineIntelligence/NSA.h"
@@ -23,25 +23,28 @@
 using namespace webots;
 using namespace bungie;
 
-// This is the main program of your controller.
+// This is the main program of the controller.
 // It creates an instance of your Robot instance, launches its
 // function(s) and destroys it at the end of the execution.
 // Note that only one instance of Robot should be created in
 // a controller program.
 // The arguments of the main function can be specified by the
 // "controllerArgs" field of the Robot node
+
+/// @brief The main function of the controller
+/// @param int argc The amount of arguments passed to the main function.
+/// @param char **argv An array of c-style strings containing the arguments passed to the main function.
+/// @return int, 0 if no errors accured.
 int main(int argc, char **argv) {
   // get the time step of the current world.
   int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
   bool executingStrategy = false;
   bool manualControlls = true;
-  // You should insert a getDevice-like function in order to get the
-  // instance of a device of the robot. Something like:
-  //  Motor *motor = robot->getMotor("motorname");
-  //  DistanceSensor *ds = robot->getDistanceSensor("dsname");
-  //  ds->enable(timeStep);
+
+  // Enable Keyboard
   Keyboard keyboard = Keyboard();
   keyboard.enable(32);
+  RobotController::getInstance().setLED(255, 255, 255);
   
   // Initiate NSA()
   NSA nsa = NSA();
@@ -70,7 +73,7 @@ int main(int argc, char **argv) {
   while (RobotController::getInstance().getRobot().step(16) != -1) {
     // Get pressed key, -1 = none pressed
     int pressed_key = keyboard.getKey();
-    
+    std::cout << RobotController::getInstance().getDistanceFront() << std::endl;
     // Data for telemetry site
     // std::cout << "[DATA] [POS] position!" << std::endl;
     // std::cout << "[DATA] [ROT] rotation!" << std::endl;
@@ -96,6 +99,32 @@ int main(int argc, char **argv) {
           RobotController::getInstance().Drive('r', 1.0);
         }
         break;
+      case 'W':
+        if (manualControlls) {
+          RobotController::getInstance().MoveArm('u', 12.0);
+          RobotController::getInstance().setLED(255, 0, 0);
+        }
+        break;
+      case 'S':
+        if (manualControlls) {
+          RobotController::getInstance().MoveArm('d', 12.0);
+          RobotController::getInstance().setLED(0, 255, 0, 1);
+        }
+        break;
+      case 'A':
+        if (manualControlls) {
+          RobotController::getInstance().MoveArm('l', 12.0);
+          RobotController::getInstance().CloseGrabber();
+          RobotController::getInstance().setLED(0, 0, 255, 2);
+        }
+        break;
+      case 'D':
+        if (manualControlls) {
+          RobotController::getInstance().MoveArm('r', 12.0);
+          RobotController::getInstance().OpenGrabber();
+          RobotController::getInstance().setLED(255, 255, 255);
+        }
+        break;  
       case 'R':
         if (executingStrategy) {
           std::cout << "[ACTION] Stopped running strategy!" << std::endl;
@@ -155,7 +184,7 @@ int main(int argc, char **argv) {
         break;
       default:
         if (manualControlls && !executingStrategy) {
-          // TODO: werkt niet met strategies, omdat het moven asyncrhoon gaat glitched rotate
+          // TODO: werkt niet met strategies, moven pleurt uit elkaar
           // RobotController::getInstance().Drive('f', 0.0);
         } else {
         
@@ -163,8 +192,6 @@ int main(int argc, char **argv) {
         break;
       }
   };
-
-  // Enter here exit cleanup code.
-  
+  // Exit and cleanup code.
   return 0;
 }
