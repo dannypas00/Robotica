@@ -9,7 +9,7 @@ int RaceStrategy::ExecuteStrategy()
 	
 	// Move forwards to win race
 	// TODO: implement when we know what we need to do (no model provided from school yet)
-	controller.DriveUnits('f', 10, 20);
+	controller.DriveUnits('f', 20);
 
 	// Done
 	return 0;

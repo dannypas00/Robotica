@@ -8,13 +8,13 @@ int GateStrategy::ExecuteStrategy()
 	std::cout << "[ACTION] Running GateStrategy!" << std::endl;
 	
 	// Drive 0.45 units forwards
-	controller.DriveUnits('f', 0.5, 0.45);
+	controller.DriveUnits('f', 0.45);
 	
 	// Rotate so we can leave
-	controller.Rotate(110);
+	controller.Turn(110);
 	
 	// Drive 0.45 units forwards
-	controller.DriveUnits('f', 0.5, 0.45);
+	controller.DriveUnits('f', 0.45);
 
 	// Done
 	return 0;

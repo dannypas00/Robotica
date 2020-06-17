@@ -34,15 +34,14 @@ void RobotController::initSensors(){
   led_right = robot->getLED("LED_right");
 }
 
-
 void RobotController::Drive(char direction, double velocity){
   wheel_controller->PowerMotors(direction, velocity);
 }
 
-void RobotController::DriveUnits(char direction, double velocity, double distance) {
+void RobotController::DriveUnits(char direction, double distance) {
   if (direction == 'b')
     distance *= -1;
-  wheel_controller->SetMotorsPosition(distance, velocity);
+  wheel_controller->SetMotorsPosition(distance);
 }
 
 void RobotController::Turn(double deg) {

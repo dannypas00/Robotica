@@ -9,9 +9,9 @@
 
 #include <iostream>
 
+#include "MachineIntelligence/NSA.h"
 #include "MachineIntelligence/MeasureWeightController.h"
 #include "MachineIntelligence/Strategies/TransportRockStrategy.h"
-#include "MachineIntelligence/NSA.h"
 #include "MachineIntelligence/Strategies/GateStrategy.h"
 #include "MachineIntelligence/Strategies/MoonSurvivalStrategy.h"
 #include "MachineIntelligence/Strategies/ScanQRCodeStrategy.h"
@@ -37,11 +37,12 @@ using namespace bungie;
 /// @return int, 0 if no errors accured.
 int main(int argc, char **argv) {
   // get the time step of the current world.
-  int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
+  // int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
   bool executingStrategy = false;
   bool manualControlls = true;
 
-  // Enable Keyboard
+  // get the time step of the current world.
+  int timeStep = (int)RobotController::getInstance().getRobot().getBasicTimeStep();
   Keyboard keyboard = Keyboard();
   keyboard.enable(32);
   RobotController::getInstance().setLED(255, 255, 255);
@@ -70,14 +71,17 @@ int main(int argc, char **argv) {
   // - K: TraverseMoon
   // - L: Vision / QR
   
-  while (RobotController::getInstance().getRobot().step(16) != -1) {
+  while (RobotController::getInstance().getRobot().step(timeStep) != -1) {
     // Get pressed key, -1 = none pressed
     int pressed_key = keyboard.getKey();
-    std::cout << RobotController::getInstance().getDistanceFront() << std::endl;
+    // std::cout << RobotController::getInstance().getDistanceFront() << std::endl;
     // Data for telemetry site
     // std::cout << "[DATA] [POS] position!" << std::endl;
     // std::cout << "[DATA] [ROT] rotation!" << std::endl;
     
+    // If the user chooses to run an strategy we stop all manual inputs untill its done
+    // Afterwards it should automatically turn "manualControlls" to true, but for now you
+    // Have to press "R" to regain manual controll untill we can fix this
     switch(pressed_key){
       case Keyboard::UP:
         if (manualControlls) {
@@ -137,7 +141,7 @@ int main(int argc, char **argv) {
         if (!executingStrategy) {
           executingStrategy = true;
           manualControlls = false;
-          RobotController::getInstance().Rotate(90);
+          RobotController::getInstance().Turn(90);
         }
         break;
       case 'I':
@@ -185,9 +189,7 @@ int main(int argc, char **argv) {
       default:
         if (manualControlls && !executingStrategy) {
           // TODO: werkt niet met strategies, moven pleurt uit elkaar
-          // RobotController::getInstance().Drive('f', 0.0);
-        } else {
-        
+          RobotController::getInstance().Drive('f', 0.0);
         }
         break;
       }

@@ -24,20 +24,20 @@ int ScanQRCodeStrategy::ExecuteStrategy()
 		case 0:
           
 		 	if (searchForCard == "RUITEN") {
-				RobotController::getInstance().Rotate(320);
+				RobotController::getInstance().Turn(320);
 		 	} else if (searchForCard == "SCHOPPEN") {
-				RobotController::getInstance().Rotate(110);
+				RobotController::getInstance().Turn(110);
 				std::cout << "rotate 1!" << std::endl;
 		 	} else if (searchForCard == "HARTEN") {
-				RobotController::getInstance().Rotate(180);
+				RobotController::getInstance().Turn(180);
 		 	} else if (searchForCard == "KLAVEREN") {
-				RobotController::getInstance().Rotate(260);
+				RobotController::getInstance().Turn(260);
 		 	}
 		 	stage++;
 		 	break;
 		case 1:
 		done = true;
-		std::cout << "Done running QR Strategy!" << std::endl;
+		std::cout << "[ACTION] Done running QR Strategy!" << std::endl;
 		break;
 		}
             }

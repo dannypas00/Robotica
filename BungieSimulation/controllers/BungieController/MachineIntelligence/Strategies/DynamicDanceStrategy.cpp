@@ -14,7 +14,7 @@ int DynamicDanceStrategy::ExecuteStrategy()
 	// Prepare music file here, afterwards start to move towards the dance floor
 
 	// Navigate forwards to the dance floor
-	controller.DriveUnits('f', 0.5, 8);
+	controller.DriveUnits('f', 8);
 	
 	// Show some moves
 	// TODO: Implement dance
