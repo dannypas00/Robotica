@@ -52,34 +52,43 @@ void RobotController::Turn(double deg) {
   wheel_controller->SetRotation(deg * 0.0091111);
 }
 
-void RobotController::MoveArm(char direction, double rotation){
-  switch (direction) {
-  case 'u':
-    arm_controller->Rotate(+rotation);
-    break;
+void RobotController::BaseTurnLeft(){
+  arm_controller->RotateBase(5);
+}
+void RobotController::BaseTurnRight(){
+  arm_controller->RotateBase(-5);
+}
+void RobotController::ShoulderTurnLeft(){
+  arm_controller->RotateShoulder(5);
+}
+void RobotController::ShoulderTurnRight(){
+  arm_controller->RotateShoulder(-5);
+}
+void RobotController::ElbowTurnLeft(){
+  arm_controller->RotateElbow(5);
+}
+void RobotController::ElbowTurnRight(){
+  arm_controller->RotateElbow(-5);
+}
+void RobotController::WristTurnLeft(){
+  arm_controller->RotateWrist(5);
+}
+void RobotController::WristTurnRight(){
+  arm_controller->RotateWrist(-5);
+}
 
-  case 'd':
-    arm_controller->Rotate(-rotation);
-    break;
-
-  case 'l':
-    arm_controller->Rotate(ArmController::ROTATABLE_BASE, +rotation);
-    break;
-
-  case 'r':
-    arm_controller->Rotate(ArmController::ROTATABLE_BASE, -rotation);
-    break;
+void RobotController::Grab(){
+  if (arm_controller->GetIsClawClosed())
+  {
+    arm_controller->RotateGrabberJoints(10);
+    arm_controller->SetClawClosed();
+  }
+  else
+  {
+    arm_controller->RotateGrabberJoints(60);
+    arm_controller->SetClawClosed();
   }
 }
-
-void RobotController::OpenGrabber(){
-  arm_controller->RotateGrabberJoints(60);
-}
-
-void RobotController::CloseGrabber(){
-  arm_controller->RotateGrabberJoints(0);
-}
-
 double RobotController::getWeightOfStoredObject(){
   const double* force = touch_sensor->getValues();
   return (sqrt((force[0]*force[0])+(force[1]*force[1])+(force[2]*force[2]))/3.73);

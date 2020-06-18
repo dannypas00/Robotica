@@ -102,33 +102,69 @@ int main(int argc, char **argv) {
         if (manualControlls) {
           RobotController::getInstance().Drive('r', 1.0);
         }
+        break;    
+      case 'G':
+        if (manualControlls) 
+        {
+          RobotController::getInstance().Grab();          
+        }    
+        break;
+      case '1': // base turn left
+        if (manualControlls) 
+        {
+          RobotController::getInstance().BaseTurnLeft();          
+        }    
+        break;
+      case '2': //base turn right
+        if (manualControlls) 
+        {
+          RobotController::getInstance().BaseTurnRight();         
+        }    
+        break;
+      case '3': // shoulder turn left
+        if (manualControlls) 
+        {
+          RobotController::getInstance().ShoulderTurnLeft();          
+        }    
+        break;
+      case '4': // shoulder turn right
+        if (manualControlls) 
+        {
+          RobotController::getInstance().ShoulderTurnRight();          
+        }    
+        break;
+      case '5': // elbow turn left
+        if (manualControlls) 
+        {
+          RobotController::getInstance().ElbowTurnLeft();          
+        }    
+        break;
+      case '6': // elbow turn right
+        if (manualControlls) 
+        {
+          RobotController::getInstance().ElbowTurnRight();          
+        }    
+        break;
+      case '7': // wrist turn left
+        if (manualControlls) 
+        {
+          RobotController::getInstance().WristTurnLeft();          
+        }    
+        break;
+      case '8': // wrist turn right
+        if (manualControlls) 
+        {
+          RobotController::getInstance().WristTurnRight();          
+        }    
         break;
       case 'W':
-        if (manualControlls) {
-          RobotController::getInstance().MoveArm('u', 12.0);
-          RobotController::getInstance().setLED(255, 0, 0);
-        }
+        if (!executingStrategy)
+        {
+          double weight = RobotController::getInstance().getWeightOfStoredObject();
+          
+          std::cout << "[ACTION] weight of object: " << weight << std::endl;
+        } 
         break;
-      case 'S':
-        if (manualControlls) {
-          RobotController::getInstance().MoveArm('d', 12.0);
-          RobotController::getInstance().setLED(0, 255, 0, 1);
-        }
-        break;
-      case 'A':
-        if (manualControlls) {
-          RobotController::getInstance().MoveArm('l', 12.0);
-          RobotController::getInstance().CloseGrabber();
-          RobotController::getInstance().setLED(0, 0, 255, 2);
-        }
-        break;
-      case 'D':
-        if (manualControlls) {
-          RobotController::getInstance().MoveArm('r', 12.0);
-          RobotController::getInstance().OpenGrabber();
-          RobotController::getInstance().setLED(255, 255, 255);
-        }
-        break;  
       case 'R':
         if (executingStrategy) {
           std::cout << "[ACTION] Stopped running strategy!" << std::endl;

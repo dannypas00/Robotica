@@ -33,19 +33,20 @@ void ArmController::SetVelocity(const double velocity) {
     motor->setVelocity(this->velocity);
 }
 
-void ArmController::Rotate(const double rotation) {
-    this->Rotate(rotation, rotation, rotation);
+void ArmController::RotateBase(const double base_rotation) {
+  this->Rotate(ROTATABLE_BASE, base_rotation);
 }
 
-void ArmController::Rotate(const double base_rotation, const double shoulder_rotation, const double elbow_rotation, const double wrist_rotation) {
-    this->Rotate(ROTATABLE_BASE, base_rotation);
-    this->Rotate(shoulder_rotation, elbow_rotation, wrist_rotation);
+void ArmController::RotateShoulder(const double shoulder_rotation) {
+  this->Rotate(SHOULDER_JOINT, shoulder_rotation);
 }
 
-void ArmController::Rotate(const double shoulder_rotation, const double elbow_rotation, const double wrist_rotation) {
-    this->Rotate(SHOULDER_JOINT, shoulder_rotation);
-    this->Rotate(ELBOW_JOINT, elbow_rotation);
-    this->Rotate(WRIST_JOINT, wrist_rotation);
+void ArmController::RotateElbow(const double elbow_rotation) {
+  this->Rotate(ELBOW_JOINT, elbow_rotation);
+}
+
+void ArmController::RotateWrist(const double wrist_rotation) {
+  this->Rotate(WRIST_JOINT, wrist_rotation);
 }
 
 void ArmController::Rotate(Device device, const double rotation) {
@@ -66,8 +67,8 @@ void ArmController::SetRotations(const double base_angle, const double shoulder_
 }
 
 void ArmController::SetRotations(const double shoulder_angle, const double elbow_angle, const double wrist_angle) {
-  this->SetRotation(SHOULDER_JOINT, shoulder_angle);
   this->SetRotation(ELBOW_JOINT, elbow_angle);
+  this->SetRotation(SHOULDER_JOINT, shoulder_angle);
   this->SetRotation(WRIST_JOINT, wrist_angle);
 }
 
@@ -90,9 +91,9 @@ void ArmController::RotateGrabberJoints(double position){
   this->motors[LEFT_CLAW_JOINT]->setPosition(this->convertDegToRad(position));
   this->motors[RIGHT_CLAW_JOINT]->setPosition(this->convertDegToRad(position));
   
-  double last_position = 0;
+  double last_position = 10;
   
-  while(this->positionSensors[LEFT_CLAW_JOINT]->getValue() != last_position){
+  while(this->positionSensors[LEFT_CLAW_JOINT]->getValue() > last_position){
     last_position = this->positionSensors[LEFT_CLAW_JOINT]->getValue();
     if (this->robot->step(this->robot->getBasicTimeStep()) == -1)
       break;
@@ -108,6 +109,10 @@ double ArmController::convertDegToRad(const double degrees) {
   static constexpr auto RADIANS_PER_DEGREE = (2.0*M_PI)/360.0;
   return degrees * RADIANS_PER_DEGREE;
 }
+
+bool ArmController::GetIsClawClosed() { return isClawClosed; }
+
+void ArmController::SetClawClosed() { isClawClosed = !isClawClosed; }
   
 ArmController::~ArmController() {
   for (auto device = 0; device < TOTAL_DEVICES; device++) {

@@ -32,32 +32,20 @@ public:
   /// @return void
   void SetVelocity(double velocity);
 
-  /// @brief Convenience method, rotate every hingejoint in the arm.
-  /// @param rotation The amount of degrees to rotate the joints.
-  /// @return void
-  void Rotate(double rotation);
-
-  /// @brief Convenience method, rotating the base, shoulder, elbow and wrist joints.
-  /// @param base_rotation The amount of degrees to rotate the base.
-  /// @param shoulder_rotation The amount of degrees to rotate the shoulder joint.
-  /// @param elbow_rotation The amount of degrees to rotate the elbow joint.
-  /// @param wrist_rotation The amount of degrees to rotate the wrist joint.
-  /// @return void
-  void Rotate(double base_rotation, double shoulder_rotation, double elbow_rotation, double wrist_rotation);
-  
-  /// @brief Convenience method, rotating the shoulder, elbow and wrist joints.
-  /// @param shoulder_rotation The amount of degrees to rotate the shoulder joint.
-  /// @param elbow_rotation The amount of degrees to rotate the elbow joint.
-  /// @param wrist_rotation The amount of degrees to rotate the wrist joint.
-  /// @return void
-  void Rotate(double shoulder_rotation, double elbow_rotation, double wrist_rotation);
-
   /// @brief Rotates the specified joint the given amount of degrees.
   /// @param device The device associated with the joint to rotate.
   /// @param rotation The amount of degrees to rotate the specified joint.
   /// @return void
-  void Rotate(Device device, double rotation);
-
+  void RotateBase(const double base_rotation);
+  
+  void RotateShoulder(const double shoulder_rotation);
+  
+  void RotateElbow(const double elbow_rotation);
+  
+  void RotateWrist(const double wrist_rotation);
+  
+  void Rotate(Device device, const double rotation);
+  
   /// @brief Gets the current rotation of the specified joint.
   /// @param device The device associated with the joint.
   /// @return double The current rotation of the specified joint.
@@ -94,6 +82,10 @@ public:
   /// @return void
   void RotateGrabberJoints(double position);
   
+  bool GetIsClawClosed();
+  
+  void SetClawClosed();
+  
   /// @brief Deconstructs the ArmController instance.
   ~ArmController();
 
@@ -104,6 +96,8 @@ private:
   /// @brief The motors powering the arm.
   webots::Motor* motors[TOTAL_DEVICES];
   webots::PositionSensor* positionSensors[TOTAL_DEVICES];
+  
+  bool isClawClosed;
 
   /// @brief The velocity at which the arm rotates.
   double velocity;

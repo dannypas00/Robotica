@@ -48,14 +48,19 @@ public:
   /// @return void
   void MoveArm(char direction, double rotation);
   
-  /// @brief Opens the grabber of the robot arm.
+  /// @brief open/closes the grabber of the robot arm.
   /// @return void
-  void OpenGrabber();
+  void Grab();
   
-  /// @brief Closes the grabber of the robot arm.
-  /// @return void
-  void CloseGrabber();
-
+  void BaseTurnLeft();
+  void BaseTurnRight();
+  void ShoulderTurnLeft();
+  void ShoulderTurnRight();
+  void ElbowTurnLeft();
+  void ElbowTurnRight();
+  void WristTurnLeft();
+  void WristTurnRight();
+  
   /// @brief Get the image of the camera at executed tick.
   /// @return const unsigned char* Camera image given by the camera on the robot.
   const unsigned char* getCamera() { return camera->getImage(); }
