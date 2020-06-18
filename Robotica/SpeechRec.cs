@@ -9,6 +9,9 @@ using System.IO;
 
 namespace Client_side
 {
+    /// <summary>
+    /// De Class voor alles wat Speech Recognition doet.
+    /// </summary>
     class SpeechRec
     {
         public SpeechRec()
@@ -18,7 +21,7 @@ namespace Client_side
         /// <summary>
         /// De functie die word aangeroepen als er op Spraak word gedrukt in de controller.
         /// Om de Python code te laten werken zijn er twee libraries nodig, deze zijn te downloaden via twee PIP commando's 
-        /// pip install speechrecognition AND pip install PyAudio
+        /// <c>pip install speechrecognition</c> en <c>pip install PyAudio</c>
         /// </summary>
         public static void ExecProcess()
         {
@@ -55,37 +58,31 @@ namespace Client_side
             }
 
             // 5) Stuurt commando's naar de Robot en verwerkt ze.
-            // Ik wou de commando's hier nog om zetten in allemaal kleine letters en de \r\n erachter weg wipen maar dat wou eerst nog niet lukken. 
-            // Het had iets te maken met dat de input van python komt en dat ik het hier dan moeilijk kan filteren. 
             
             string givenCommand = results;
             string preppedCommand;
             preppedCommand = givenCommand.Replace("\r\n", String.Empty);
             preppedCommand = givenCommand.ToLower();
             
-            //Console.Writelines are there for debugging.
+            
             if (preppedCommand == "drive forward\r\n")
             {
                 Client.GetInstance().Send("RF", "10");
-                //Console.WriteLine("Driving forward");
             }
 
             else if (preppedCommand == "turn left\r\n")
             {
                 Client.GetInstance().Send("RO", "5");
-                //Console.WriteLine("Turning left");
             }
 
             else if (preppedCommand == "turn right\r\n")
             {
                 Client.GetInstance().Send("RO", "-5");
-                //Console.WriteLine("Turning right");
             }
 
             else if (preppedCommand == "drive backwards\r\n")
             {
                 Client.GetInstance().Send("RB", "10");
-                //Console.WriteLine("Gelukt, achteruit.");
             }
 
         }
