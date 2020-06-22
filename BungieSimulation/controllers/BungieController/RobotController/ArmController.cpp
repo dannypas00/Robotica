@@ -49,6 +49,20 @@ void ArmController::RotateWrist(const double wrist_rotation) {
   this->Rotate(WRIST_JOINT, wrist_rotation);
 }
 
+void ArmController::MoveStoneToTray() {
+  this->SetRotation(ELBOW_JOINT,80);
+  this->SetRotation(SHOULDER_JOINT,50);
+  this->SetRotation(ROTATABLE_BASE,180);
+  this->SetRotation(WRIST_JOINT,70);
+}
+
+void ArmController::ResetToStartPos() {
+  this->SetRotation(WRIST_JOINT,0);
+  this->SetRotation(ROTATABLE_BASE,0);
+  this->SetRotation(SHOULDER_JOINT,0);
+  this->SetRotation(ELBOW_JOINT,0);
+}
+
 void ArmController::Rotate(Device device, const double rotation) {
     this->SetRotation(device, this->GetRotation(device) + rotation);
 }

@@ -44,6 +44,10 @@ public:
   
   void RotateWrist(const double wrist_rotation);
   
+  void MoveStoneToTray();
+  
+  void ResetToStartPos();
+  
   void Rotate(Device device, const double rotation);
   
   /// @brief Gets the current rotation of the specified joint.

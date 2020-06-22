@@ -77,6 +77,14 @@ void RobotController::WristTurnRight(){
   arm_controller->RotateWrist(-5);
 }
 
+void RobotController::MoveStoneToTray() {
+  arm_controller->MoveStoneToTray();
+}
+
+void RobotController::ResetToStartPos() {
+  arm_controller->ResetToStartPos();
+}
+
 void RobotController::Grab(){
   if (arm_controller->GetIsClawClosed())
   {

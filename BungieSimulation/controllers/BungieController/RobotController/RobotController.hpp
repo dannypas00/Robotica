@@ -61,6 +61,9 @@ public:
   void WristTurnLeft();
   void WristTurnRight();
   
+  void MoveStoneToTray();
+  void ResetToStartPos();
+  
   /// @brief Get the image of the camera at executed tick.
   /// @return const unsigned char* Camera image given by the camera on the robot.
   const unsigned char* getCamera() { return camera->getImage(); }

@@ -163,7 +163,17 @@ int main(int argc, char **argv) {
           double weight = RobotController::getInstance().getWeightOfStoredObject();
           
           std::cout << "[ACTION] weight of object: " << weight << std::endl;
+        }
+        break;
+      case '9':
+        if (!executingStrategy){
+          RobotController::getInstance().MoveStoneToTray();     
         } 
+        break;
+      case '0':
+        if (!executingStrategy){
+          RobotController::getInstance().ResetToStartPos();
+        }    
         break;
       case 'R':
         if (executingStrategy) {
