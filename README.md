@@ -24,7 +24,7 @@ Om je classes toe te voegen moet jij je *broncode* verplaatsen naar dit mapje. L
 Hier kunnen verschillende dingen mis gaan, zoals het gebruik van Visual Studio specifieke functionaliteit of WeBots specifieke code.
 
 # Make:
-Je hoeft niks toe te voegen aan de makefile. Jouwn classes in andere folders worden ook automatisch meegecompiled.
+Je hoeft niks toe te voegen aan de makefile. Jouw classes in andere folders worden ook automatisch meegecompiled.
 
 
 Om te testen of je code werkt maak een simpele call in main en zorg voor visual feedback voor jezelf.
@@ -32,3 +32,10 @@ Om te testen of je code werkt maak een simpele call in main en zorg voor visual 
 Heb je vragen over de setup of de werking van één van de veranderingen vraag gerust het aansturing team.
 
 
+# Moon maze:
+Helaas werkt de moon maze op dit moment slechts deels; het A\* algoritme is opgesteld, en er is een map aangemaakt die te vullen valt met Nodes.
+Echter werkt het genereren van de map nog niet, gezien dit afhankelijk is van vision, en vision is hier nog niet toe in staat.
+De verwachting is ook niet om deze opdracht volledig af te ronden, echter wilde wij vooralsnog laten zien wat wij gemaakt hebben.
+
+Op dit moment wordt er in de maze strategy een 4x4 map aangemaakt, waar elke node verbonden is met zijn volgende in de array (0,0 aan 1,0 aan 2,0 aan 3,0 aan 0,1 aan 1,1 etc.).
+Deze strategy wordt op dit moment direct op het starten van de Robot uitgevoerd, waarbij het in de console van WeBots print wat be snelst gevonden route is (momenteel is dit elke node langs gaan).
